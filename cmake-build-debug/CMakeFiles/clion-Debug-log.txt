@@ -1,0 +1,11 @@
+/run/current-system/sw/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/nix/store/r70wkhl5cnyw6lh39mnhxxc4waa1sfny-clion-2023.1.3/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/daily/CLionProjects/3DLoaderVk -B /home/daily/CLionProjects/3DLoaderVk/cmake-build-debug
+-- Checking for module 'vulkan'
+--   Found vulkan, version 1.3.249
+-- Using Vulkan found by pkg-config
+-- Using GLFW found by pkg-config
+-- Checking for module 'glm'
+--   Found glm, version 0.9.9.8
+-- Using GLM found by pkg-config
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/daily/CLionProjects/3DLoaderVk/cmake-build-debug
