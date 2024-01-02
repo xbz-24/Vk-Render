@@ -3,7 +3,7 @@
  * @brief Implementation of the App class.
  * @date Created by Renato on 27-12-23.
  */
-#include "app.h"
+#include "app.hpp"
 /**
  * @brief Constructs an App object.
  *
@@ -32,7 +32,7 @@ App::App(int width, int height, bool debug){
 void App::build_glfw_window(int width, int height, bool debugMode) {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
     if(window = glfwCreateWindow(width, height, "ID Tech 12", nullptr, nullptr)) {
         if(debugMode) {
             std::cout << "Successfully made a glfw window called \"ID Tech 12\", width: ";

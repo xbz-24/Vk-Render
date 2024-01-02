@@ -21,9 +21,9 @@
 #include "device.hpp"
 #include "swapchain.hpp"
 #include "pipeline.hpp"
-#include "framebuffer.h"
-#include "commands.h"
-#include "sync.h"
+#include "framebuffer.hpp"
+#include "commands.hpp"
+#include "sync.hpp"
 
 /**
  * @brief Constructs an Engine object
@@ -49,6 +49,7 @@ Engine::Engine(int width, int height, GLFWwindow* window, bool debugMode) {
     make_device();
     make_pipeline();
     finalize_setup();
+    make_assets();
 }
 /**
  * @brief Initializes the Vulkan instance.
@@ -88,15 +89,36 @@ void Engine::make_device() {
     std::array<vk::Queue, 2> queues = vkInit::get_queues(physicalDevice, device, surface, debugMode);
     graphicsQueue = queues[0];
     presentQueue = queues[1];
+    make_swapchain();
+    frameNumber = 0;
+    //vkInit::query_swapchain_support(physicalDevice, surface, true);
+}
+
+void Engine::make_swapchain() {
     vkInit::SwapChainBundle bundle = vkInit::create_swapchain(device,physicalDevice,surface,width,height,debugMode);
     swapchain = bundle.swapchain;
     swapChainFrames = bundle.frames;
     swapchainFormat = bundle.format;
     swapchainExtent = bundle.extent;
     maxFramesInFlight = static_cast<int>(swapChainFrames.size());
-    frameNumber = 0;
-    //vkInit::query_swapchain_support(physicalDevice, surface, true);
 }
+
+void Engine::recreate_swapchain() {
+    width = 0;
+    height = 0;
+    while(width == 0 || height == 0){
+        glfwGetFramebufferSize(window, &width, &height);
+        glfwWaitEvents();
+    }
+    device.waitIdle();
+    cleanup_swapchain();
+    make_swapchain();
+    make_framebuffers();
+    make_frame_sync_objects();
+    vkInit::commandBufferInputChunk commandBufferInput = { device, commandPool, swapChainFrames };
+    vkInit::make_frame_command_buffer(commandBufferInput, debugMode);
+}
+
 /**
  * @brief Configures the graphics pipeline.
  *
@@ -110,10 +132,25 @@ void Engine::make_pipeline() {
     specification.fragmentFilepath = "../shaders/fragment.spv";
     specification.swapchainExtent = swapchainExtent;
     specification.swapchainImageFormat = swapchainFormat;
-    vkInit::GraphicsPipelineOutBundle output = vkInit::make_graphics_pipeline(specification, debugMode);
+    vkInit::GraphicsPipelineOutBundle output = vkInit::create_graphics_pipeline(specification, debugMode);
     pipelineLayout = output.layout;
     renderpass = output.renderpass;
     pipeline = output.pipeline;
+}
+
+void Engine::make_framebuffers() {
+    vkInit::framebufferInput framebufferInput;
+    framebufferInput.device = device;
+    framebufferInput.renderpass = renderpass;
+    framebufferInput.swapchainExtent = swapchainExtent;
+    vkInit::make_framebuffers(framebufferInput, swapChainFrames, debugMode);
+}
+void Engine::make_frame_sync_objects() {
+    for(vkUtil::SwapChainFrame& frame : swapChainFrames){
+        frame.inFlight = vkInit::make_fence(device, debugMode);
+        frame.imageAvailable = vkInit::make_semaphore(device, debugMode);
+        frame.renderFinished = vkInit::make_semaphore(device, debugMode);
+    }
 }
 /**
  * @brief Finalizes the engine setup.
@@ -122,20 +159,24 @@ void Engine::make_pipeline() {
  * buffers. It also prepares synchronization primitives for rendering.
  */
 void Engine::finalize_setup() {
-    vkInit::framebufferInput framebufferInput;
-    framebufferInput.device = device;
-    framebufferInput.renderpass = renderpass;
-    framebufferInput.swapchainExtent = swapchainExtent;
-    vkInit::make_framebuffers(framebufferInput, swapChainFrames, debugMode);
+    make_framebuffers();
     commandPool = vkInit::make_command_pool(device,physicalDevice,surface, debugMode);
     vkInit::commandBufferInputChunk commandBufferInput = { device, commandPool, swapChainFrames };
-    mainCommandBuffer = vkInit::make_command_buffers(commandBufferInput, debugMode);
-    for(vkUtil::SwapChainFrame& frame : swapChainFrames){
-        frame.inFlight = vkInit::make_fence(device, debugMode);
-        frame.imageAvailable = vkInit::make_semaphore(device, debugMode);
-        frame.renderFinished = vkInit::make_semaphore(device, debugMode);
-    }
+    mainCommandBuffer = vkInit::make_command_buffer(commandBufferInput, debugMode);
+    vkInit::make_frame_command_buffer(commandBufferInput, debugMode);
+    make_frame_sync_objects();
 }
+
+void Engine::make_assets() {
+    triangleMesh = new TriangleMesh(device, physicalDevice);
+}
+
+void Engine::prepare_scene(vk::CommandBuffer commandBuffer) {
+    vk::Buffer vertexBuffers[] = { triangleMesh -> vertexBuffer.buffer };
+    vk::DeviceSize offsets[] = { 0 };
+    commandBuffer.bindVertexBuffers(0, 1, vertexBuffers, offsets);
+}
+
 /**
  * @brief Records draw commands into a command buffer.
  *
@@ -169,6 +210,9 @@ void Engine::record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imag
     renderPassInfo.pClearValues = &clearColor;
     commandBuffer.beginRenderPass(&renderPassInfo, vk::SubpassContents::eInline);
     commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics , pipeline);
+
+    prepare_scene(commandBuffer);
+
     for(glm::vec3 position : scene->trianglePositions){
         glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
         vkUtil::ObjectData objectdata;
@@ -197,8 +241,18 @@ void Engine::record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imag
  */
 void Engine::render(Scene* scene){
     device.waitForFences(1, &swapChainFrames[frameNumber].inFlight, VK_TRUE, UINT64_MAX);
-    device.resetFences(1,&swapChainFrames[frameNumber].inFlight);
-    uint32_t imageIndex { device.acquireNextImageKHR(swapchain, UINT64_MAX, swapChainFrames[frameNumber].imageAvailable, nullptr).value };
+    uint32_t imageIndex;
+    try {
+        vk::ResultValue acquire = device.acquireNextImageKHR(
+                swapchain, UINT64_MAX, swapChainFrames[frameNumber].imageAvailable, nullptr
+        );
+        imageIndex = acquire.value;
+    }
+    catch(vk::OutOfDateKHRError){
+        std::cout << "Recreate" << std::endl;
+        recreate_swapchain();
+        return;
+    }
     vk::CommandBuffer commandBuffer = swapChainFrames[imageIndex].commandbuffer;
     commandBuffer.reset();
     record_draw_commands(commandBuffer, imageIndex, scene);
@@ -213,6 +267,7 @@ void Engine::render(Scene* scene){
     vk::Semaphore signalSemaphores[] = { swapChainFrames[frameNumber].renderFinished };
     submitInfo.signalSemaphoreCount = 1;
     submitInfo.pSignalSemaphores = signalSemaphores;
+    device.resetFences(1,&swapChainFrames[frameNumber].inFlight);
     try{
         graphicsQueue.submit(submitInfo, swapChainFrames[frameNumber].inFlight);
     }
@@ -228,9 +283,32 @@ void Engine::render(Scene* scene){
     presentInfo.swapchainCount = 1;
     presentInfo.pSwapchains = swapchains;
     presentInfo.pImageIndices = &imageIndex;
-    presentQueue.presentKHR(presentInfo);
+    vk::Result present;
+    try{
+        present = presentQueue.presentKHR(presentInfo);
+    }
+    catch(vk::OutOfDateKHRError error) {
+        present = vk::Result::eErrorOutOfDateKHR;
+    }
+    if(present == vk::Result::eErrorOutOfDateKHR || present == vk::Result::eSuboptimalKHR){
+        std::cout << "Recreate" << std::endl;
+        recreate_swapchain();
+        return;
+    }
     frameNumber = (frameNumber + 1) % maxFramesInFlight;
 }
+void Engine::cleanup_swapchain() {
+    for(vkUtil::SwapChainFrame frame : swapChainFrames){
+        device.destroyImageView(frame.imageView);
+        device.destroyFramebuffer(frame.framebuffer);
+        device.destroyFence(frame.inFlight);
+        device.destroySemaphore(frame.imageAvailable);
+        device.destroySemaphore(frame.renderFinished);
+    }
+
+    device.destroySwapchainKHR(swapchain);
+}
+
 /**
  * @brief Destructor for the Engine class.
  *
@@ -250,14 +328,8 @@ Engine::~Engine() {
     device.destroyPipeline(pipeline);
     device.destroyPipelineLayout(pipelineLayout);
     device.destroyRenderPass(renderpass);
-    for(vkUtil::SwapChainFrame frame : swapChainFrames){
-        device.destroyImageView(frame.imageView);
-        device.destroyFramebuffer(frame.framebuffer);
-        device.destroyFence(frame.inFlight);
-        device.destroySemaphore(frame.imageAvailable);
-        device.destroySemaphore(frame.renderFinished);
-    }
-    device.destroySwapchainKHR(swapchain);
+    cleanup_swapchain();
+    delete triangleMesh;
     device.destroy();
     instance.destroySurfaceKHR(surface);
     if(debugMode){

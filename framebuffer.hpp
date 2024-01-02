@@ -2,12 +2,12 @@
 // Created by daily on 27-12-23.
 //
 /**
- * @file framebuffer.h
+ * @file framebuffer.hpp
  * @brief Defines functionality for crafting Vulkan framebuffers.
  * @date Created by Renato on 27-12-23.
  */
-#ifndef INC_3DLOADERVK_FRAMEBUFFER_H
-#define INC_3DLOADERVK_FRAMEBUFFER_H
+#ifndef INC_3DLOADERVK_FRAMEBUFFER_HPP
+#define INC_3DLOADERVK_FRAMEBUFFER_HPP
 
 #include "config.hpp"
 #include "frame.hpp"
@@ -73,4 +73,4 @@ namespace vkInit{
 
 
 
-#endif //INC_3DLOADERVK_FRAMEBUFFER_H
+#endif //INC_3DLOADERVK_FRAMEBUFFER_HPP

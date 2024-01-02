@@ -1,7 +1,7 @@
 //
 // Created by daily on 01-01-24.
 //
-#include "scene.h"
+#include "scene.hpp"
 
 Scene::Scene(){
     for(float x = -1.0f; x < 1.0f; x += 0.2f){
