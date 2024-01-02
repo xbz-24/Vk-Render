@@ -1,5 +1,20 @@
+/**
+ * @file instance.cpp
+ * @brief Implements functions for Vulkan instance creation and validation.
+ * @date Created by Renato on 27-12-23.
+ */
 #include "instance.hpp"
-
+/**
+ * @brief Checks if the specified extensions and layers are supported.
+ *
+ * This function checks whether the required Vulkan extensions and layers are available on the device.
+ * It is crucial for ensuring compatibility and stability of Vulkan operations.
+ *
+ * @param extensions A vector of Vulkan extension names to check for support.
+ * @param layers A vector of Vulkan layer names to check for support.
+ * @param debug Flag indicating whether to enable debug logging.
+ * @return true if all extensions and layers are supported, false otherwise
+ */
 bool vkInit::supported(std::vector<const char*>& extensions, std::vector<const char*>& layers, bool debug) {
 
     //check extension support
@@ -61,7 +76,17 @@ bool vkInit::supported(std::vector<const char*>& extensions, std::vector<const c
 
     return true;
 }
-
+/**
+ * @brief Creates a Vulkan instance with specified application information and extensions
+ *
+ * This function initializes a Vulkan instance, which is the first step in working with Vulkan.
+ * The instance is configured with application and engine information, as well as required extensions
+ * and layers, especially those needed for debugging purposes.
+ *
+ * @param debug Flag indicating whether to enable debug logging.
+ * @param applicationName The name of the application.
+ * @return A Vulkan instance, or nullptr if instance creation fails.
+ */
 vk::Instance vkInit::make_instance(bool debug, const char* applicationName) {
 
     if (debug) {

@@ -1,13 +1,26 @@
 //
 // Created by daily on 27-12-23.
 //
-
+/**
+ * @file pipeline.hpṕ
+ * @brief Defines functionality for creating Vulkan graphics pipelines.
+ * @date Created by Renato on 27-12-23.
+ */
 #ifndef INC_3DLOADERVK_PIPELINE_HPP
 #define INC_3DLOADERVK_PIPELINE_HPP
+
 #include "config.hpp"
 #include "shaders.hpp"
+#include "render_structs.h"
 
 namespace vkInit {
+    /**
+     * @struct GraphicsPipelineInBundle
+     * @brief Holds parameters required for creating a Vulkan graphics pipeline.
+     *
+     * This structures includes the Vulkan device, file paths for vertex and fragment shaders,
+     * and specifications related to the swap chain such as image format and extent.
+     */
     struct GraphicsPipelineInBundle{
         vk::Device device;
         std::string vertexFilepath;
@@ -15,27 +28,58 @@ namespace vkInit {
         vk::Extent2D swapchainExtent;
         vk::Format swapchainImageFormat;
     };
+    /**
+     * @struct GraphicsPipelineOutBundle
+     * @brief Holds the components of a created Vulkan graphics pipeline
+     *
+     * This structure encapsulates the pipeline layout, render pass, and the graphics pipeline itself.
+     */
     struct GraphicsPipelineOutBundle{
         vk::PipelineLayout layout;
         vk::RenderPass renderpass;
         vk::Pipeline pipeline;
     };
-
+    /**
+     * @brief Creates a Vulkan pipeline layout
+     *
+     * Initializes a pipeline layout necessary for a Vulkan graphics pipeline, including push constants
+     *
+     * @param device The Vulkan logical device.
+     * @param debug Flag indicating whether to enable debug logging.
+     * @return The created Vulkan pipeline layout.
+     */
     vk::PipelineLayout make_pipeline_layout(vk::Device device, bool debug){
+
         vk::PipelineLayoutCreateInfo layoutInfo;
         layoutInfo.flags = vk::PipelineLayoutCreateFlags();
         layoutInfo.setLayoutCount = 0;
-        layoutInfo.pushConstantRangeCount = 0;
+
+        layoutInfo.pushConstantRangeCount = 1;
+        vk::PushConstantRange pushConstantInfo;
+        pushConstantInfo.offset = 0;
+        pushConstantInfo.size = sizeof(vkUtil::ObjectData);
+        pushConstantInfo.stageFlags = vk::ShaderStageFlagBits::eVertex;
+        layoutInfo.pPushConstantRanges = &pushConstantInfo;
+
         try{
             return device.createPipelineLayout(layoutInfo);
         }
         catch(vk::SystemError err){
             if(debug){
-                std::cout << "Failed to create pipeline layout!" << std::endl;
+                std::cout << "Failed to create pipeline pipelineLayout!" << std::endl;
             }
         }
     }
-
+    /**
+     * @brief Creates a Vulkan render pass.
+     *
+     * Initializes a render pass for the graphics pipeline, specifying how color and depth attachments are handled.
+     *
+     * @param device The Vulkan logical device.
+     * @param swapchainImageFormat The format of the swap chain images.
+     * @param debug Flag indicating whether to enable debug logging.
+     * @return The created Vulkan render pass.
+     */
     vk::RenderPass make_render_pass(vk::Device device, vk::Format swapchainImageFormat, bool debug){
 
         vk::AttachmentDescription colorAttachment = { };
@@ -74,7 +118,16 @@ namespace vkInit {
             }
         }
     }
-
+    /**
+     * @brief Creates a Vulkan graphics pipeline
+     *
+     * Sets up the entire graphics pipeline, including shader stages, viewport and scissor states,
+     * rasterization, multisampling, color blending, and more, based on the provided specifications.
+     *
+     * @param specification The specifications for creating the graphics pipeline.
+     * @param debug Flag indicating whether to enable debug logging.
+     * @return A bundle containing the components of the created graphics pipeline.
+     */
     GraphicsPipelineOutBundle make_graphics_pipeline(GraphicsPipelineInBundle specification, bool debug){
 
         vk::GraphicsPipelineCreateInfo pipelineInfo = { };
@@ -178,7 +231,7 @@ namespace vkInit {
         colorBlending.blendConstants[3] = 0.0f;
         pipelineInfo.pColorBlendState = &colorBlending;
 
-        //pipeline layout
+        //pipeline pipelineLayout
         if(debug){
             std::cout << "Create Pipeline Layout" << std::endl;
         }

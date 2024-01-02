@@ -1,14 +1,34 @@
-//
-// Created by daily on 27-12-23.
-//
-
+/**
+ * @file app.cpp
+ * @brief Implementation of the App class.
+ * @date Created by Renato on 27-12-23.
+ */
 #include "app.h"
-
+/**
+ * @brief Constructs an App object.
+ *
+ * Initializes a new GLFW window and creates instances of the Engine and Scene classes.
+ * This is the primary entry point for setting up the Vulkan-based graphics application.
+ *
+ * @param width The width of the GLFW window.
+ * @param height The height of the GLFW window.
+ * @param debug Indicates whether debugging features should be enabled.
+ */
 App::App(int width, int height, bool debug){
     build_glfw_window(width, height, debug);
     graphicsEngine = new Engine(width, height, window, debug);
+    scene = new Scene();
 }
-
+/**
+ * @brief Initializes and creates a GLFW window.
+ *
+ * Sets up the GLFW window with the specified dimensions and debug mode.
+ * Outputs debug messages if the window is created successfully or if the creation fails.
+ *
+ * @param width The width of the window to create.
+ * @param height The height of the window to create,
+ * @param debugMode Indicates whether to enable debug logging.
+ */
 void App::build_glfw_window(int width, int height, bool debugMode) {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -25,14 +45,26 @@ void App::build_glfw_window(int width, int height, bool debugMode) {
         }
     }
 }
+/**
+ * @brief Runs the main application loop.
+ *
+ * Handles the primary loop of the application, including polling for window events,
+ * rendering the scene, and calculating the frame rate. The loop continues until the
+ * GLFW window should close.
+ */
 void App::run(){
     while(!glfwWindowShouldClose(window)){
         glfwPollEvents();
-        graphicsEngine->render();
+        graphicsEngine->render(scene);
         calculateFrameRate();
     }
 }
-
+/**
+ * @brief Calculates and displays the frame rate.
+ *
+ * Measures the time elapsed since the last frame and updates the window title with the
+ * current frame rate every second. This helps in monitoring the performance of the application.
+ */
 void App::calculateFrameRate() {
     currentTime = glfwGetTime();
     double delta = currentTime - lastTime;
@@ -48,7 +80,13 @@ void App::calculateFrameRate() {
     }
     ++numFrames;
 }
-
+/**
+ * @brief Destructor of the App class.
+ *
+ * Cleans up by deleting the instances of Engine and Scene, which were created in the constructor.
+ * This ensures proper resource management and prevents memory leaks.
+ */
 App::~App(){
     delete graphicsEngine;
+    delete scene;
 }
