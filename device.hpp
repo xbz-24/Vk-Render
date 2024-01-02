@@ -1,7 +1,11 @@
 //
 // Created by daily on 27-12-23.
 //
-
+/**
+ * @file device.hpp
+ * @brief Defines functionalities for Vulkan physical and logical device management.
+ * @date Created by Renato on 27-12-23.
+ */
 #ifndef INC_3DLOADERVK_DEVICE_HPP
 #define INC_3DLOADERVK_DEVICE_HPP
 
@@ -18,7 +22,23 @@
  * A logical device represents an instance of that implementation
  * with its own state and resources independent of other logical devices.
  */
+ /**
+  * @namespace vkInit
+  * @brief Checks if a Vulkan physical device support the required extensions.
+  *
+  * This namespace includes functions for checking device extension support,
+  * determining if a physical device is suitable, choosing a physical device,
+  * creating a logical device and retrieving device queues.
+  */
 namespace vkInit {
+    /**
+     * @brief Checks if a Vulkan physical device supports the required extensions.
+     *
+     * @param device The Vulkan physical device to check.
+     * @param requestedExtensions A vector of extension names to be checked.
+     * @param debug Flag indicating whether to enable debug logging.
+     * @return true if the device supports all requested extensions, false otherwise
+     */
     bool checkDeviceExtensionSupport(
             const vk::PhysicalDevice& device,
             const std::vector<const char*>& requestedExtensions,
@@ -36,6 +56,13 @@ namespace vkInit {
         }
         return requiredExtensions.empty();
     }
+    /**
+     * @brief Determines if a Vulkan physical device is suitable for the application's needs.
+     *
+     * @param device The vulkan physical device to evaluate.
+     * @param debug Flag indicating whether to enable debug logging.
+     * @return true if the device is suitable, false otherwise.
+     */
     bool isSuitable(const vk::PhysicalDevice& device, const bool debug){
         if(debug){
             std::cout << "Checking if device is suitable\n";
@@ -62,7 +89,13 @@ namespace vkInit {
         }
         return true;
     }
-
+    /**
+     * @brief Chooses a suitable Vulkan physical device from available devices.
+     *
+     * @param instance The Vulkan instance.
+     * @param debug Flag indicating whether to enable debug logging.
+     * @return The chosen Vulkan physical device.
+     */
     vk::PhysicalDevice choose_physical_device(vk::Instance& instance, bool debug){
         /**
          * Choose a suitable physical device from a list of candidates.
@@ -92,7 +125,14 @@ namespace vkInit {
 
         return nullptr;
     }
-
+    /**
+     * @brief Creates a Vulkan logical device from a physical device.
+     *
+     * @param physicalDevice The Vulkan physical device.
+     * @param surface The Vulkan surface.
+     * @param debug The Vulkan surface.
+     * @return The created Vulkan logical device.
+     */
     vk::Device create_logical_device(vk::PhysicalDevice physicalDevice,vk::SurfaceKHR surface, bool debug){
         vkUtil::QueueFamilyIndices indices = vkUtil::findQueueFamilies(physicalDevice,surface, debug);
 
@@ -145,7 +185,15 @@ namespace vkInit {
         }
         return nullptr;
     }
-
+    /**
+     * @brief Retrieves graphics and presentation queues from a Vulkan device.
+     *
+     * @param physicalDevice The Vulkan physical device.
+     * @param device The Vulkan logical device.
+     * @param surface The Vulkan surface.
+     * @param debug Flag indicating whether to enable debug logging.
+     * @return An array containing the graphics and presentation queues.
+     */
     std::array<vk::Queue, 2> get_queues(vk::PhysicalDevice physicalDevice, vk::Device device,vk::SurfaceKHR surface, bool debug){
         vkUtil::QueueFamilyIndices indices = vkUtil::findQueueFamilies(physicalDevice, surface, debug);
 

@@ -1,20 +1,42 @@
-//
-// Created by daily on 27-12-23.
-//
-
+/**
+ * @file commands.h
+ * @brief Provides utilities for creating Vulkan command pools and command buffers.
+ * @date Created by Renato on 27-12-23.
+ */
 #ifndef INC_3DLOADERVK_COMMANDS_H
 #define INC_3DLOADERVK_COMMANDS_H
 #include "config.hpp"
 #include "queue_families.hpp"
-
+/**
+ * @namespace vkInit
+ * @brief Provides utilities for creating Vulkan command pools and command buffers.
+ * @date Created by Renato on 27-12-23.
+ */
 namespace vkInit {
-
+    /**
+     * @struct commandBufferInputChunk
+     * @brief Holds parameters required for creating Vulkan command buffers.
+     *
+     * This structure aggregates a Vulkan device, a command pool, and a vector of swap chain frames
+     * to provide necessary inputs for command buffer allocation.
+     */
     struct commandBufferInputChunk{
         vk::Device device;
         vk::CommandPool commandPool;
         std::vector<vkUtil::SwapChainFrame>& frames;
     };
-
+    /**
+     * @brief Creates a Vulkan command pool.
+     *
+     * Sets up a Vulkan command pool using the provided device, physical device, and surface.
+     * It is used for allocating command buffers.
+     *
+     * @param device The Vulkan logical device.
+     * @param physicalDevice The Vulkan physical device.
+     * @param surface The Vulkan surface.
+     * @param debug Flag indicating whether to enable debug logging.
+     * @return A Vulkan command pool object.
+     */
     vk::CommandPool make_command_pool(vk::Device device, vk::PhysicalDevice physicalDevice, vk::SurfaceKHR surface, bool debug){
         vkUtil::QueueFamilyIndices queueFamilyIndices = vkUtil::findQueueFamilies(physicalDevice, surface, debug);
         vk::CommandPoolCreateInfo poolInfo = {};
@@ -31,7 +53,16 @@ namespace vkInit {
             return nullptr;
         }
     }
-
+    /**
+     * @brief Allocates Vulkan command buffers.
+     *
+     * Allocates and sets up primary level command buffers for each frame in the input chunk.
+     * It also allocates a main command buffer for the awpplication.
+     *
+     * @param inputChunk The command buffer input parameters.
+     * @param debug Flag indicating whether to enable debug logging.
+     * @return The main Vulkan command buffer.
+     */
     vk::CommandBuffer make_command_buffers(commandBufferInputChunk inputChunk, bool debug){
         vk::CommandBufferAllocateInfo allocInfo = { };
         allocInfo.commandPool = inputChunk.commandPool;
@@ -65,7 +96,4 @@ namespace vkInit {
         }
     }
 }
-
-
-
 #endif //INC_3DLOADERVK_COMMANDS_H
