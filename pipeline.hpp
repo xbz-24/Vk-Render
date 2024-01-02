@@ -11,7 +11,8 @@
 
 #include "config.hpp"
 #include "shaders.hpp"
-#include "render_structs.h"
+#include "render_structs.hpp"
+#include "mesh.h"
 
 namespace vkInit {
     /**
@@ -80,7 +81,7 @@ namespace vkInit {
      * @param debug Flag indicating whether to enable debug logging.
      * @return The created Vulkan render pass.
      */
-    vk::RenderPass make_render_pass(vk::Device device, vk::Format swapchainImageFormat, bool debug){
+    vk::RenderPass make_renderpass(vk::Device device, vk::Format swapchainImageFormat, bool debug){
 
         vk::AttachmentDescription colorAttachment = { };
         colorAttachment.flags = vk::AttachmentDescriptionFlags();
@@ -128,7 +129,7 @@ namespace vkInit {
      * @param debug Flag indicating whether to enable debug logging.
      * @return A bundle containing the components of the created graphics pipeline.
      */
-    GraphicsPipelineOutBundle make_graphics_pipeline(GraphicsPipelineInBundle specification, bool debug){
+    GraphicsPipelineOutBundle create_graphics_pipeline(GraphicsPipelineInBundle specification, bool debug){
 
         vk::GraphicsPipelineCreateInfo pipelineInfo = { };
 
@@ -137,10 +138,14 @@ namespace vkInit {
         std::vector<vk::PipelineShaderStageCreateInfo> shaderStages;
 
         // vertex input
+        vk::VertexInputBindingDescription bindingDescription = vkMesh::getPosColorBindingDescription();
+        std::array<vk::VertexInputAttributeDescription, 2> attributeDescriptions = vkMesh::getPosColorAttributeDescriptions();
         vk::PipelineVertexInputStateCreateInfo vertexInputInfo = { };
         vertexInputInfo.flags = vk::PipelineVertexInputStateCreateFlags();
-        vertexInputInfo.vertexBindingDescriptionCount = 0;
-        vertexInputInfo.vertexAttributeDescriptionCount = 0;
+        vertexInputInfo.vertexBindingDescriptionCount = 1;
+        vertexInputInfo.pVertexBindingDescriptions = &bindingDescription;
+        vertexInputInfo.vertexAttributeDescriptionCount = 2;
+        vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
         pipelineInfo.pVertexInputState = &vertexInputInfo;
         //Input Assembly
         vk::PipelineInputAssemblyStateCreateInfo inputAssemblyInfo = { };
@@ -242,7 +247,7 @@ namespace vkInit {
         if(debug){
             std::cout << "Create RenderPass" << std::endl;
         }
-        vk::RenderPass renderpass = make_render_pass(specification.device, specification.swapchainImageFormat, debug);
+        vk::RenderPass renderpass = make_renderpass(specification.device, specification.swapchainImageFormat, debug);
         pipelineInfo.renderPass = renderpass;
 
         //extra stuff

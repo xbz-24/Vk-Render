@@ -1,10 +1,10 @@
 /**
- * @file commands.h
+ * @file commands.hpp
  * @brief Provides utilities for creating Vulkan command pools and command buffers.
  * @date Created by Renato on 27-12-23.
  */
-#ifndef INC_3DLOADERVK_COMMANDS_H
-#define INC_3DLOADERVK_COMMANDS_H
+#ifndef INC_3DLOADERVK_COMMANDS_HPP
+#define INC_3DLOADERVK_COMMANDS_HPP
 #include "config.hpp"
 #include "queue_families.hpp"
 /**
@@ -63,22 +63,12 @@ namespace vkInit {
      * @param debug Flag indicating whether to enable debug logging.
      * @return The main Vulkan command buffer.
      */
-    vk::CommandBuffer make_command_buffers(commandBufferInputChunk inputChunk, bool debug){
+    vk::CommandBuffer make_command_buffer(commandBufferInputChunk inputChunk, bool debug){
         vk::CommandBufferAllocateInfo allocInfo = { };
         allocInfo.commandPool = inputChunk.commandPool;
         allocInfo.level = vk::CommandBufferLevel::ePrimary;
         allocInfo.commandBufferCount = 1;
 
-        for(int i = 0; i < inputChunk.frames.size(); i++){
-            try{
-                inputChunk.frames[i].commandbuffer = inputChunk.device.allocateCommandBuffers(allocInfo)[0];
-            }
-            catch(vk::SystemError err){
-                if(debug){
-                    std::cout << "Failed to allocate command buffer for frame " << i << std::endl;
-                }
-            }
-        }
         try{
             vk::CommandBuffer commandbuffer = inputChunk.device.allocateCommandBuffers(allocInfo)[0];
             if(debug){
@@ -95,5 +85,24 @@ namespace vkInit {
             return nullptr;
         }
     }
+    void make_frame_command_buffer(commandBufferInputChunk inputChunk, bool debug){
+        vk::CommandBufferAllocateInfo allocInfo = { };
+        allocInfo.commandPool = inputChunk.commandPool;
+        allocInfo.level = vk::CommandBufferLevel::ePrimary;
+        allocInfo.commandBufferCount = 1;
+
+        for(int i = 0; i < inputChunk.frames.size(); i++){
+            try{
+                inputChunk.frames[i].commandbuffer = inputChunk.device.allocateCommandBuffers(allocInfo)[0];
+            }
+            catch(vk::SystemError err){
+                if(debug){
+                    std::cout << "Failed to allocate command buffer for frame " << i << std::endl;
+                }
+            }
+        }
+
+    }
+
 }
-#endif //INC_3DLOADERVK_COMMANDS_H
+#endif //INC_3DLOADERVK_COMMANDS_HPP

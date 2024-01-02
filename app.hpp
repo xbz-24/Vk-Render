@@ -8,11 +8,11 @@
  * This class manages the creation and lifecycle of a GLFW window, initializes the graphics engine (Engine), and handles
  * the main application loop including rendering and frame rate calculations.
  */
-#ifndef INC_3DLOADERVK_APP_H
-#define INC_3DLOADERVK_APP_H
+#ifndef INC_3DLOADERVK_APP_HPP
+#define INC_3DLOADERVK_APP_HPP
 #include "config.hpp"
 #include "engine.hpp"
-#include "scene.h"
+#include "scene.hpp"
 /**
  * @class App
  * @brief The app class encapsulates the main application loop and initialization logic for a Vulkan-based graphics application.
@@ -70,4 +70,4 @@ private:
 };
 
 
-#endif //INC_3DLOADERVK_APP_H
+#endif //INC_3DLOADERVK_APP_HPP
