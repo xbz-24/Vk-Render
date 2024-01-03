@@ -29,7 +29,8 @@
 
           shellHook = ''
             export VK_LAYER_PATH="${pkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d"
-            # Launching CLion and then closing the terminal
+            export Vulkan_INCLUDE_DIR="${pkgs.vulkan-headers}/include"
+            export Vulkan_LIBRARY="${pkgs.vulkan-loader}/lib"
             if [ -z "$CLION_AUTO_LAUNCHED" ]; then
               export CLION_AUTO_LAUNCHED=1
               clion . &
