@@ -8,9 +8,11 @@
  */
 #ifndef INC_3DLOADERVK_SYNC_HPP
 #define INC_3DLOADERVK_SYNC_HPP
-#include "config.hpp"
+#include <vulkan/vulkan.hpp>
+#include <iostream>
 
-namespace vkInit {
+namespace vkInit
+{
     /**
      * @brief Creates a Vulkan semaphore.
      *
@@ -21,14 +23,18 @@ namespace vkInit {
      * @param debug Flag indicating whether to enable debug logging.
      * @return A Vulkan semaphore object, or nullptr if creation fails.
      */
-    vk::Semaphore make_semaphore(vk::Device device, bool debug){
+    vk::Semaphore make_semaphore(vk::Device device, bool debug)
+    {
         vk::SemaphoreCreateInfo semaphoreInfo = { };
         semaphoreInfo.flags = vk::SemaphoreCreateFlags();
-        try{
+        try
+        {
             return device.createSemaphore(semaphoreInfo);
         }
-        catch(vk::SystemError err){
-            if(debug){
+        catch(vk::SystemError &err)
+        {
+            if(debug)
+            {
                 std::cout << "Failed to create semaphore" << std::endl;
             }
             return nullptr;
@@ -44,21 +50,23 @@ namespace vkInit {
      * @param debug Flag indicating whether to enable debug logging.
      * @return A Vulkan fence object, or nullptr if creation fails.
      */
-    vk::Fence make_fence(vk::Device device, bool debug){
+    vk::Fence make_fence(vk::Device device, bool debug)
+    {
         vk::FenceCreateInfo fenceInfo = { };
         fenceInfo.flags = vk::FenceCreateFlags() | vk::FenceCreateFlagBits::eSignaled;
 
-        try{
+        try
+        {
             return device.createFence(fenceInfo);
         }
-        catch(vk::SystemError err){
-            if(debug){
+        catch(vk::SystemError &err)
+        {
+            if(debug)
+            {
                 std::cout << "Failed to create fence" << std::endl;
             }
             return nullptr;
         }
     }
 }
-
-
 #endif //INC_3DLOADERVK_SYNC_HPP

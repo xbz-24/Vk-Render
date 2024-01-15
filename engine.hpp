@@ -5,12 +5,11 @@
  */
 #ifndef INC_3DLOADERVK_ENGINE_HPP
 #define INC_3DLOADERVK_ENGINE_HPP
-
-#include "config.hpp"
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
 #include "frame.hpp"
 #include "scene.hpp"
 #include "triangle_mesh.h"
-
 /**
  * @class Engine
  * @brief The Engine class initializes and manages the core components of a Vulkan-based graphics application.
@@ -19,8 +18,8 @@
  * swap chain, graphics pipeline, and command buffers. It integrates with GLFW for window management and
  * provides functionality for rendering scenes.
  */
-
-class Engine     {
+class Engine
+{
 public:
     /**
      * @brief Constructs an Engine object.

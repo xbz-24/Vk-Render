@@ -1,15 +1,20 @@
 //
 // Created by daily on 27-12-23.
 //
-
 #ifndef INC_3DLOADERVK_SHADERS_HPP
 #define INC_3DLOADERVK_SHADERS_HPP
-
-#include "config.hpp"
-namespace vkUtil {
-    std::vector<char> readFile(std::string filename, bool debug){
+#include <vulkan/vulkan.hpp>
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include <string>
+namespace vkUtil
+{
+    std::vector<char> readFile(std::string filename, bool debug)
+    {
         std::ifstream file(filename, std::ios::ate | std::ios::binary);
-        if(debug && !file.is_open()){
+        if(debug && !file.is_open())
+        {
             std::cout << "Failed to load \"" << filename << "\"" << std::endl;
         }
 
@@ -20,22 +25,24 @@ namespace vkUtil {
         file.close();
         return buffer;
     }
-    vk::ShaderModule createModule(std::string filename, vk::Device device, bool debug){
+    vk::ShaderModule createModule(std::string filename, vk::Device device, bool debug)
+    {
         std::vector<char> sourceCode = readFile(filename, debug);
         vk::ShaderModuleCreateInfo moduleInfo = {};
         moduleInfo.flags = vk::ShaderModuleCreateFlags();
         moduleInfo.codeSize = sourceCode.size();
         moduleInfo.pCode = reinterpret_cast<const uint32_t*>(sourceCode.data());
-
-        try{
+        try
+        {
             return device.createShaderModule(moduleInfo);
         }
-        catch(vk::SystemError err){
-            if(debug){
+        catch(vk::SystemError &err)
+        {
+            if(debug)
+            {
                 std::cout << "Failed to create shader module for \"" << filename << "\"" << std::endl;
             }
         }
     }
 }
-
 #endif //INC_3DLOADERVK_SHADERS_HPP

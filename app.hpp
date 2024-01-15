@@ -1,24 +1,23 @@
-//
-// Created by daily on 27-12-23.
-//
 /**
  * @file app.h
  * @brief Defines the App class, which serves as the main entry point and controller for the Vulkan-based graphics application.
+ * @Date Created by Renato on 27-12-23.
  *
  * This class manages the creation and lifecycle of a GLFW window, initializes the graphics engine (Engine), and handles
  * the main application loop including rendering and frame rate calculations.
  */
 #ifndef INC_3DLOADERVK_APP_HPP
 #define INC_3DLOADERVK_APP_HPP
-#include "config.hpp"
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
 #include "engine.hpp"
 #include "scene.hpp"
 /**
  * @class App
  * @brief The app class encapsulates the main application loop and initialization logic for a Vulkan-based graphics application.
- * @date Created by Renato on 27-12-23.
  */
-class App{
+class App
+{
 public:
     /**
      * @brief Constructs an App object.
@@ -68,6 +67,4 @@ private:
      */
     void calculateFrameRate();
 };
-
-
 #endif //INC_3DLOADERVK_APP_HPP

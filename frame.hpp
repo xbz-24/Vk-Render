@@ -8,7 +8,7 @@
  */
 #ifndef INC_3DLOADERVK_FRAME_HPP
 #define INC_3DLOADERVK_FRAME_HPP
-#include "config.hpp"
+#include <vulkan/vulkan.hpp>
 /**
  * @namespace vkUtil
  * @brief Contains utility structures and functions for Vulkan.
@@ -16,7 +16,8 @@
  * This namespace provides additional support for managing Vulkan objects and operations,
  * supplementing the core Vulkan functionalities.
  */
-namespace vkUtil{
+namespace vkUtil
+{
     /**
      * @struct SwapChainFrame
      * @brief Holds the components necessary for a single frame in a Vulkan swap chain.
@@ -25,7 +26,8 @@ namespace vkUtil{
      * and synchronization objects for a frame. These components are essential for rendering
      * and presenting each frame in a Vulkan application.
      */
-    struct SwapChainFrame{
+    struct SwapChainFrame
+    {
         vk::Image image;
         vk::ImageView imageView;
         vk::Framebuffer framebuffer;
