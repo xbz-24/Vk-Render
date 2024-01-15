@@ -3,7 +3,7 @@
  * @brief Defines the App class, which serves as the main entry point and controller for the Vulkan-based graphics application.
  * @Date Created by Renato on 27-12-23.
  *
- * This class manages the creation and lifecycle of a GLFW window, initializes the graphics engine (Engine), and handles
+ * This class manages the creation and lifecycle of a GLFW window_, initializes the graphics engine (Engine), and handles
  * the main application loop including rendering and frame rate calculations.
  */
 #ifndef INC_3DLOADERVK_APP_HPP
@@ -22,48 +22,48 @@ public:
     /**
      * @brief Constructs an App object.
      *
-     * Initializes the GLFW window and creates instances of the Engine and Scene classes.
+     * Initializes the GLFW window_ and creates instances of the Engine and Scene classes.
      *
-     * @param width The width of the GLFW window.
-     * @param height The height of the GLFW window.
-     * @param debug Flag indicating whether to run in debug mode, affecting logging verbosity.
+     * @param width The width of the GLFW window_.
+     * @param height The height of the GLFW window_.
+     * @param is_debug Flag indicating whether to run in is_debug mode, affecting logging verbosity.
      */
-    App(int width, int height, bool debug);
+    App(int width, int height, bool is_debug);
     /**
      * @brief Destructor for the App class-
      *
-     * Cleans up by deleting the graphics engine and the scene.
+     * Cleans up by deleting the graphics engine and the scene_.
      */
     ~App();
     /**
      * @brief Runs the main application loop.
      *
-     * Continuosly polls for GLFW events, renders the scene, and calculates the frame rate until the window should close.
+     * Continuosly polls for GLFW events, renders the scene_, and calculates the frame rate until the window_ should close.
      */
     void run();
 private:
-    Engine* graphicsEngine;
-    GLFWwindow* window;
-    Scene* scene;
+    Engine* graphics_engine_;
+    GLFWwindow* window_;
+    Scene* scene_;
 
-    double lastTime;
-    double currentTime;
-    int numFrames;
-    float frameTime;
+    double last_time_;
+    double current_time_;
+    int num_frames_;
+    float frame_time_;
     /**
-     * @brief Initializes and builds a GLFW window.
+     * @brief Initializes and builds a GLFW window_.
      *
-     * Sets up a GLFW window with the specified width, height, and debug mode. Handles window creation success or failure.
+     * Sets up a GLFW window_ with the specified width, height, and debug mode. Handles window_ creation success or failure.
      *
-     * @param width The width of the GLFW window.
-     * @param height The height of the GLFW window.
-     * @param debugMode Flag indicating whether to enable debug logging for window creation.
+     * @param width The width of the GLFW window_.
+     * @param height The height of the GLFW window_.
+     * @param is_debug_mode Flag indicating whether to enable debug logging for window_ creation.
      */
-    void build_glfw_window(int width, int height, bool debugMode);
+    void buildGlfwWindow(int width, int height, bool is_debug_mode);
     /**
      * @brief Calculates and updates the frame rate of the application.
      *
-     * Measures the time elapsed and updates the window title with the current frame rate every second.
+     * Measures the time elapsed and updates the window_ title with the current frame rate every second.
      */
     void calculateFrameRate();
 };

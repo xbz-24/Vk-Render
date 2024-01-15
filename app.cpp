@@ -8,84 +8,84 @@
 /**
  * @brief Constructs an App object.
  *
- * Initializes a new GLFW window and creates instances of the Engine and Scene classes.
+ * Initializes a new GLFW window_ and creates instances of the Engine and Scene classes.
  * This is the primary entry point for setting up the Vulkan-based graphics application.
  *
- * @param width The width of the GLFW window.
- * @param height The height of the GLFW window.
- * @param debug Indicates whether debugging features should be enabled.
+ * @param width The width of the GLFW window_.
+ * @param height The height of the GLFW window_.
+ * @param is_debug Indicates whether debugging features should be enabled.
  */
-App::App(int width, int height, bool debug)
+App::App(int width, int height, bool is_debug)
 {
-    build_glfw_window(width, height, debug);
-    graphicsEngine = new Engine(width, height, window, debug);
-    scene = new Scene();
+    buildGlfwWindow(width, height, is_debug);
+    graphics_engine_ = new Engine(width, height, window_, is_debug);
+    scene_ = new Scene();
 }
 /**
- * @brief Initializes and creates a GLFW window.
+ * @brief Initializes and creates a GLFW window_.
  *
- * Sets up the GLFW window with the specified dimensions and debug mode.
- * Outputs debug messages if the window is created successfully or if the creation fails.
+ * Sets up the GLFW window_ with the specified dimensions and debug mode.
+ * Outputs debug messages if the window_ is created successfully or if the creation fails.
  *
- * @param width The width of the window to create.
- * @param height The height of the window to create,
- * @param debugMode Indicates whether to enable debug logging.
+ * @param width The width of the window_ to create.
+ * @param height The height of the window_ to create,
+ * @param is_debug_mode Indicates whether to enable debug logging.
  */
-void App::build_glfw_window(int width, int height, bool debugMode)
+void App::buildGlfwWindow(int width, int height, bool is_debug_mode)
 {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-    if(window = glfwCreateWindow(width, height, "ID Tech 12", nullptr, nullptr))
+    if(window_ = glfwCreateWindow(width, height, "ID Tech 12", nullptr, nullptr))
     {
-        if(debugMode)
+        if(is_debug_mode)
         {
-            std::cout << "Successfully made a glfw window called \"ID Tech 12\", width: ";
+            std::cout << "Successfully made a glfw window_ called \"ID Tech 12\", width: ";
             std::cout << width << ", height: " << height << '\n';
         }
     }
     else
     {
-        if(debugMode)
+        if(is_debug_mode)
         {
-            std::cout << "GLFW window creation failed\n";
+            std::cout << "GLFW window_ creation failed\n";
         }
     }
 }
 /**
  * @brief Runs the main application loop.
  *
- * Handles the primary loop of the application, including polling for window events,
- * rendering the scene, and calculating the frame rate. The loop continues until the
- * GLFW window should close.
+ * Handles the primary loop of the application, including polling for window_ events,
+ * rendering the scene_, and calculating the frame rate. The loop continues until the
+ * GLFW window_ should close.
  */
 void App::run(){
-    while(!glfwWindowShouldClose(window)){
+    while(!glfwWindowShouldClose(window_)){
         glfwPollEvents();
-        graphicsEngine->render(scene);
+        graphics_engine_->render(scene_);
         calculateFrameRate();
     }
 }
 /**
  * @brief Calculates and displays the frame rate.
  *
- * Measures the time elapsed since the last frame and updates the window title with the
+ * Measures the time elapsed since the last frame and updates the window_ title with the
  * current frame rate every second. This helps in monitoring the performance of the application.
  */
 void App::calculateFrameRate() {
-    currentTime = glfwGetTime();
-    double delta = currentTime - lastTime;
+    current_time_ = glfwGetTime();
+    double delta = current_time_ - last_time_;
 
     if(delta >= 1){
-        int framerate  {std::max(1, int(numFrames / delta))};
+        int framerate  {std::max(1, int(num_frames_ / delta))};
         std::stringstream title;
         title << "Running at " << framerate << " fps.";
-        glfwSetWindowTitle(window, title.str().c_str());
-        lastTime = currentTime;
-        numFrames = -1;
-        frameTime = float(1000.0 / framerate);
+        glfwSetWindowTitle(window_, title.str().c_str());
+        last_time_ = current_time_;
+        num_frames_ = -1;
+        frame_time_ = float(1000.0 / framerate);
     }
-    ++numFrames;
+    ++num_frames_;
 }
 /**
  * @brief Destructor of the App class.
@@ -94,6 +94,6 @@ void App::calculateFrameRate() {
  * This ensures proper resource management and prevents memory leaks.
  */
 App::~App(){
-    delete graphicsEngine;
-    delete scene;
+    delete graphics_engine_;
+    delete scene_;
 }

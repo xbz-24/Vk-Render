@@ -9,13 +9,13 @@
 #include <GLFW/glfw3.h>
 #include "frame.hpp"
 #include "scene.hpp"
-#include "triangle_mesh.h"
+#include "triangle_mesh.hpp"
 /**
  * @class Engine
  * @brief The Engine class initializes and manages the core components of a Vulkan-based graphics application.
  *
  * This class is responsible for setting up and managing Vulkan resources such as the instance, device,
- * swap chain, graphics pipeline, and command buffers. It integrates with GLFW for window management and
+ * swap chain, graphics pipeline, and command buffers. It integrates with GLFW for window_ management and
  * provides functionality for rendering scenes.
  */
 class Engine
@@ -23,8 +23,8 @@ class Engine
 public:
     /**
      * @brief Constructs an Engine object.
-     * @param width The width of the rendering window.
-     * @param height The height of the rendering window.
+     * @param width The width of the rendering window_.
+     * @param height The height of the rendering window_.
      * @param window Pointer to the GLFWwindow to be used for rendering.
      * @param debug Indicates whether to enable debug mode.
      */
@@ -34,15 +34,15 @@ public:
      */
     ~Engine();
     /**
-     * @brief Renders a given scene.
-     * @param scene Pointer to the scene object to be rendered.
+     * @brief Renders a given scene_.
+     * @param scene Pointer to the scene_ object to be rendered.
      */
     void render(Scene* scene);
 
 private:
     // whether to print debug messages in functions
     bool debugMode;
-    //glfw window parameters
+    //glfw window_ parameters
     int width;
     int height;
     GLFWwindow* window;
@@ -98,10 +98,10 @@ private:
     void make_assets();
     void prepare_scene(vk::CommandBuffer commandBuffer);
     /**
-     * @brief Records draw commands for the given scene into a Vulkan command buffer.
+     * @brief Records draw commands for the given scene_ into a Vulkan command buffer.
      * @param commandBuffer The command buffer to record into.
      * @param imageIndex The index of the image in the swap chain to draw to.
-     * @param scene Pointer to the scene to be drawn.
+     * @param scene Pointer to the scene_ to be drawn.
      */
     void record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imageIndex, Scene* scene);
     void cleanup_swapchain();
