@@ -2,7 +2,7 @@
 // Created by daily on 27-12-23.
 //
 /**
- * @file pipeline.hpp
+ * @file pipeline_.hpp
  * @brief Defines functionality for creating Vulkan graphics pipelines.
  * @date Created by Renato on 27-12-23.
  */
@@ -17,13 +17,13 @@
 #include "render_structs.hpp"
 #include "mesh.hpp"
 
-namespace vkInit
+namespace vkinit
 {
     /**
      * @struct GraphicsPipelineInBundle
-     * @brief Holds parameters required for creating a Vulkan graphics pipeline.
+     * @brief Holds parameters required for creating a Vulkan graphics pipeline_.
      *
-     * This structures includes the Vulkan device, file paths for vertex and fragment shaders,
+     * This structures includes the Vulkan device_, file paths for vertex and fragment shaders,
      * and specifications related to the swap chain such as image format and extent.
      */
     struct GraphicsPipelineInBundle
@@ -36,9 +36,9 @@ namespace vkInit
     };
     /**
      * @struct GraphicsPipelineOutBundle
-     * @brief Holds the components of a created Vulkan graphics pipeline
+     * @brief Holds the components of a created Vulkan graphics pipeline_
      *
-     * This structure encapsulates the pipeline layout, render pass, and the graphics pipeline itself.
+     * This structure encapsulates the pipeline_ layout, render pass, and the graphics pipeline_ itself.
      */
     struct GraphicsPipelineOutBundle
     {
@@ -47,35 +47,35 @@ namespace vkInit
         vk::Pipeline pipeline;
     };
     /**
-     * @brief Creates a Vulkan pipeline layout
+     * @brief Creates a Vulkan pipeline_ layout
      *
-     * Initializes a pipeline layout necessary for a Vulkan graphics pipeline, including push constants
+     * Initializes a pipeline_ layout necessary for a Vulkan graphics pipeline_, including push constants
      *
-     * @param device The Vulkan logical device.
+     * @param device The Vulkan logical device_.
      * @param debug Flag indicating whether to enable debug logging.
-     * @return The created Vulkan pipeline layout.
+     * @return The created Vulkan pipeline_ layout.
      */
     vk::PipelineLayout make_pipeline_layout(vk::Device device, bool debug);
     /**
      * @brief Creates a Vulkan render pass.
      *
-     * Initializes a render pass for the graphics pipeline, specifying how color and depth attachments are handled.
+     * Initializes a render pass for the graphics pipeline_, specifying how color and depth attachments are handled.
      *
-     * @param device The Vulkan logical device.
+     * @param device The Vulkan logical device_.
      * @param swapchainImageFormat The format of the swap chain images.
      * @param debug Flag indicating whether to enable debug logging.
      * @return The created Vulkan render pass.
      */
     vk::RenderPass make_renderpass(vk::Device device, vk::Format swapchainImageFormat, bool debug);
     /**
-     * @brief Creates a Vulkan graphics pipeline
+     * @brief Creates a Vulkan graphics pipeline_
      *
-     * Sets up the entire graphics pipeline, including shader stages, viewport and scissor states,
+     * Sets up the entire graphics pipeline_, including shader stages, viewport and scissor states,
      * rasterization, multisampling, color blending, and more, based on the provided specifications.
      *
-     * @param specification The specifications for creating the graphics pipeline.
+     * @param specification The specifications for creating the graphics pipeline_.
      * @param debug Flag indicating whether to enable debug logging.
-     * @return A bundle containing the components of the created graphics pipeline.
+     * @return A bundle containing the components of the created graphics pipeline_.
      */
     GraphicsPipelineOutBundle create_graphics_pipeline(GraphicsPipelineInBundle specification, bool debug);
 }

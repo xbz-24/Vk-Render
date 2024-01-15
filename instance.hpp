@@ -5,7 +5,7 @@
 #include <vulkan/vulkan.hpp>
 #include <vector>
 #include <iostream>
-namespace vkInit
+namespace vkinit
 {
     /**
         Check whether the requested extensions and layers are supported.
@@ -18,11 +18,11 @@ namespace vkInit
     bool supported(std::vector<const char*>& extensions, std::vector<const char*>& layers, bool debug);
 
     /**
-        Create a Vulkan instance.
+        Create a Vulkan instance_.
 
         \param debug whether the system is being run in debug mode.
         \param applicationName the name of the application.
-        \returns the instance created.
+        \returns the instance_ created.
     */
     vk::Instance make_instance(bool debug, const char* applicationName);
 }

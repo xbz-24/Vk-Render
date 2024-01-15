@@ -3,7 +3,7 @@
 //
 
 #include "shaders.hpp"
-namespace vkUtil
+namespace vkutil
 {
     std::vector<char> readFile(std::string filename, bool debug)
     {
@@ -16,7 +16,7 @@ namespace vkUtil
         size_t filesize { static_cast<size_t>(file.tellg()) };
         std::vector<char> buffer(filesize);
         file.seekg(0);
-        file.read(buffer.data(), filesize);
+        file.read(buffer.data(), static_cast<std::streamsize>(filesize));
         file.close();
         return buffer;
     }

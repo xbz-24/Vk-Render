@@ -3,7 +3,7 @@
 //
 #include "logging.hpp"
 
-VKAPI_ATTR VkBool32 VKAPI_CALL vkInit::debugCallback
+VKAPI_ATTR VkBool32 VKAPI_CALL vkinit::debugCallback
 (
         VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
         VkDebugUtilsMessageTypeFlagsEXT messageType,
@@ -14,7 +14,7 @@ VKAPI_ATTR VkBool32 VKAPI_CALL vkInit::debugCallback
     std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
     return VK_FALSE;
 }
-vk::DebugUtilsMessengerEXT vkInit::make_debug_messenger(vk::Instance& instance, vk::DispatchLoaderDynamic& dldi)
+vk::DebugUtilsMessengerEXT vkinit::make_debug_messenger(vk::Instance& instance, vk::DispatchLoaderDynamic& dldi)
 {
     vk::DebugUtilsMessengerCreateInfoEXT createInfo = vk::DebugUtilsMessengerCreateInfoEXT
             (
@@ -27,7 +27,7 @@ vk::DebugUtilsMessengerEXT vkInit::make_debug_messenger(vk::Instance& instance, 
     return instance.createDebugUtilsMessengerEXT(createInfo, nullptr, dldi);
 }
 
-std::vector<std::string> vkInit::log_transform_bits(vk::SurfaceTransformFlagsKHR bits)
+std::vector<std::string> vkinit::log_transform_bits(vk::SurfaceTransformFlagsKHR bits)
 {
     std::vector<std::string> result;
     if(bits & vk::SurfaceTransformFlagBitsKHR::eIdentity)
@@ -69,7 +69,7 @@ std::vector<std::string> vkInit::log_transform_bits(vk::SurfaceTransformFlagsKHR
     return result;
 }
 
-std::vector<std::string> vkInit::log_alpha_composite_bits(vk::CompositeAlphaFlagsKHR bits)
+std::vector<std::string> vkinit::log_alpha_composite_bits(vk::CompositeAlphaFlagsKHR bits)
 {
     std::vector<std::string> result;
 
@@ -88,7 +88,7 @@ std::vector<std::string> vkInit::log_alpha_composite_bits(vk::CompositeAlphaFlag
     return result;
 }
 
-std::vector<std::string> vkInit::log_image_usage_bits(vk::ImageUsageFlags bits)
+std::vector<std::string> vkinit::log_image_usage_bits(vk::ImageUsageFlags bits)
 {
     std::vector<std::string> result;
 
@@ -147,7 +147,7 @@ suitable for use as a fragment shading rate attachment or shading rate image");
     return result;
 }
 
-std::string vkInit::log_present_mode(vk::PresentModeKHR presentMode)
+std::string vkinit::log_present_mode(vk::PresentModeKHR presentMode)
 {
     /*
     * // Provided by VK_KHR_surface
@@ -223,7 +223,7 @@ This mode may result in visible tearing if rendering to the image is not timed c
     return "none/undefined";
 }
 
-void vkInit::log_device_properties(const vk::PhysicalDevice& device)
+void vkinit::log_device_properties(const vk::PhysicalDevice& device)
 {
     vk::PhysicalDeviceProperties properties = device.getProperties();
     std::cout << "Device name: " << properties.deviceName << '\n';

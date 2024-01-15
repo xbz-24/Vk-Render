@@ -28,143 +28,143 @@
 /**
  * @brief Constructs an Engine object
  *
- * This constructor initializes the Vulkan instance, logical device, swap chain, and
- * graphics pipeline, among other things. It sets up the graphics engine with the
- * specified width, height, and window_, and initializes debugging if requested.
+ * This constructor initializes the Vulkan instance_, logical device_, swap chain, and
+ * graphics pipeline_, among other things. It sets up the graphics engine with the
+ * specified width_, height_, and window_, and initializes debugging if requested.
  *
- * @param width The width of the rendering window_.
- * @param height The height of the rendering window_.
+ * @param width The width_ of the rendering window_.
+ * @param height The height_ of the rendering window_.
  * @param window Pointer to the GLFWindow.
  * @param debugMode Boolean flag to enable or disable debugging features.
  */
 Engine::Engine(int width, int height, GLFWwindow* window, bool debugMode)
 {
-    this->width = width;
-    this->height = height;
-    this->window = window;
-    this->debugMode = debugMode;
+    this->width_ = width;
+    this->height_ = height;
+    this->window_ = window;
+    this->debug_mode_ = debugMode;
     if(debugMode)
     {
         std::cout << "Making a graphics engine\n";
     }
-    make_instance();
-    make_device();
-    make_pipeline();
-    finalize_setup();
-    make_assets();
+    MakeInstance();
+    MakeDevice();
+    MakePipeline();
+    FinalizeSetup();
+    MakeAssets();
 }
 /**
- * @brief Initializes the Vulkan instance.
+ * @brief Initializes the Vulkan instance_.
  *
- * This method creates a Vulkan instance with a given debug mode and application name.
+ * This method creates a Vulkan instance_ with a given debug mode and application name.
  * It also sets up a debug messenger if debugging is enabled, and abstracts the GLFW
- * window_ surface for Vulkan use.
+ * window_ surface_ for Vulkan use.
  */
-void Engine::make_instance()
+void Engine::MakeInstance()
 {
-    instance = vkInit::make_instance(debugMode, "ID Tech 12");
-    dldi =  vk::DispatchLoaderDynamic(instance, vkGetInstanceProcAddr);
-    if(debugMode)
+    instance_ = vkinit::make_instance(debug_mode_, "ID Tech 12");
+    dldi_ =  vk::DispatchLoaderDynamic(instance_, vkGetInstanceProcAddr);
+    if(debug_mode_)
     {
-        debugMessenger = vkInit::make_debug_messenger(instance, dldi);
+        debug_messenger_ = vkinit::make_debug_messenger(instance_, dldi_);
     }
     VkSurfaceKHR c_style_surface;
-    if(glfwCreateWindowSurface(instance, window, nullptr, &c_style_surface) != VK_SUCCESS)
+    if(glfwCreateWindowSurface(instance_, window_, nullptr, &c_style_surface) != VK_SUCCESS)
     {
-        if(debugMode)
+        if(debug_mode_)
         {
-            std::cout << "Failed to abstract the glfw surface for Vulkan.\n";
+            std::cout << "Failed to abstract the glfw surface_ for Vulkan.\n";
         }
     }
-    else if(debugMode)
+    else if(debug_mode_)
     {
-        std::cout << "Successfully abstracted the glfw surface for Vulkan.\n";
+        std::cout << "Successfully abstracted the glfw surface_ for Vulkan.\n";
     }
-    surface = c_style_surface;
+    surface_ = c_style_surface;
 }
 /**
- * @brief Sets up the Vulkan device.
+ * @brief Sets up the Vulkan device_.
  *
- * Chooses and initalizes the physical device, creates the logical device, and sets up
+ * Chooses and initalizes the physical device_, creates the logical device_, and sets up
  * the swap chain along with its related components like image format and extent. It also
  * initializes the queues for graphics and presentation
  */
-void Engine::make_device()
+void Engine::MakeDevice()
 {
-    physicalDevice = vkInit::choose_physical_device(instance, debugMode);
-    //vkInit::findQueueFamilies(physicalDevice, debugMode);
-    device = vkInit::create_logical_device(physicalDevice, surface, debugMode);
-    std::array<vk::Queue, 2> queues = vkInit::get_queues(physicalDevice, device, surface, debugMode);
-    graphicsQueue = queues[0];
-    presentQueue = queues[1];
-    make_swapchain();
-    frameNumber = 0;
-    //vkInit::query_swapchain_support(physicalDevice, surface, true);
+    physical_device_ = vkinit::ChoosePhysicalDevice(instance_, debug_mode_);
+    //vkinit::findQueueFamilies(physical_device_, debug_mode_);
+    device_ = vkinit::CreateLogicalDevice(physical_device_, surface_, debug_mode_);
+    std::array<vk::Queue, 2> queues = vkinit::GetQueues(physical_device_, device_, surface_, debug_mode_);
+    graphics_queue_ = queues[0];
+    present_queue_ = queues[1];
+    MakeSwapchain();
+    frame_number_ = 0;
+    //vkinit::query_swapchain_support(physical_device_, surface_, true);
 }
 
-void Engine::make_swapchain()
+void Engine::MakeSwapchain()
 {
-    vkInit::SwapChainBundle bundle = vkInit::create_swapchain(device,physicalDevice,surface,width,height,debugMode);
-    swapchain = bundle.swapchain;
-    swapChainFrames = bundle.frames;
-    swapchainFormat = bundle.format;
-    swapchainExtent = bundle.extent;
-    maxFramesInFlight = static_cast<int>(swapChainFrames.size());
+    vkinit::SwapChainBundle bundle = vkinit::create_swapchain(device_, physical_device_, surface_, width_, height_, debug_mode_);
+    swapchain_ = bundle.swapchain;
+    swap_chain_frames_ = bundle.frames;
+    swapchain_format_ = bundle.format;
+    swapchain_extent_ = bundle.extent;
+    max_frames_in_flight_ = static_cast<int>(swap_chain_frames_.size());
 }
 
-void Engine::recreate_swapchain()
+void Engine::RecreateSwapchain()
 {
-    width = 0;
-    height = 0;
-    while(width == 0 || height == 0)
+    width_ = 0;
+    height_ = 0;
+    while(width_ == 0 || height_ == 0)
     {
-        glfwGetFramebufferSize(window, &width, &height);
+        glfwGetFramebufferSize(window_, &width_, &height_);
         glfwWaitEvents();
     }
-    device.waitIdle();
-    cleanup_swapchain();
-    make_swapchain();
-    make_framebuffers();
-    make_frame_sync_objects();
-    vkInit::commandBufferInputChunk commandBufferInput = { device, commandPool, swapChainFrames };
-    vkInit::make_frame_command_buffer(commandBufferInput, debugMode);
+    device_.waitIdle();
+    CleanupSwapchain();
+    MakeSwapchain();
+    MakeFramebuffers();
+    MakeFrameSyncObjects();
+    vkinit::commandBufferInputChunk commandBufferInput = {device_, command_pool_, swap_chain_frames_ };
+    vkinit::make_frame_command_buffer(commandBufferInput, debug_mode_);
 }
 
 /**
- * @brief Configures the graphics pipeline.
+ * @brief Configures the graphics pipeline_.
  *
- * This method creates and configures the Vulkan graphics pipeline, including the
- * shader stages, render pass, and pipeline layout.
+ * This method creates and configures the Vulkan graphics pipeline_, including the
+ * shader stages, render pass, and pipeline_ layout.
  */
-void Engine::make_pipeline()
+void Engine::MakePipeline()
 {
-    vkInit::GraphicsPipelineInBundle specification = { };
-    specification.device = device;
+    vkinit::GraphicsPipelineInBundle specification = { };
+    specification.device = device_;
     specification.vertexFilepath = "../shaders/vertex.spv";
     specification.fragmentFilepath = "../shaders/fragment.spv";
-    specification.swapchainExtent = swapchainExtent;
-    specification.swapchainImageFormat = swapchainFormat;
-    vkInit::GraphicsPipelineOutBundle output = vkInit::create_graphics_pipeline(specification, debugMode);
-    pipelineLayout = output.layout;
-    renderpass = output.renderpass;
-    pipeline = output.pipeline;
+    specification.swapchainExtent = swapchain_extent_;
+    specification.swapchainImageFormat = swapchain_format_;
+    vkinit::GraphicsPipelineOutBundle output = vkinit::create_graphics_pipeline(specification, debug_mode_);
+    pipeline_layout_ = output.layout;
+    render_pass_ = output.renderpass;
+    pipeline_ = output.pipeline;
 }
 
-void Engine::make_framebuffers()
+void Engine::MakeFramebuffers()
 {
-    vkInit::framebufferInput framebufferInput;
-    framebufferInput.device = device;
-    framebufferInput.renderpass = renderpass;
-    framebufferInput.swapchainExtent = swapchainExtent;
-    vkInit::make_framebuffers(framebufferInput, swapChainFrames, debugMode);
+    vkinit::framebufferInput framebufferInput;
+    framebufferInput.device = device_;
+    framebufferInput.renderpass = render_pass_;
+    framebufferInput.swapchainExtent = swapchain_extent_;
+    vkinit::make_framebuffers(framebufferInput, swap_chain_frames_, debug_mode_);
 }
-void Engine::make_frame_sync_objects()
+void Engine::MakeFrameSyncObjects()
 {
-    for(vkUtil::SwapChainFrame& frame : swapChainFrames)
+    for(vkutil::SwapChainFrame& frame : swap_chain_frames_)
     {
-        frame.inFlight = vkInit::make_fence(device, debugMode);
-        frame.imageAvailable = vkInit::make_semaphore(device, debugMode);
-        frame.renderFinished = vkInit::make_semaphore(device, debugMode);
+        frame.inFlight = vkinit::make_fence(device_, debug_mode_);
+        frame.imageAvailable = vkinit::make_semaphore(device_, debug_mode_);
+        frame.renderFinished = vkinit::make_semaphore(device_, debug_mode_);
     }
 }
 /**
@@ -173,24 +173,24 @@ void Engine::make_frame_sync_objects()
  * Completes the engine setup by crafting framebuffers, command pools, and command
  * buffers. It also prepares synchronization primitives for rendering.
  */
-void Engine::finalize_setup()
+void Engine::FinalizeSetup()
 {
-    make_framebuffers();
-    commandPool = vkInit::make_command_pool(device,physicalDevice,surface, debugMode);
-    vkInit::commandBufferInputChunk commandBufferInput = { device, commandPool, swapChainFrames };
-    mainCommandBuffer = vkInit::make_command_buffer(commandBufferInput, debugMode);
-    vkInit::make_frame_command_buffer(commandBufferInput, debugMode);
-    make_frame_sync_objects();
+    MakeFramebuffers();
+    command_pool_ = vkinit::make_command_pool(device_, physical_device_, surface_, debug_mode_);
+    vkinit::commandBufferInputChunk commandBufferInput = {device_, command_pool_, swap_chain_frames_ };
+    main_command_buffer_ = vkinit::make_command_buffer(commandBufferInput, debug_mode_);
+    vkinit::make_frame_command_buffer(commandBufferInput, debug_mode_);
+    MakeFrameSyncObjects();
 }
 
-void Engine::make_assets()
+void Engine::MakeAssets()
 {
-    triangleMesh = new TriangleMesh(device, physicalDevice);
+    triangle_mesh_ = new TriangleMesh(device_, physical_device_);
 }
 
-void Engine::prepare_scene(vk::CommandBuffer commandBuffer)
+void Engine::PrepareScene(vk::CommandBuffer commandBuffer)
 {
-    vk::Buffer vertexBuffers[] = { triangleMesh -> vertexBuffer.buffer };
+    vk::Buffer vertexBuffers[] = {triangle_mesh_ -> vertex_buffer.buffer };
     vk::DeviceSize offsets[] = { 0 };
     commandBuffer.bindVertexBuffers(0, 1, vertexBuffers, offsets);
 }
@@ -198,7 +198,7 @@ void Engine::prepare_scene(vk::CommandBuffer commandBuffer)
 /**
  * @brief Records draw commands into a command buffer.
  *
- * Prepares a command buffer for drawing operations, binding the graphics pipeline and
+ * Prepares a command buffer for drawing operations, binding the graphics pipeline_ and
  * specifying the vertex data to be rendered. It also manages render passes and push
  * constants for each frame.
  *
@@ -206,7 +206,7 @@ void Engine::prepare_scene(vk::CommandBuffer commandBuffer)
  * @param imageIndex The index of the swap chain image that will be rendered.
  * @param scene Pointer to the scene_ to be rendered.
  */
-void Engine::record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imageIndex, Scene* scene)
+void Engine::RecordDrawCommands(vk::CommandBuffer commandBuffer, uint32_t imageIndex, Scene* scene)
 {
     vk::CommandBufferBeginInfo beginInfo = { };
     try
@@ -215,32 +215,32 @@ void Engine::record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imag
     }
     catch(vk::SystemError &err)
     {
-        if(debugMode)
+        if(debug_mode_)
         {
             std::cout << "Failed to begin recording command buffer" << std::endl;
         }
     }
     vk::RenderPassBeginInfo renderPassInfo = { };
-    renderPassInfo.renderPass = renderpass;
-    renderPassInfo.framebuffer = swapChainFrames[imageIndex].framebuffer;
+    renderPassInfo.renderPass = render_pass_;
+    renderPassInfo.framebuffer = swap_chain_frames_[imageIndex].framebuffer;
     renderPassInfo.renderArea.offset.x = 0;
     renderPassInfo.renderArea.offset.y = 0;
-    renderPassInfo.renderArea.extent = swapchainExtent;
+    renderPassInfo.renderArea.extent = swapchain_extent_;
 
     vk::ClearValue clearColor = { std::array<float, 4>{1.0f, 0.5f, 0.25f, 1.0f} };
     renderPassInfo.clearValueCount = 1;
     renderPassInfo.pClearValues = &clearColor;
     commandBuffer.beginRenderPass(&renderPassInfo, vk::SubpassContents::eInline);
-    commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics , pipeline);
+    commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics , pipeline_);
 
-    prepare_scene(commandBuffer);
+    PrepareScene(commandBuffer);
 
-    for(glm::vec3 position : scene->trianglePositions)
+    for(glm::vec3 position : scene->triangle_positions_)
     {
         glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
-        vkUtil::ObjectData objectdata;
+        vkutil::ObjectData objectdata;
         objectdata.model = model;
-        commandBuffer.pushConstants(pipelineLayout, vk::ShaderStageFlagBits::eVertex, 0, sizeof(objectdata), &objectdata);
+        commandBuffer.pushConstants(pipeline_layout_, vk::ShaderStageFlagBits::eVertex, 0, sizeof(objectdata), &objectdata);
         commandBuffer.draw(3, 1, 0, 0);
     }
     commandBuffer.endRenderPass();
@@ -250,7 +250,7 @@ void Engine::record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imag
     }
     catch(vk::SystemError &err)
     {
-        if(debugMode)
+        if(debug_mode_)
         {
             std::cout << "Failed to finish recording command buffer" << std::endl;
         }
@@ -267,47 +267,47 @@ void Engine::record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imag
  */
 void Engine::render(Scene* scene)
 {
-    device.waitForFences(1, &swapChainFrames[frameNumber].inFlight, VK_TRUE, UINT64_MAX);
+    device_.waitForFences(1, &swap_chain_frames_[frame_number_].inFlight, VK_TRUE, UINT64_MAX);
     uint32_t imageIndex;
     try
     {
-        vk::ResultValue acquire = device.acquireNextImageKHR
+        vk::ResultValue acquire = device_.acquireNextImageKHR
         (
-            swapchain,
-            UINT64_MAX,
-            swapChainFrames[frameNumber].imageAvailable,
-            nullptr
+                swapchain_,
+                UINT64_MAX,
+                swap_chain_frames_[frame_number_].imageAvailable,
+                nullptr
         );
         imageIndex = acquire.value;
     }
     catch(vk::OutOfDateKHRError)
     {
         std::cout << "Recreate" << std::endl;
-        recreate_swapchain();
+        RecreateSwapchain();
         return;
     }
-    vk::CommandBuffer commandBuffer = swapChainFrames[imageIndex].commandbuffer;
+    vk::CommandBuffer commandBuffer = swap_chain_frames_[imageIndex].commandbuffer;
     commandBuffer.reset();
-    record_draw_commands(commandBuffer, imageIndex, scene);
+    RecordDrawCommands(commandBuffer, imageIndex, scene);
     vk::SubmitInfo submitInfo = { };
-    vk::Semaphore waitSemaphores[] = { swapChainFrames[frameNumber].imageAvailable };
+    vk::Semaphore waitSemaphores[] = {swap_chain_frames_[frame_number_].imageAvailable };
     vk::PipelineStageFlags waitStages[] = { vk::PipelineStageFlagBits::eColorAttachmentOutput };
     submitInfo.waitSemaphoreCount = 1;
     submitInfo.pWaitSemaphores = waitSemaphores;
     submitInfo.pWaitDstStageMask = waitStages;
     submitInfo.commandBufferCount = 1;
     submitInfo.pCommandBuffers = &commandBuffer;
-    vk::Semaphore signalSemaphores[] = { swapChainFrames[frameNumber].renderFinished };
+    vk::Semaphore signalSemaphores[] = {swap_chain_frames_[frame_number_].renderFinished };
     submitInfo.signalSemaphoreCount = 1;
     submitInfo.pSignalSemaphores = signalSemaphores;
-    device.resetFences(1, &swapChainFrames[frameNumber].inFlight);
+    device_.resetFences(1, &swap_chain_frames_[frame_number_].inFlight);
     try
     {
-        graphicsQueue.submit(submitInfo, swapChainFrames[frameNumber].inFlight);
+        graphics_queue_.submit(submitInfo, swap_chain_frames_[frame_number_].inFlight);
     }
     catch(vk::SystemError &err)
     {
-        if(debugMode)
+        if(debug_mode_)
         {
             std::cout << "Failed to submit draw command buffer" << std::endl;
         }
@@ -315,14 +315,14 @@ void Engine::render(Scene* scene)
     vk::PresentInfoKHR presentInfo = { };
     presentInfo.waitSemaphoreCount = 1;
     presentInfo.pWaitSemaphores = signalSemaphores;
-    vk::SwapchainKHR swapchains[] = { swapchain };
+    vk::SwapchainKHR swapchains[] = {swapchain_ };
     presentInfo.swapchainCount = 1;
     presentInfo.pSwapchains = swapchains;
     presentInfo.pImageIndices = &imageIndex;
     vk::Result present;
     try
     {
-        present = presentQueue.presentKHR(presentInfo);
+        present = present_queue_.presentKHR(presentInfo);
     }
     catch(vk::OutOfDateKHRError &error)
     {
@@ -331,54 +331,54 @@ void Engine::render(Scene* scene)
     if(present == vk::Result::eErrorOutOfDateKHR || present == vk::Result::eSuboptimalKHR)
     {
         std::cout << "Recreate" << std::endl;
-        recreate_swapchain();
+        RecreateSwapchain();
         return;
     }
-    frameNumber = (frameNumber + 1) % maxFramesInFlight;
+    frame_number_ = (frame_number_ + 1) % max_frames_in_flight_;
 }
-void Engine::cleanup_swapchain()
+void Engine::CleanupSwapchain()
 {
-    for(vkUtil::SwapChainFrame frame : swapChainFrames)
+    for(vkutil::SwapChainFrame frame : swap_chain_frames_)
     {
-        device.destroyImageView(frame.imageView);
-        device.destroyFramebuffer(frame.framebuffer);
-        device.destroyFence(frame.inFlight);
-        device.destroySemaphore(frame.imageAvailable);
-        device.destroySemaphore(frame.renderFinished);
+        device_.destroyImageView(frame.imageView);
+        device_.destroyFramebuffer(frame.framebuffer);
+        device_.destroyFence(frame.inFlight);
+        device_.destroySemaphore(frame.imageAvailable);
+        device_.destroySemaphore(frame.renderFinished);
     }
 
-    device.destroySwapchainKHR(swapchain);
+    device_.destroySwapchainKHR(swapchain_);
 }
 
 /**
  * @brief Destructor for the Engine class.
  *
- * Cleans up and releases all Vulkan resources, including the device, swap chain,
+ * Cleans up and releases all Vulkan resources, including the device_, swap chain,
  * command pool, and any synchronization primitives. Also handles the termination of GLFW.
  */
 Engine::~Engine()
 {
-    device.waitIdle();
-    if(debugMode) {
+    device_.waitIdle();
+    if(debug_mode_) {
         std::cout << "Goodbye see you!\n";
     }
-//    device.destroyFence(inFlightFence);
-//    device.destroySemaphore(imageAvailable);
-//    device.destroySemaphore(renderFinished);
+//    device_.destroyFence(inFlightFence);
+//    device_.destroySemaphore(imageAvailable);
+//    device_.destroySemaphore(renderFinished);
 //
-    device.destroyCommandPool(commandPool);
-    device.destroyPipeline(pipeline);
-    device.destroyPipelineLayout(pipelineLayout);
-    device.destroyRenderPass(renderpass);
-    cleanup_swapchain();
-    delete triangleMesh;
-    device.destroy();
-    instance.destroySurfaceKHR(surface);
-    if(debugMode)
+    device_.destroyCommandPool(command_pool_);
+    device_.destroyPipeline(pipeline_);
+    device_.destroyPipelineLayout(pipeline_layout_);
+    device_.destroyRenderPass(render_pass_);
+    CleanupSwapchain();
+    delete triangle_mesh_;
+    device_.destroy();
+    instance_.destroySurfaceKHR(surface_);
+    if(debug_mode_)
     {
-        instance.destroyDebugUtilsMessengerEXT(debugMessenger, nullptr, dldi);
+        instance_.destroyDebugUtilsMessengerEXT(debug_messenger_, nullptr, dldi_);
     }
-    instance.destroy();
+    instance_.destroy();
     // terminate glfw
     glfwTerminate();
 }

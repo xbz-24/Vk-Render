@@ -6,20 +6,20 @@
 #include "frame.hpp"
 #include "queue_families.hpp"
 
-namespace vkInit
+namespace vkinit
 {
     struct commandBufferInputChunk
     {
         vk::Device device;
-        vk::CommandPool commandPool;
-        std::vector<vkUtil::SwapChainFrame>& frames;
+        vk::CommandPool command_pool;
+        std::vector<vkutil::SwapChainFrame>& frames;
     };
 
-    vk::CommandPool make_command_pool(vk::Device device, vk::PhysicalDevice physicalDevice, vk::SurfaceKHR surface, bool debug);
+    vk::CommandPool make_command_pool(vk::Device device, vk::PhysicalDevice physical_device, vk::SurfaceKHR surface, bool debug);
 
-    vk::CommandBuffer make_command_buffer(commandBufferInputChunk inputChunk, bool debug);
+    vk::CommandBuffer make_command_buffer(commandBufferInputChunk input_chunk, bool debug);
 
-    void make_frame_command_buffer(commandBufferInputChunk inputChunk, bool debug);
+    void make_frame_command_buffer(commandBufferInputChunk input_chunk, bool debug);
 }
 
 #endif //INC_3DLOADERVK_COMMANDS_HPP

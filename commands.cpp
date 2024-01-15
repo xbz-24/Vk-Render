@@ -3,24 +3,23 @@
 //
 
 #include "commands.hpp"
-namespace vkInit
+namespace vkinit
 {
-
     /**
      * @brief Creates a Vulkan command pool.
      *
-     * Sets up a Vulkan command pool using the provided device, physical device, and surface.
+     * Sets up a Vulkan command pool using the provided device_, physical device_, and surface_.
      * It is used for allocating command buffers.
      *
-     * @param device The Vulkan logical device.
-     * @param physicalDevice The Vulkan physical device.
-     * @param surface The Vulkan surface.
+     * @param device The Vulkan logical device_.
+     * @param physical_device The Vulkan physical device_.
+     * @param surface The Vulkan surface_.
      * @param debug Flag indicating whether to enable debug logging.
      * @return A Vulkan command pool object.
      */
-    vk::CommandPool make_command_pool(vk::Device device, vk::PhysicalDevice physicalDevice, vk::SurfaceKHR surface, bool debug)
+    vk::CommandPool make_command_pool(vk::Device device, vk::PhysicalDevice physical_device, vk::SurfaceKHR surface, bool debug)
     {
-        vkUtil::QueueFamilyIndices queueFamilyIndices = vkUtil::findQueueFamilies(physicalDevice, surface, debug);
+        vkutil::QueueFamilyIndices queueFamilyIndices = vkutil::findQueueFamilies(physical_device, surface, debug);
         vk::CommandPoolCreateInfo poolInfo = { };
         poolInfo.flags = vk::CommandPoolCreateFlags() | vk::CommandPoolCreateFlagBits::eResetCommandBuffer;
         poolInfo.queueFamilyIndex = queueFamilyIndices.graphicsFamily.value();
@@ -44,20 +43,20 @@ namespace vkInit
      * Allocates and sets up primary level command buffers for each frame in the input chunk.
      * It also allocates a main command buffer for the awpplication.
      *
-     * @param inputChunk The command buffer input parameters.
+     * @param input_chunk The command buffer input parameters.
      * @param debug Flag indicating whether to enable debug logging.
      * @return The main Vulkan command buffer.
      */
-    vk::CommandBuffer make_command_buffer(commandBufferInputChunk inputChunk, bool debug)
+    vk::CommandBuffer make_command_buffer(commandBufferInputChunk input_chunk, bool debug)
     {
         vk::CommandBufferAllocateInfo allocInfo = { };
-        allocInfo.commandPool = inputChunk.commandPool;
+        allocInfo.commandPool = input_chunk.command_pool;
         allocInfo.level = vk::CommandBufferLevel::ePrimary;
         allocInfo.commandBufferCount = 1;
 
         try
         {
-            vk::CommandBuffer commandbuffer = inputChunk.device.allocateCommandBuffers(allocInfo)[0];
+            vk::CommandBuffer commandbuffer = input_chunk.device.allocateCommandBuffers(allocInfo)[0];
             if(debug)
             {
                 std::cout << "Allocated main command buffer" << std::endl;
@@ -75,18 +74,18 @@ namespace vkInit
             return nullptr;
         }
     }
-    void make_frame_command_buffer(commandBufferInputChunk inputChunk, bool debug)
+    void make_frame_command_buffer(commandBufferInputChunk input_chunk, bool debug)
     {
         vk::CommandBufferAllocateInfo allocInfo = { };
-        allocInfo.commandPool = inputChunk.commandPool;
+        allocInfo.commandPool = input_chunk.command_pool;
         allocInfo.level = vk::CommandBufferLevel::ePrimary;
         allocInfo.commandBufferCount = 1;
 
-        for(int i = 0; i < inputChunk.frames.size(); i++)
+        for(std::vector<vkutil::SwapChainFrame>::size_type i = 0; i < input_chunk.frames.size(); i++)
         {
             try
             {
-                inputChunk.frames[i].commandbuffer = inputChunk.device.allocateCommandBuffers(allocInfo)[0];
+                input_chunk.frames[i].commandbuffer = input_chunk.device.allocateCommandBuffers(allocInfo)[0];
             }
             catch(vk::SystemError &err)
             {

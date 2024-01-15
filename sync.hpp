@@ -11,7 +11,7 @@
 #include <vulkan/vulkan.hpp>
 #include <iostream>
 
-namespace vkInit
+namespace vkinit
 {
     vk::Semaphore make_semaphore(vk::Device device, bool debug);
     vk::Fence make_fence(vk::Device device, bool debug);

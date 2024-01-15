@@ -11,8 +11,8 @@
  * Initializes a new GLFW window_ and creates instances of the Engine and Scene classes.
  * This is the primary entry point for setting up the Vulkan-based graphics application.
  *
- * @param width The width of the GLFW window_.
- * @param height The height of the GLFW window_.
+ * @param width The width_ of the GLFW window_.
+ * @param height The height_ of the GLFW window_.
  * @param is_debug Indicates whether debugging features should be enabled.
  */
 App::App(int width, int height, bool is_debug)
@@ -27,8 +27,8 @@ App::App(int width, int height, bool is_debug)
  * Sets up the GLFW window_ with the specified dimensions and debug mode.
  * Outputs debug messages if the window_ is created successfully or if the creation fails.
  *
- * @param width The width of the window_ to create.
- * @param height The height of the window_ to create,
+ * @param width The width_ of the window_ to create.
+ * @param height The height_ of the window_ to create,
  * @param is_debug_mode Indicates whether to enable debug logging.
  */
 void App::buildGlfwWindow(int width, int height, bool is_debug_mode)
@@ -40,8 +40,8 @@ void App::buildGlfwWindow(int width, int height, bool is_debug_mode)
     {
         if(is_debug_mode)
         {
-            std::cout << "Successfully made a glfw window_ called \"ID Tech 12\", width: ";
-            std::cout << width << ", height: " << height << '\n';
+            std::cout << "Successfully made a glfw window_ called \"ID Tech 12\", width_: ";
+            std::cout << width << ", height_: " << height << '\n';
         }
     }
     else

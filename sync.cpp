@@ -3,7 +3,7 @@
 //
 
 #include "sync.hpp"
-namespace vkInit
+namespace vkinit
 {
     /**
      * @brief Creates a Vulkan semaphore.
@@ -11,7 +11,7 @@ namespace vkInit
      * Initializes and returns a new semaphore object. Semaphores are used to synchronize operations
      * within or across command queues.
      *
-     * @param device The Vulkan logical device used to create the semaphore.
+     * @param device The Vulkan logical device_ used to create the semaphore.
      * @param debug Flag indicating whether to enable debug logging.
      * @return A Vulkan semaphore object, or nullptr if creation fails.
      */
@@ -38,7 +38,7 @@ namespace vkInit
      * Initializes and returns a new semaphore object. Semaphores are used to synchronize operations
      * within or across command queues.
      *
-     * @param device The Vulkan logical device used to create the semaphore.
+     * @param device The Vulkan logical device_ used to create the semaphore.
      * @param debug Flag indicating whether to enable debug logging.
      * @return A Vulkan fence object, or nullptr if creation fails.
      */
