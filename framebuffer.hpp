@@ -6,7 +6,7 @@
 #include <iostream>
 #include "frame.hpp"
 
-namespace vkInit
+namespace vkinit
 {
     struct framebufferInput
     {
@@ -15,7 +15,7 @@ namespace vkInit
         vk::Extent2D swapchainExtent;
     };
 
-    void make_framebuffers(framebufferInput inputChunk, std::vector<vkUtil::SwapChainFrame>& frames, bool debug);
+    void make_framebuffers(framebufferInput inputChunk, std::vector<vkutil::SwapChainFrame>& frames, bool debug);
 }
 
 #endif //INC_3DLOADERVK_FRAMEBUFFER_HPP

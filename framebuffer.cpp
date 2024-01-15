@@ -1,8 +1,8 @@
 #include "framebuffer.hpp"
 
-namespace vkInit
+namespace vkinit
 {
-    void make_framebuffers(framebufferInput inputChunk, std::vector<vkUtil::SwapChainFrame>& frames, bool debug)
+    void make_framebuffers(framebufferInput inputChunk, std::vector<vkutil::SwapChainFrame>& frames, bool debug)
     {
         for(size_t i = 0; i < frames.size(); i++)
         {

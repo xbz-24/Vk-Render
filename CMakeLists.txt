@@ -37,12 +37,11 @@ endif()
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     #add_compile_options(-Wall -Wextra -Wpedantic -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wmisleading-indentation -Wnull-dereference -Wdouble-promotion -Wformat=2 -Werror)
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    add_compile_options(
-            /W4
-            /WX
-    )
+    add_compile_options(/W4 /WX)
 else()
-    message(WARNING "Unknown compiler. No specific warning flags set.")
+    message(
+        WARNING "Unknown compiler. No specific warning flags set."
+    )
 endif()
 add_executable(
     3DLoaderVk
@@ -82,7 +81,7 @@ add_executable(
     memory.hpp
     triangle_mesh.cpp
     triangle_mesh.hpp
-        logging.cpp
+    logging.cpp
 )
 target_link_libraries(
     3DLoaderVk

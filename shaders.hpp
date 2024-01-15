@@ -8,7 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-namespace vkUtil
+namespace vkutil
 {
     std::vector<char> readFile(std::string filename, bool debug);
     vk::ShaderModule createModule(std::string filename, vk::Device device, bool debug);

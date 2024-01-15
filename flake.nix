@@ -1,5 +1,5 @@
 {
-  description = "Little 3D Vulkan C++ Engine . . .";
+  description = "Little 3D Vulkan C++ Engine Flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; 
@@ -7,6 +7,7 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
+
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};

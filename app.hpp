@@ -24,8 +24,8 @@ public:
      *
      * Initializes the GLFW window_ and creates instances of the Engine and Scene classes.
      *
-     * @param width The width of the GLFW window_.
-     * @param height The height of the GLFW window_.
+     * @param width The width_ of the GLFW window_.
+     * @param height The height_ of the GLFW window_.
      * @param is_debug Flag indicating whether to run in is_debug mode, affecting logging verbosity.
      */
     App(int width, int height, bool is_debug);
@@ -53,10 +53,10 @@ private:
     /**
      * @brief Initializes and builds a GLFW window_.
      *
-     * Sets up a GLFW window_ with the specified width, height, and debug mode. Handles window_ creation success or failure.
+     * Sets up a GLFW window_ with the specified width_, height_, and debug mode. Handles window_ creation success or failure.
      *
-     * @param width The width of the GLFW window_.
-     * @param height The height of the GLFW window_.
+     * @param width The width_ of the GLFW window_.
+     * @param height The height_ of the GLFW window_.
      * @param is_debug_mode Flag indicating whether to enable debug logging for window_ creation.
      */
     void buildGlfwWindow(int width, int height, bool is_debug_mode);

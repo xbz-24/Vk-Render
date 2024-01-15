@@ -9,7 +9,7 @@
 #include <string>
 #include <iostream>
 
-namespace vkInit
+namespace vkinit
 {
     VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback
     (

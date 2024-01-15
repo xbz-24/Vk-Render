@@ -3,19 +3,19 @@
 //
 
 #include "swapchain.hpp"
-namespace vkInit
+namespace vkinit
 {
 
     /**
-     * @brief Queries the swap chain support details for a given physical device and surface.
+     * @brief Queries the swap chain support details for a given physical device_ and surface_.
      *
      * Gathers and returns detailed information about the supported capabilities, formats, and
-     * present modes for swap chain creation on the specified physical device and surface.
+     * present modes for swap chain creation on the specified physical device_ and surface_.
      *
-     * @param device The Vulkan physical device.
-     * @param surface The Vulkan surface.
+     * @param device The Vulkan physical device_.
+     * @param surface The Vulkan surface_.
      * @param debug Flag indicating whether to enable debug logging.
-     * @return SwapChainSupportDetails for the given device and surface.
+     * @return SwapChainSupportDetails for the given device_ and surface_.
      */
     SwapChainSupportDetails query_swapchain_support(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug)
     {
@@ -24,7 +24,7 @@ namespace vkInit
 
         if (debug)
         {
-            std::cout << "Swapchain can support the following surface cappabilities\n";
+            std::cout << "Swapchain can support the following surface_ cappabilities\n";
             std::cout << "\tminimum image count: " << support.capabilities.minImageCount << '\n';
             std::cout << "\tmaximum image count: " << support.capabilities.maxImageCount << '\n';
             std::cout << "\tcurrent extent: \n";
@@ -89,12 +89,12 @@ namespace vkInit
     }
 
     /**
-     * @brief Chooses the most suitable surface format for the swap chain.
+     * @brief Chooses the most suitable surface_ format for the swap chain.
      *
-     * Selects an appropriate surface format from a list of available formats, preferring
+     * Selects an appropriate surface_ format from a list of available formats, preferring
      * B8G8R8A8 format with sRGB color space if available
      *
-     * @param formats A vector of available surface formats.
+     * @param formats A vector of available surface_ formats.
      * @return The chosen vk::SurfaceFormatKHR
      */
     vk::SurfaceFormatKHR choose_swapchain_surface_format(std::vector<vk::SurfaceFormatKHR> formats)
@@ -134,11 +134,11 @@ namespace vkInit
      * @brief Determines the extent of the swap chain images.
      *
      * Calculates and returns the extent (resolution) of the swap chain images,
-     * based on the window_ size and surface capabilities
+     * based on the window_ size and surface_ capabilities
      *
-     * @param width The width of the window_.
-     * @param height The height of the window_.
-     * @param capabilities The surface capabilities.
+     * @param width The width_ of the window_.
+     * @param height The height_ of the window_.
+     * @param capabilities The surface_ capabilities.
      * @return The vk::Extent2D representing the swap chain image extent.
      */
     vk::Extent2D choose_swapchain_extent(uint32_t width, uint32_t height, vk::SurfaceCapabilitiesKHR capabilities)
@@ -170,11 +170,11 @@ namespace vkInit
      * Initializes the Vulkan swap chain for image presentation, including setting up
      * the image views for each frame in the swap chain.
      *
-     * @param logicalDevice The Vulkan logical device.
-     * @param physicalDevice The Vulkan physical device.
-     * @param surface The Vulkan surface.
-     * @param width The width of the window_.
-     * @param height The height of the window_.
+     * @param logicalDevice The Vulkan logical device_.
+     * @param physicalDevice The Vulkan physical device_.
+     * @param surface The Vulkan surface_.
+     * @param width The width_ of the window_.
+     * @param height The height_ of the window_.
      * @param debug Flag indicating whether to enable debug logging.
      * @return A SwapChainBlundle containing the swap chain and its related components.
      */
@@ -183,7 +183,7 @@ namespace vkInit
         SwapChainSupportDetails support = query_swapchain_support(physicalDevice, surface, debug);
         vk::SurfaceFormatKHR format = choose_swapchain_surface_format(support.formats);
         vk::PresentModeKHR presentMode = choose_swapchain_present_mode(support.presentModes);
-        vk::Extent2D extent = choose_swapchain_extent(width, height, support.capabilities);
+        vk::Extent2D extent = choose_swapchain_extent(static_cast<uint32_t>(width), static_cast<uint32_t>(height), support.capabilities);
         uint32_t imageCount = std::min
                 (
                         support.capabilities.maxImageCount,
@@ -201,7 +201,7 @@ namespace vkInit
                         1,
                         vk::ImageUsageFlagBits::eColorAttachment
                 );
-        vkUtil::QueueFamilyIndices indices = vkUtil::findQueueFamilies
+        vkutil::QueueFamilyIndices indices = vkutil::findQueueFamilies
                 (
                         physicalDevice,
                         surface,
@@ -234,7 +234,7 @@ namespace vkInit
         }
         catch(vk::SystemError &err)
         {
-            throw std::runtime_error("failed to create swapchain!");
+            throw std::runtime_error("failed to create swapchain_!");
         }
         std::vector<vk::Image> images = logicalDevice.getSwapchainImagesKHR(bundle.swapchain);
         bundle.frames.resize

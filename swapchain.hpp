@@ -2,7 +2,7 @@
 // Created by daily on 27-12-23.
 //
 /**
- * @file swapchain.hpp
+ * @file swapchain_.hpp
  * @brief Defines functionality for creating and managing Vulkan swap chains.
  * @date Created by Renato on 27-12-23.
  */
@@ -16,14 +16,14 @@
 #include <vulkan/vulkan.hpp>
 #include <iostream>
 
-namespace vkInit
+namespace vkinit
 {
     /**
      * @struct SwapChainSupportDetails
-     * @brief Holds detailed information about the swap chain support of a physical device.
+     * @brief Holds detailed information about the swap chain support of a physical device_.
      *
-     * This structure is used to store the capabilities, surface formats, and present modes
-     * supported by a physical device for swap chain creation.
+     * This structure is used to store the capabilities, surface_ formats, and present modes
+     * supported by a physical device_ for swap chain creation.
      */
     struct SwapChainSupportDetails
     {
@@ -41,30 +41,30 @@ namespace vkInit
     struct SwapChainBundle
     {
         vk::SwapchainKHR swapchain;
-        std::vector<vkUtil::SwapChainFrame> frames;
+        std::vector<vkutil::SwapChainFrame> frames;
         vk::Format format;
         vk::Extent2D extent;
     };
 
     /**
-     * @brief Queries the swap chain support details for a given physical device and surface.
+     * @brief Queries the swap chain support details for a given physical device_ and surface_.
      *
      * Gathers and returns detailed information about the supported capabilities, formats, and
-     * present modes for swap chain creation on the specified physical device and surface.
+     * present modes for swap chain creation on the specified physical device_ and surface_.
      *
-     * @param device The Vulkan physical device.
-     * @param surface The Vulkan surface.
+     * @param device The Vulkan physical device_.
+     * @param surface The Vulkan surface_.
      * @param debug Flag indicating whether to enable debug logging.
-     * @return SwapChainSupportDetails for the given device and surface.
+     * @return SwapChainSupportDetails for the given device_ and surface_.
      */
     SwapChainSupportDetails query_swapchain_support(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug);
     /**
-     * @brief Chooses the most suitable surface format for the swap chain.
+     * @brief Chooses the most suitable surface_ format for the swap chain.
      *
-     * Selects an appropriate surface format from a list of available formats, preferring
+     * Selects an appropriate surface_ format from a list of available formats, preferring
      * B8G8R8A8 format with sRGB color space if available
      *
-     * @param formats A vector of available surface formats.
+     * @param formats A vector of available surface_ formats.
      * @return The chosen vk::SurfaceFormatKHR
      */
     vk::SurfaceFormatKHR choose_swapchain_surface_format(std::vector<vk::SurfaceFormatKHR> formats);
@@ -84,11 +84,11 @@ namespace vkInit
      * @brief Determines the extent of the swap chain images.
      *
      * Calculates and returns the extent (resolution) of the swap chain images,
-     * based on the window_ size and surface capabilities
+     * based on the window_ size and surface_ capabilities
      *
-     * @param width The width of the window_.
-     * @param height The height of the window_.
-     * @param capabilities The surface capabilities.
+     * @param width The width_ of the window_.
+     * @param height The height_ of the window_.
+     * @param capabilities The surface_ capabilities.
      * @return The vk::Extent2D representing the swap chain image extent.
      */
     vk::Extent2D choose_swapchain_extent(uint32_t width, uint32_t height, vk::SurfaceCapabilitiesKHR capabilities);
@@ -99,11 +99,11 @@ namespace vkInit
      * Initializes the Vulkan swap chain for image presentation, including setting up
      * the image views for each frame in the swap chain.
      *
-     * @param logicalDevice The Vulkan logical device.
-     * @param physicalDevice The Vulkan physical device.
-     * @param surface The Vulkan surface.
-     * @param width The width of the window_.
-     * @param height The height of the window_.
+     * @param logicalDevice The Vulkan logical device_.
+     * @param physicalDevice The Vulkan physical device_.
+     * @param surface The Vulkan surface_.
+     * @param width The width_ of the window_.
+     * @param height The height_ of the window_.
      * @param debug Flag indicating whether to enable debug logging.
      * @return A SwapChainBlundle containing the swap chain and its related components.
      */

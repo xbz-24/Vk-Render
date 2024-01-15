@@ -4,7 +4,7 @@
 
 #include "memory.hpp"
 
-Buffer vkUtil::createBuffer(BufferInput input)
+Buffer vkutil::createBuffer(BufferInput input)
 {
     vk::BufferCreateInfo bufferInfo;
     bufferInfo.flags = vk::BufferCreateFlags();
@@ -12,11 +12,11 @@ Buffer vkUtil::createBuffer(BufferInput input)
     bufferInfo.usage = input.usage;
     bufferInfo.sharingMode = vk::SharingMode::eExclusive;
     Buffer buffer;
-    buffer.buffer = input.logicalDevice.createBuffer(bufferInfo);
+    buffer.buffer = input.logical_device.createBuffer(bufferInfo);
     allocateBufferMemory(buffer, input);
     return buffer;
 }
-uint32_t vkUtil::findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t supportedMemoryIndices, vk::MemoryPropertyFlags requestedProperties)
+uint32_t vkutil::findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t supportedMemoryIndices, vk::MemoryPropertyFlags requestedProperties)
 {
     vk::PhysicalDeviceMemoryProperties memoryProperties = physicalDevice.getMemoryProperties();
     for(uint32_t i = 0; i < memoryProperties.memoryTypeCount; i++)
@@ -29,16 +29,16 @@ uint32_t vkUtil::findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t
         }
     }
 }
-void vkUtil::allocateBufferMemory(Buffer &buffer, const BufferInput& input)
+void vkutil::allocateBufferMemory(Buffer &buffer, const BufferInput& input)
 {
-    vk::MemoryRequirements memoryRequirements = input.logicalDevice.getBufferMemoryRequirements(buffer.buffer);
+    vk::MemoryRequirements memoryRequirements = input.logical_device.getBufferMemoryRequirements(buffer.buffer);
     vk::MemoryAllocateInfo allocInfo;
     allocInfo.allocationSize = memoryRequirements.size;
     allocInfo.memoryTypeIndex = findMemoryTypeIndex(
-            input.physicalDevice, memoryRequirements.memoryTypeBits,
+            input.physical_device, memoryRequirements.memoryTypeBits,
             vk::MemoryPropertyFlagBits::eHostVisible | vk::MemoryPropertyFlagBits::eHostCoherent
     );
-    buffer.bufferMemory = input.logicalDevice.allocateMemory(allocInfo);
+    buffer.buffer_memory = input.logical_device.allocateMemory(allocInfo);
 
-    input.logicalDevice.bindBufferMemory(buffer.buffer, buffer.bufferMemory, 0);
+    input.logical_device.bindBufferMemory(buffer.buffer, buffer.buffer_memory, 0);
 }

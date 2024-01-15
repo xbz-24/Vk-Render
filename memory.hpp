@@ -7,7 +7,7 @@
 #include "config.hpp"
 #include <vulkan/vulkan.hpp>
 
-namespace vkUtil
+namespace vkutil
 {
     Buffer createBuffer(BufferInput input);
     uint32_t findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t supportedMemoryIndices, vk::MemoryPropertyFlags requestedProperties);

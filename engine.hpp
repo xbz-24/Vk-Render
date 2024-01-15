@@ -14,8 +14,8 @@
  * @class Engine
  * @brief The Engine class initializes and manages the core components of a Vulkan-based graphics application.
  *
- * This class is responsible for setting up and managing Vulkan resources such as the instance, device,
- * swap chain, graphics pipeline, and command buffers. It integrates with GLFW for window_ management and
+ * This class is responsible for setting up and managing Vulkan resources such as the instance_, device_,
+ * swap chain, graphics pipeline_, and command buffers. It integrates with GLFW for window_ management and
  * provides functionality for rendering scenes.
  */
 class Engine
@@ -23,8 +23,8 @@ class Engine
 public:
     /**
      * @brief Constructs an Engine object.
-     * @param width The width of the rendering window_.
-     * @param height The height of the rendering window_.
+     * @param width The width_ of the rendering window_.
+     * @param height The height_ of the rendering window_.
      * @param window Pointer to the GLFWwindow to be used for rendering.
      * @param debug Indicates whether to enable debug mode.
      */
@@ -41,70 +41,70 @@ public:
 
 private:
     // whether to print debug messages in functions
-    bool debugMode;
+    bool debug_mode_;
     //glfw window_ parameters
-    int width;
-    int height;
-    GLFWwindow* window;
+    int width_;
+    int height_;
+    GLFWwindow* window_;
 
-    //instance related variables
-    vk::Instance instance{ nullptr };
-    vk::DebugUtilsMessengerEXT debugMessenger{ nullptr };
-    vk::DispatchLoaderDynamic dldi;
-    vk::SurfaceKHR surface;
+    //instance_ related variables
+    vk::Instance instance_{ nullptr };
+    vk::DebugUtilsMessengerEXT debug_messenger_{ nullptr };
+    vk::DispatchLoaderDynamic dldi_;
+    vk::SurfaceKHR surface_;
 
-    //device-related variables
-    vk::PhysicalDevice physicalDevice { nullptr };
-    vk::Device device { nullptr };
-    vk::Queue graphicsQueue { nullptr };
-    vk::Queue presentQueue { nullptr};
-    vk::SwapchainKHR swapchain { nullptr };
-    std::vector<vkUtil::SwapChainFrame> swapChainFrames;
-    vk::Format swapchainFormat;
-    vk::Extent2D swapchainExtent;
+    //device_-related variables
+    vk::PhysicalDevice physical_device_ {nullptr };
+    vk::Device device_ {nullptr };
+    vk::Queue graphics_queue_ {nullptr };
+    vk::Queue present_queue_ {nullptr};
+    vk::SwapchainKHR swapchain_ {nullptr };
+    std::vector<vkutil::SwapChainFrame> swap_chain_frames_;
+    vk::Format swapchain_format_;
+    vk::Extent2D swapchain_extent_;
 
-    //pipeline-related variables
-    vk::PipelineLayout pipelineLayout;
-    vk::RenderPass renderpass;
-    vk::Pipeline pipeline;
+    //pipeline_-related variables
+    vk::PipelineLayout pipeline_layout_;
+    vk::RenderPass render_pass_;
+    vk::Pipeline pipeline_;
 
     //command-related variables
-    vk::CommandPool commandPool;
-    vk::CommandBuffer mainCommandBuffer;
+    vk::CommandPool command_pool_;
+    vk::CommandBuffer main_command_buffer_;
 
     //synchronization objects
-    int maxFramesInFlight;
-    int frameNumber;
+    int max_frames_in_flight_;
+    int frame_number_;
 
     //asset pointers
-    TriangleMesh* triangleMesh;
+    TriangleMesh* triangle_mesh_;
 
-    //instance setup
-    void make_instance();
+    //instance_ setup
+    void MakeInstance();
 
-    //device setup
-    void make_device();
-    void make_swapchain();
-    void recreate_swapchain();
+    //device_ setup
+    void MakeDevice();
+    void MakeSwapchain();
+    void RecreateSwapchain();
 
-    //pipeline setup
-    void make_pipeline();
+    //pipeline_ setup
+    void MakePipeline();
 
     //final setup steps
-    void finalize_setup();
-    void make_framebuffers();
-    void make_frame_sync_objects();
+    void FinalizeSetup();
+    void MakeFramebuffers();
+    void MakeFrameSyncObjects();
 
-    void make_assets();
-    void prepare_scene(vk::CommandBuffer commandBuffer);
+    void MakeAssets();
+    void PrepareScene(vk::CommandBuffer commandBuffer);
     /**
      * @brief Records draw commands for the given scene_ into a Vulkan command buffer.
      * @param commandBuffer The command buffer to record into.
      * @param imageIndex The index of the image in the swap chain to draw to.
      * @param scene Pointer to the scene_ to be drawn.
      */
-    void record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imageIndex, Scene* scene);
-    void cleanup_swapchain();
+    void RecordDrawCommands(vk::CommandBuffer commandBuffer, uint32_t imageIndex, Scene* scene);
+    void CleanupSwapchain();
 };
 
 

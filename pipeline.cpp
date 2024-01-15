@@ -3,17 +3,17 @@
 //
 
 #include "pipeline.hpp"
-namespace vkInit
+namespace vkinit
 {
 
     /**
-     * @brief Creates a Vulkan pipeline layout
+     * @brief Creates a Vulkan pipeline_ layout
      *
-     * Initializes a pipeline layout necessary for a Vulkan graphics pipeline, including push constants
+     * Initializes a pipeline_ layout necessary for a Vulkan graphics pipeline_, including push constants
      *
-     * @param device The Vulkan logical device.
+     * @param device The Vulkan logical device_.
      * @param debug Flag indicating whether to enable debug logging.
-     * @return The created Vulkan pipeline layout.
+     * @return The created Vulkan pipeline_ layout.
      */
     vk::PipelineLayout make_pipeline_layout(vk::Device device, bool debug)
     {
@@ -24,7 +24,7 @@ namespace vkInit
         layoutInfo.pushConstantRangeCount = 1;
         vk::PushConstantRange pushConstantInfo;
         pushConstantInfo.offset = 0;
-        pushConstantInfo.size = sizeof(vkUtil::ObjectData);
+        pushConstantInfo.size = sizeof(vkutil::ObjectData);
         pushConstantInfo.stageFlags = vk::ShaderStageFlagBits::eVertex;
         layoutInfo.pPushConstantRanges = &pushConstantInfo;
 
@@ -36,16 +36,16 @@ namespace vkInit
         {
             if(debug)
             {
-                std::cout << "Failed to create pipeline pipelineLayout!" << std::endl;
+                std::cout << "Failed to create pipeline_ pipeline_layout_!" << std::endl;
             }
         }
     }
     /**
      * @brief Creates a Vulkan render pass.
      *
-     * Initializes a render pass for the graphics pipeline, specifying how color and depth attachments are handled.
+     * Initializes a render pass for the graphics pipeline_, specifying how color and depth attachments are handled.
      *
-     * @param device The Vulkan logical device.
+     * @param device The Vulkan logical device_.
      * @param swapchainImageFormat The format of the swap chain images.
      * @param debug Flag indicating whether to enable debug logging.
      * @return The created Vulkan render pass.
@@ -87,19 +87,19 @@ namespace vkInit
         {
             if(debug)
             {
-                std::cout << "Failed to create renderpass!" << std::endl;
+                std::cout << "Failed to create render_pass_!" << std::endl;
             }
         }
     }
     /**
-     * @brief Creates a Vulkan graphics pipeline
+     * @brief Creates a Vulkan graphics pipeline_
      *
-     * Sets up the entire graphics pipeline, including shader stages, viewport and scissor states,
+     * Sets up the entire graphics pipeline_, including shader stages, viewport and scissor states,
      * rasterization, multisampling, color blending, and more, based on the provided specifications.
      *
-     * @param specification The specifications for creating the graphics pipeline.
+     * @param specification The specifications for creating the graphics pipeline_.
      * @param debug Flag indicating whether to enable debug logging.
-     * @return A bundle containing the components of the created graphics pipeline.
+     * @return A bundle containing the components of the created graphics pipeline_.
      */
     GraphicsPipelineOutBundle create_graphics_pipeline(GraphicsPipelineInBundle specification, bool debug)
     {
@@ -131,7 +131,7 @@ namespace vkInit
         {
             std::cout << "Create vertex shader module" << std::endl;
         }
-        vk::ShaderModule vertexShader = vkUtil::createModule(specification.vertexFilepath, specification.device, debug);
+        vk::ShaderModule vertexShader = vkutil::createModule(specification.vertexFilepath, specification.device, debug);
         vk::PipelineShaderStageCreateInfo vertexShaderInfo = {};
         vertexShaderInfo.flags = vk::PipelineShaderStageCreateFlags();
         vertexShaderInfo.stage = vk::ShaderStageFlagBits::eVertex;
@@ -143,8 +143,8 @@ namespace vkInit
         vk::Viewport viewport = {};
         viewport.x = 0.0f;
         viewport.y = 0.0f;
-        viewport.width = specification.swapchainExtent.width;
-        viewport.height = specification.swapchainExtent.height;
+        viewport.width = static_cast<float>(specification.swapchainExtent.width);
+        viewport.height = static_cast<float>(specification.swapchainExtent.height);
         viewport.minDepth = 0.0f;
         viewport.maxDepth = 1.0f;
         vk::Rect2D scissor = { };
@@ -176,14 +176,14 @@ namespace vkInit
         {
             std::cout << "Create fragment shader module" << std::endl;
         }
-        vk::ShaderModule fragmentShader = vkUtil::createModule(specification.fragmentFilepath, specification.device, debug);
+        vk::ShaderModule fragmentShader = vkutil::createModule(specification.fragmentFilepath, specification.device, debug);
         vk::PipelineShaderStageCreateInfo fragmentShaderInfo = {};
         fragmentShaderInfo.flags = vk::PipelineShaderStageCreateFlags();
         fragmentShaderInfo.stage = vk::ShaderStageFlagBits::eFragment;
         fragmentShaderInfo.module = fragmentShader;
         fragmentShaderInfo.pName = "main";
         shaderStages.push_back(fragmentShaderInfo);
-        pipelineInfo.stageCount = shaderStages.size();
+        pipelineInfo.stageCount = static_cast<uint32_t>(shaderStages.size());
         pipelineInfo.pStages = shaderStages.data();
 
         //multisampling
@@ -212,7 +212,7 @@ namespace vkInit
         colorBlending.blendConstants[3] = 0.0f;
         pipelineInfo.pColorBlendState = &colorBlending;
 
-        //pipeline pipelineLayout
+        //pipeline_ pipeline_layout_
         if(debug)
         {
             std::cout << "Create Pipeline Layout" << std::endl;
@@ -231,7 +231,7 @@ namespace vkInit
         //extra stuff
         pipelineInfo.basePipelineHandle = nullptr;
 
-        //make the pipeline
+        //make the pipeline_
         if(debug)
         {
             std::cout << "Create Graphics Pipeline" << std::endl;

@@ -10,13 +10,13 @@
 #define INC_3DLOADERVK_FRAME_HPP
 #include <vulkan/vulkan.hpp>
 /**
- * @namespace vkUtil
+ * @namespace vkutil
  * @brief Contains utility structures and functions for Vulkan.
  *
  * This namespace provides additional support for managing Vulkan objects and operations,
  * supplementing the core Vulkan functionalities.
  */
-namespace vkUtil
+namespace vkutil
 {
     /**
      * @struct SwapChainFrame

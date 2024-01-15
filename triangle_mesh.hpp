@@ -10,11 +10,11 @@
 class TriangleMesh
 {
 public:
-    TriangleMesh(vk::Device logicalDevice , vk::PhysicalDevice physicalDevice);
+    TriangleMesh(vk::Device logical_device , vk::PhysicalDevice physical_device);
     ~TriangleMesh();
-    Buffer vertexBuffer;
+    Buffer vertex_buffer;
 private:
-    vk::Device logicalDevice;
+    vk::Device logical_device_;
 };
 
 #endif //INC_3DLOADERVK_TRIANGLE_MESH_HPP

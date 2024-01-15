@@ -5,7 +5,7 @@
 #define INC_3DLOADERVK_RENDER_STRUCTS_HPP
 #include <glm/glm.hpp>
 
-namespace vkUtil
+namespace vkutil
 {
     struct ObjectData
     {

@@ -1,13 +1,13 @@
 /**
- * @file instance.cpp
- * @brief Implements functions for Vulkan instance creation and validation.
+ * @file instance_.cpp
+ * @brief Implements functions for Vulkan instance_ creation and validation.
  * @date Created by Renato on 27-12-23.
  */
 #include "instance.hpp"
 /**
  * @brief Checks if the specified extensions and layers are supported.
  *
- * This function checks whether the required Vulkan extensions and layers are available on the device.
+ * This function checks whether the required Vulkan extensions and layers are available on the device_.
  * It is crucial for ensuring compatibility and stability of Vulkan operations.
  *
  * @param extensions A vector of Vulkan extension names to check for support.
@@ -15,7 +15,7 @@
  * @param debug Flag indicating whether to enable debug logging.
  * @return true if all extensions and layers are supported, false otherwise
  */
-bool vkInit::supported(std::vector<const char*>& extensions, std::vector<const char*>& layers, bool debug)
+bool vkinit::supported(std::vector<const char*>& extensions, std::vector<const char*>& layers, bool debug)
 {
     //check extension support
     std::vector<vk::ExtensionProperties> supportedExtensions = vk::enumerateInstanceExtensionProperties();
@@ -93,26 +93,26 @@ bool vkInit::supported(std::vector<const char*>& extensions, std::vector<const c
     return true;
 }
 /**
- * @brief Creates a Vulkan instance with specified application information and extensions
+ * @brief Creates a Vulkan instance_ with specified application information and extensions
  *
- * This function initializes a Vulkan instance, which is the first step in working with Vulkan.
- * The instance is configured with application and engine information, as well as required extensions
+ * This function initializes a Vulkan instance_, which is the first step in working with Vulkan.
+ * The instance_ is configured with application and engine information, as well as required extensions
  * and layers, especially those needed for debugging purposes.
  *
  * @param debug Flag indicating whether to enable debug logging.
  * @param applicationName The name of the application.
- * @return A Vulkan instance, or nullptr if instance creation fails.
+ * @return A Vulkan instance_, or nullptr if instance_ creation fails.
  */
-vk::Instance vkInit::make_instance(bool debug, const char* applicationName)
+vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
 {
 
     if (debug)
     {
-        std::cout << "Making an instance...\n";
+        std::cout << "Making an instance_...\n";
     }
 
     /*
-    * An instance stores all per-application state info, it is a vulkan handle
+    * An instance_ stores all per-application state info, it is a vulkan handle
     * (An opaque integer or pointer value used to refer to a Vulkan object)
     * side note: in the vulkan.hpp binding it's a wrapper class around a handle
     *
