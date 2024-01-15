@@ -2,7 +2,7 @@
 // Created by daily on 02-01-24.
 //
 
-#include "triangle_mesh.h"
+#include "triangle_mesh.hpp"
 
 TriangleMesh::TriangleMesh(vk::Device logicalDevice, vk::PhysicalDevice physicalDevice)
 {

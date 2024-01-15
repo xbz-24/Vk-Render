@@ -1,0 +1,80 @@
+### CLion ###
+.idea/
+*.iml
+cmake-build-*/
+
+### C++ ###
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*.spv
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+*.lai
+*.la
+*.a
+*.lib
+
+#Executables
+*.exe
+*.out
+*.app
+*.cpp.o
+
+
+#Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+#Kernel Module Compile Results
+.mod
+*.cmd
+.tmp_versions/
+.modules.order
+.modules.builtin
+Module.symvers
+Mkfile.old
+dkms.conf
+
+#Autotools
+*.cache
+*.config
+*.libpath
+.deps
+.libs/
+
+#Make
+Makefile.in
+Makefile
+build/
+*o.d
+
+#CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+
+#Ninja
+*.ninja
+*.ninja_deps
+*.ninja_log
+
+#Log files
+*.log
+*.log.*
+*.stackdump

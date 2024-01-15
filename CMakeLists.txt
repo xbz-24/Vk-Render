@@ -34,5 +34,58 @@ else()
     message(STATUS "Using GLM found by pkg-config")
     include_directories(${GLM_INCLUDE_DIRS})
 endif()
-add_executable(3DLoaderVk main.cpp engine.cpp engine.hpp instance.hpp config.hpp logging.hpp instance.cpp device.cpp device.hpp swapchain.cpp swapchain.hpp queue_families.cpp queue_families.hpp frame.cpp frame.hpp shaders.cpp shaders.hpp pipeline.cpp pipeline.hpp framebuffer.cpp framebuffer.hpp commands.cpp commands.hpp sync.cpp sync.hpp app.cpp app.hpp render_structs.cpp render_structs.hpp scene.cpp scene.hpp mesh.cpp mesh.h memory.cpp memory.h triangle_mesh.cpp triangle_mesh.h)
-target_link_libraries(3DLoaderVk ${VULKAN_LIBS} ${GLFW_LIBS})
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    #add_compile_options(-Wall -Wextra -Wpedantic -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wmisleading-indentation -Wnull-dereference -Wdouble-promotion -Wformat=2 -Werror)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    add_compile_options(
+            /W4
+            /WX
+    )
+else()
+    message(WARNING "Unknown compiler. No specific warning flags set.")
+endif()
+add_executable(
+    3DLoaderVk
+    main.cpp
+    engine.cpp
+    engine.hpp
+    instance.hpp
+    config.hpp
+    logging.hpp
+    instance.cpp
+    device.cpp
+    device.hpp
+    swapchain.cpp
+    swapchain.hpp
+    queue_families.cpp
+    queue_families.hpp
+    frame.cpp frame.hpp
+    shaders.cpp
+    shaders.hpp
+    pipeline.cpp
+    pipeline.hpp
+    framebuffer.cpp
+    framebuffer.hpp
+    commands.cpp
+    commands.hpp
+    sync.cpp
+    sync.hpp
+    app.cpp
+    app.hpp
+    render_structs.cpp
+    render_structs.hpp
+    scene.cpp
+    scene.hpp
+    mesh.cpp
+    mesh.hpp
+    memory.cpp
+    memory.hpp
+    triangle_mesh.cpp
+    triangle_mesh.hpp
+        logging.cpp
+)
+target_link_libraries(
+    3DLoaderVk
+    ${VULKAN_LIBS}
+    ${GLFW_LIBS}
+)

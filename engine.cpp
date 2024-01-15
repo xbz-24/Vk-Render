@@ -7,8 +7,8 @@
  * @brief This class represents the main engine of a Vulkan-based graphics application.
  *
  * Engine initializes and manages the Vulkan instances, devices, swapchains, pipelines, and
- * other necessary components to render a scene using Vulkan. It is designed to
- * work with GLFW for window handling. The class provides methods for setting up Vulkan
+ * other necessary components to render a scene_ using Vulkan. It is designed to
+ * work with GLFW for window_ handling. The class provides methods for setting up Vulkan
  * components, recording draw commands, and rendering frames.
  * @param width
  * @param height
@@ -30,10 +30,10 @@
  *
  * This constructor initializes the Vulkan instance, logical device, swap chain, and
  * graphics pipeline, among other things. It sets up the graphics engine with the
- * specified width, height, and window, and initializes debugging if requested.
+ * specified width, height, and window_, and initializes debugging if requested.
  *
- * @param width The width of the rendering window.
- * @param height The height of the rendering window.
+ * @param width The width of the rendering window_.
+ * @param height The height of the rendering window_.
  * @param window Pointer to the GLFWindow.
  * @param debugMode Boolean flag to enable or disable debugging features.
  */
@@ -58,7 +58,7 @@ Engine::Engine(int width, int height, GLFWwindow* window, bool debugMode)
  *
  * This method creates a Vulkan instance with a given debug mode and application name.
  * It also sets up a debug messenger if debugging is enabled, and abstracts the GLFW
- * window surface for Vulkan use.
+ * window_ surface for Vulkan use.
  */
 void Engine::make_instance()
 {
@@ -204,7 +204,7 @@ void Engine::prepare_scene(vk::CommandBuffer commandBuffer)
  *
  * @param commandBuffer The command buffer to record the drawing commands into.
  * @param imageIndex The index of the swap chain image that will be rendered.
- * @param scene Pointer to the scene to be rendered.
+ * @param scene Pointer to the scene_ to be rendered.
  */
 void Engine::record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imageIndex, Scene* scene)
 {
@@ -263,7 +263,7 @@ void Engine::record_draw_commands(vk::CommandBuffer commandBuffer, uint32_t imag
  * swap chain, recording drawing commands, submitting the command buffer to the graphics
  * queue, and presenting the rendered image to the screen.
  *
- * @param scene Pointer to the scene to be rendered.
+ * @param scene Pointer to the scene_ to be rendered.
  */
 void Engine::render(Scene* scene)
 {
