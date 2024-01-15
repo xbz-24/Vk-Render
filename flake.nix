@@ -26,6 +26,7 @@
             xorg.libXau
             xorg.libXdmcp
             glm
+            boost
           ];
 
           shellHook = ''
