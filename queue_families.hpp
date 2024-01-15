@@ -8,9 +8,12 @@
  */
 #ifndef INC_3DLOADERVK_QUEUE_FAMILIES_HPP
 #define INC_3DLOADERVK_QUEUE_FAMILIES_HPP
-#include "config.hpp"
+#include <vulkan/vulkan.hpp>
+#include <optional>
+#include <iostream>
 
-namespace vkUtil{
+namespace vkUtil
+{
     /**
      * @struct QueueFamilyIndices
      * @brief Holds indices of queue families that satisfy specific capabilities.
@@ -19,7 +22,8 @@ namespace vkUtil{
      * and presentation capabilities. The presence of a valid index indicates support for
      * the respective capability
      */
-    struct QueueFamilyIndices{
+    struct QueueFamilyIndices
+    {
         std::optional<uint32_t> graphicsFamily;
         std::optional<uint32_t> presentFamily;
         /**
@@ -27,7 +31,8 @@ namespace vkUtil{
          *
          * @return true if both graphics and presentation queue families are found, false otherwise.
          */
-        bool isComplete(){
+        bool isComplete()
+        {
             return graphicsFamily.has_value() && presentFamily.has_value();
         }
     };
@@ -42,29 +47,37 @@ namespace vkUtil{
      * @param debug Flag indicating whether to enable debug logging.
      * @return QueueFamilyIndices with the indices of the suitable queue families.
      */
-    QueueFamilyIndices findQueueFamilies(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug){
+    QueueFamilyIndices findQueueFamilies(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug)
+    {
         QueueFamilyIndices indices;
         std::vector<vk::QueueFamilyProperties> queueFamilies = device.getQueueFamilyProperties();
-        if(debug){
+        if(debug)
+        {
             std::cout << "System can support " << queueFamilies.size() << " queue families.\n";
         }
         int i = 0;
-        for(vk::QueueFamilyProperties queueFamily : queueFamilies){
-            if(queueFamily.queueFlags & vk::QueueFlagBits::eGraphics){
+        for(vk::QueueFamilyProperties queueFamily : queueFamilies)
+        {
+            if(queueFamily.queueFlags & vk::QueueFlagBits::eGraphics)
+            {
                 indices.graphicsFamily = i;
                 indices.presentFamily = i;
 
-                if(debug){
+                if(debug)
+                {
                     std::cout << "Queue Family " << i <<" is suitable for graphics.\n";
                 }
             }
-            if(device.getSurfaceSupportKHR(i, surface)){
+            if(device.getSurfaceSupportKHR(i, surface))
+            {
                 indices.presentFamily = i;
-                if(debug){
+                if(debug)
+                {
                     std::cout << "Queue Family " << i << " is suitable for presenting.\n";
                 }
             }
-            if(indices.isComplete()){
+            if(indices.isComplete())
+            {
                 break;
             }
             i++;

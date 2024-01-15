@@ -4,7 +4,8 @@
 
 #include "triangle_mesh.h"
 
-TriangleMesh::TriangleMesh(vk::Device logicalDevice, vk::PhysicalDevice physicalDevice){
+TriangleMesh::TriangleMesh(vk::Device logicalDevice, vk::PhysicalDevice physicalDevice)
+{
     this->logicalDevice = logicalDevice;
     std::vector<float> vertices = {
             {
@@ -23,7 +24,8 @@ TriangleMesh::TriangleMesh(vk::Device logicalDevice, vk::PhysicalDevice physical
     memcpy(memoryLocation, vertices.data(), inputChunk.size);
     logicalDevice.unmapMemory(vertexBuffer.bufferMemory);
 }
-TriangleMesh::~TriangleMesh(){
+TriangleMesh::~TriangleMesh()
+{
     logicalDevice.destroyBuffer(vertexBuffer.buffer);
     logicalDevice.freeMemory(vertexBuffer.bufferMemory);
 }

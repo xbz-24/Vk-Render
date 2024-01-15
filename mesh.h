@@ -4,17 +4,21 @@
 
 #ifndef INC_3DLOADERVK_MESH_H
 #define INC_3DLOADERVK_MESH_H
-#include "config.hpp"
+#include <array>
+#include <vulkan/vulkan.hpp>
 
-namespace vkMesh{
-    vk::VertexInputBindingDescription getPosColorBindingDescription(){
+namespace vkMesh
+{
+    vk::VertexInputBindingDescription getPosColorBindingDescription()
+    {
         vk::VertexInputBindingDescription bindingDescription;
         bindingDescription.binding = 0;
         bindingDescription.stride = 5 * sizeof(float);
         bindingDescription.inputRate = vk::VertexInputRate::eVertex;
         return bindingDescription;
     }
-    std::array<vk::VertexInputAttributeDescription, 2> getPosColorAttributeDescriptions(){
+    std::array<vk::VertexInputAttributeDescription, 2> getPosColorAttributeDescriptions()
+    {
         std::array<vk::VertexInputAttributeDescription, 2> attributes;
         //pos
         attributes[0].binding = 0;

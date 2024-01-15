@@ -4,130 +4,161 @@
 
 #ifndef INC_3DLOADERVK_LOGGING_HPP
 #define INC_3DLOADERVK_LOGGING_HPP
-#include "config.hpp"
-namespace vkInit{
-    VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
-            VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
-            VkDebugUtilsMessageTypeFlagsEXT messageType,
-            const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
-            void* pUserData
-    ){
+#include <vulkan/vulkan.hpp>
+#include <vector>
+#include <string>
+#include <iostream>
+
+namespace vkInit
+{
+    VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback
+    (
+        VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
+        VkDebugUtilsMessageTypeFlagsEXT messageType,
+        const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
+        void* pUserData
+    )
+    {
         std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
 
         return VK_FALSE;
     }
 
-    vk::DebugUtilsMessengerEXT make_debug_messenger(vk::Instance& instance, vk::DispatchLoaderDynamic& dldi){
-
-        vk::DebugUtilsMessengerCreateInfoEXT createInfo = vk::DebugUtilsMessengerCreateInfoEXT(
-                vk::DebugUtilsMessengerCreateFlagsEXT(),
-                vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning | vk::DebugUtilsMessageSeverityFlagBitsEXT::eError,
-                vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance,
-                debugCallback,
-                nullptr
+    vk::DebugUtilsMessengerEXT make_debug_messenger(vk::Instance& instance, vk::DispatchLoaderDynamic& dldi)
+    {
+        vk::DebugUtilsMessengerCreateInfoEXT createInfo = vk::DebugUtilsMessengerCreateInfoEXT
+        (
+            vk::DebugUtilsMessengerCreateFlagsEXT(),
+            vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning | vk::DebugUtilsMessageSeverityFlagBitsEXT::eError,
+            vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance,
+            debugCallback,
+            nullptr
         );
         return instance.createDebugUtilsMessengerEXT(createInfo, nullptr, dldi);
     }
 
-   std::vector<std::string> log_transform_bits(vk::SurfaceTransformFlagsKHR bits){
+   std::vector<std::string> log_transform_bits(vk::SurfaceTransformFlagsKHR bits)
+   {
         std::vector<std::string> result;
-        if(bits & vk::SurfaceTransformFlagBitsKHR::eIdentity){
+        if(bits & vk::SurfaceTransformFlagBitsKHR::eIdentity)
+        {
             result.push_back("identity");
         }
-        if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate90){
+        if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate90)
+        {
             result.push_back("90 degree rotation");
         }
-       if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate180){
+       if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate180)
+       {
            result.push_back("180 degree rotation");
        }
-       if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate270){
+       if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate270)
+       {
            result.push_back("270 degree rotation");
        }
-       if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirror){
+       if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirror)
+       {
            result.push_back("Horizontal mirror");
        }
-       if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate90){
+       if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate90)
+       {
            result.push_back("Horizontal mirror, then 90 degree rotation");
        }
-       if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate180){
+       if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate180)
+       {
            result.push_back("Horizontal mirror, then 180 degree rotation");
        }
-       if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate270){
+       if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate270)
+       {
            result.push_back("Horizontal mirror, then 270 degree rotation");
        }
-       if(bits & vk::SurfaceTransformFlagBitsKHR::eInherit){
+       if(bits & vk::SurfaceTransformFlagBitsKHR::eInherit)
+       {
            result.push_back("Inherited");
        }
-
        return result;
     }
 
-    std::vector<std::string> log_alpha_composite_bits(vk::CompositeAlphaFlagsKHR bits){
+    std::vector<std::string> log_alpha_composite_bits(vk::CompositeAlphaFlagsKHR bits)
+    {
         std::vector<std::string> result;
 
-        if(bits & vk::CompositeAlphaFlagBitsKHR::eOpaque){
+        if(bits & vk::CompositeAlphaFlagBitsKHR::eOpaque)
+        {
             result.push_back("opaque (alpha ignored)");
         }
-        if(bits & vk::CompositeAlphaFlagBitsKHR::ePreMultiplied){
+        if(bits & vk::CompositeAlphaFlagBitsKHR::ePreMultiplied)
+        {
             result.push_back("pre multiplied (alpha will be applied during composition)");
         }
-        if(bits & vk::CompositeAlphaFlagBitsKHR::eInherit){
+        if(bits & vk::CompositeAlphaFlagBitsKHR::eInherit)
+        {
             result.push_back("Inherited");
         }
-
         return result;
     }
 
-    std::vector<std::string> log_image_usage_bits(vk::ImageUsageFlags bits){
+    std::vector<std::string> log_image_usage_bits(vk::ImageUsageFlags bits)
+    {
         std::vector<std::string> result;
 
-        if (bits & vk::ImageUsageFlagBits::eTransferSrc) {
+        if (bits & vk::ImageUsageFlagBits::eTransferSrc)
+        {
             result.push_back("transfer src: image can be used as the source of a transfer command.");
         }
-        if (bits & vk::ImageUsageFlagBits::eTransferDst) {
+        if (bits & vk::ImageUsageFlagBits::eTransferDst)
+        {
             result.push_back("transfer dst: image can be used as the destination of a transfer command.");
         }
-        if (bits & vk::ImageUsageFlagBits::eSampled) {
+        if (bits & vk::ImageUsageFlagBits::eSampled)
+        {
             result.push_back("sampled: image can be used to create a VkImageView suitable for occupying a \
 VkDescriptorSet slot either of type VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE or \
 VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, and be sampled by a shader.");
         }
-        if (bits & vk::ImageUsageFlagBits::eStorage) {
+        if (bits & vk::ImageUsageFlagBits::eStorage)
+        {
             result.push_back("storage: image can be used to create a VkImageView suitable for occupying a \
 VkDescriptorSet slot of type VK_DESCRIPTOR_TYPE_STORAGE_IMAGE.");
         }
-        if (bits & vk::ImageUsageFlagBits::eColorAttachment) {
+        if (bits & vk::ImageUsageFlagBits::eColorAttachment)
+        {
             result.push_back("color attachment: image can be used to create a VkImageView suitable for use as \
 a color or resolve attachment in a VkFramebuffer.");
         }
-        if (bits & vk::ImageUsageFlagBits::eDepthStencilAttachment) {
+        if (bits & vk::ImageUsageFlagBits::eDepthStencilAttachment)
+        {
             result.push_back("depth/stencil attachment: image can be used to create a VkImageView \
 suitable for use as a depth/stencil or depth/stencil resolve attachment in a VkFramebuffer.");
         }
-        if (bits & vk::ImageUsageFlagBits::eTransientAttachment) {
+        if (bits & vk::ImageUsageFlagBits::eTransientAttachment)
+        {
             result.push_back("transient attachment: implementations may support using memory allocations \
 with the VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT to back an image with this usage. This \
 bit can be set for any image that can be used to create a VkImageView suitable for use as \
 a color, resolve, depth/stencil, or input attachment.");
         }
-        if (bits & vk::ImageUsageFlagBits::eInputAttachment) {
+        if (bits & vk::ImageUsageFlagBits::eInputAttachment)
+        {
             result.push_back("input attachment: image can be used to create a VkImageView suitable for \
 occupying VkDescriptorSet slot of type VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT; be read from \
 a shader as an input attachment; and be used as an input attachment in a framebuffer.");
         }
-        if (bits & vk::ImageUsageFlagBits::eFragmentDensityMapEXT) {
+        if (bits & vk::ImageUsageFlagBits::eFragmentDensityMapEXT)
+        {
             result.push_back("fragment density map: image can be used to create a VkImageView suitable \
 for use as a fragment density map image.");
         }
-        if (bits & vk::ImageUsageFlagBits::eFragmentShadingRateAttachmentKHR) {
+        if (bits & vk::ImageUsageFlagBits::eFragmentShadingRateAttachmentKHR)
+        {
             result.push_back("fragment shading rate attachment: image can be used to create a VkImageView \
 suitable for use as a fragment shading rate attachment or shading rate image");
         }
         return result;
-
     }
 
-    std::string log_present_mode(vk::PresentModeKHR presentMode) {
+    std::string log_present_mode(vk::PresentModeKHR presentMode)
+    {
         /*
         * // Provided by VK_KHR_surface
         typedef enum VkPresentModeKHR {
@@ -142,12 +173,14 @@ suitable for use as a fragment shading rate attachment or shading rate image");
         } VkPresentModeKHR;
         */
 
-        if (presentMode == vk::PresentModeKHR::eImmediate) {
+        if (presentMode == vk::PresentModeKHR::eImmediate)
+        {
             return "immediate: the presentation engine does not wait for a vertical blanking period \
 to update the current image, meaning this mode may result in visible tearing. No internal \
 queuing of presentation requests is needed, as the requests are applied immediately.";
         }
-        if (presentMode == vk::PresentModeKHR::eMailbox) {
+        if (presentMode == vk::PresentModeKHR::eMailbox)
+        {
             return "mailbox: the presentation engine waits for the next vertical blanking period \
 to update the current image. Tearing cannot be observed. An internal single-entry queue is \
 used to hold pending presentation requests. If the queue is full when a new presentation \
@@ -155,7 +188,8 @@ request is received, the new request replaces the existing entry, and any images
 with the prior entry become available for re-use by the application. One request is removed \
 from the queue and processed during each vertical blanking period in which the queue is non-empty.";
         }
-        if (presentMode == vk::PresentModeKHR::eFifo) {
+        if (presentMode == vk::PresentModeKHR::eFifo)
+        {
             return "fifo: the presentation engine waits for the next vertical blanking \
 period to update the current image. Tearing cannot be observed. An internal queue is used to \
 hold pending presentation requests. New requests are appended to the end of the queue, and one \
@@ -163,7 +197,8 @@ request is removed from the beginning of the queue and processed during each ver
 period in which the queue is non-empty. This is the only value of presentMode that is required \
 to be supported.";
         }
-        if (presentMode == vk::PresentModeKHR::eFifoRelaxed) {
+        if (presentMode == vk::PresentModeKHR::eFifoRelaxed)
+        {
             return "relaxed fifo: the presentation engine generally waits for the next vertical \
 blanking period to update the current image. If a vertical blanking period has already passed \
 since the last update of the current image then the presentation engine does not wait for \
@@ -175,7 +210,8 @@ is used to hold pending presentation requests. New requests are appended to the 
 and one request is removed from the beginning of the queue and processed during or after each \
 vertical blanking period in which the queue is non-empty.";
         }
-        if (presentMode == vk::PresentModeKHR::eSharedDemandRefresh) {
+        if (presentMode == vk::PresentModeKHR::eSharedDemandRefresh)
+        {
             return "shared demand refresh: the presentation engine and application have \
 concurrent access to a single image, which is referred to as a shared presentable image. \
 The presentation engine is only required to update the current image after a new presentation \
@@ -183,7 +219,8 @@ request is received. Therefore the application must make a presentation request 
 update is required. However, the presentation engine may update the current image at any point, \
 meaning this mode may result in visible tearing.";
         }
-        if (presentMode == vk::PresentModeKHR::eSharedContinuousRefresh) {
+        if (presentMode == vk::PresentModeKHR::eSharedContinuousRefresh)
+        {
             return "shared continuous refresh: the presentation engine and application have \
 concurrent access to a single image, which is referred to as a shared presentable image. The \
 presentation engine periodically updates the current image on its regular refresh cycle. The \
@@ -196,11 +233,13 @@ This mode may result in visible tearing if rendering to the image is not timed c
         return "none/undefined";
     }
 
-    void log_device_properties(const vk::PhysicalDevice& device){
+    void log_device_properties(const vk::PhysicalDevice& device)
+    {
         vk::PhysicalDeviceProperties properties = device.getProperties();
         std::cout << "Device name: " << properties.deviceName << '\n';
         std::cout << "Device type: ";
-        switch(properties.deviceType){
+        switch(properties.deviceType)
+        {
             case(vk::PhysicalDeviceType::eCpu):
                 std::cout << "CPU\n";
                 break;

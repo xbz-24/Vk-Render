@@ -4,6 +4,7 @@
  * @date Created by Renato on 27-12-23.
  */
 #include "app.hpp"
+#include <iostream>
 /**
  * @brief Constructs an App object.
  *
@@ -14,7 +15,8 @@
  * @param height The height of the GLFW window.
  * @param debug Indicates whether debugging features should be enabled.
  */
-App::App(int width, int height, bool debug){
+App::App(int width, int height, bool debug)
+{
     build_glfw_window(width, height, debug);
     graphicsEngine = new Engine(width, height, window, debug);
     scene = new Scene();
@@ -29,18 +31,23 @@ App::App(int width, int height, bool debug){
  * @param height The height of the window to create,
  * @param debugMode Indicates whether to enable debug logging.
  */
-void App::build_glfw_window(int width, int height, bool debugMode) {
+void App::build_glfw_window(int width, int height, bool debugMode)
+{
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-    if(window = glfwCreateWindow(width, height, "ID Tech 12", nullptr, nullptr)) {
-        if(debugMode) {
+    if(window = glfwCreateWindow(width, height, "ID Tech 12", nullptr, nullptr))
+    {
+        if(debugMode)
+        {
             std::cout << "Successfully made a glfw window called \"ID Tech 12\", width: ";
             std::cout << width << ", height: " << height << '\n';
         }
     }
-    else {
-        if(debugMode) {
+    else
+    {
+        if(debugMode)
+        {
             std::cout << "GLFW window creation failed\n";
         }
     }

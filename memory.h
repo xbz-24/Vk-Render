@@ -5,9 +5,10 @@
 #ifndef INC_3DLOADERVK_MEMORY_H
 #define INC_3DLOADERVK_MEMORY_H
 #include "config.hpp"
+#include <vulkan/vulkan.hpp>
 
-namespace vkUtil{
-
+namespace vkUtil
+{
     Buffer createBuffer(BufferInput input);
     uint32_t findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t supportedMemoryIndices, vk::MemoryPropertyFlags requestedProperties);
     void allocateBufferMemory(Buffer &buffer, const BufferInput& input);

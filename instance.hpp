@@ -1,9 +1,12 @@
-#pragma once
-#include "config.hpp"
-
-//namespace for creation functions/definitions etc.
-namespace vkInit {
-
+#ifndef INC_3DLOADERVK_INSTANCE_HPP
+#define INC_3DLOADERVK_INSTANCE_HPP
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+#include <vulkan/vulkan.hpp>
+#include <vector>
+#include <iostream>
+namespace vkInit
+{
     /**
         Check whether the requested extensions and layers are supported.
 
@@ -23,3 +26,4 @@ namespace vkInit {
     */
     vk::Instance make_instance(bool debug, const char* applicationName);
 }
+#endif //INC_3DLOADERVK_INSTANCE_HPP
