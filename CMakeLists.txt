@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 project(3DLoaderVk)
 set(CMAKE_CXX_STANDARD 23)
 set(GLFW_BUILD_STATIC_LIBS ON)
+include(FindPkgConfig)
 
 # Find Vulkan
 find_package(Vulkan QUIET)
