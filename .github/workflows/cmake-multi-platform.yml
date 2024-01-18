@@ -55,6 +55,7 @@ jobs:
         sudo ./llvm.sh 16
         sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-16 100
         sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-16 100
+        clang --version
 
     - name: Print GCC version
       if: matrix.os == 'ubuntu-latest' && (matrix.c_compiler == 'gcc' || matrix.cpp_compiler == 'g++')
@@ -80,8 +81,8 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
-        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
-        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
+        -DCMAKE_CXX_COMPILER=/usr/bin/clang++-16
+        -DCMAKE_C_COMPILER=/usr/bin/clang-16
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -S ${{ github.workspace }}
 
