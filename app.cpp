@@ -5,6 +5,7 @@
  */
 #include "app.hpp"
 #include <iostream>
+#include <sstream>
 /**
  * @brief Constructs an App object.
  *
@@ -82,7 +83,7 @@ void App::calculateFrameRate()
 
     if(delta >= 1)
     {
-        int framerate  {std::max(1, int(num_frames_ / delta))};
+        int framerate = std::max(1, int(num_frames_ / delta));
         std::stringstream title;
         title << "Running at " << framerate << " fps.";
         glfwSetWindowTitle(window_, title.str().c_str());
