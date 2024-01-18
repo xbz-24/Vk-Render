@@ -4,6 +4,11 @@ set(CMAKE_CXX_STANDARD 23)
 set(GLFW_BUILD_STATIC_LIBS ON)
 include(FindPkgConfig)
 
+if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+    set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            CACHE STRING "")
+endif()
+
 # Find Vulkan
 find_package(Vulkan QUIET)
 if(Vulkan_FOUND)
