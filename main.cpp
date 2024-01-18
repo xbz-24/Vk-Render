@@ -2,8 +2,7 @@
 
 int main()
 {
-    App* myApp = new App(640, 480, true);
-    myApp -> run();
-    delete myApp;
-    return 0;
+    App* app = new App(640, 480, true);
+    app -> run();
+    delete app;
 }

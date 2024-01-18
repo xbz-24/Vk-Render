@@ -28,6 +28,7 @@ uint32_t vkutil::findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t
             return i;
         }
     }
+    throw std::runtime_error("Failed to find suitable memory type.");
 }
 void vkutil::allocateBufferMemory(Buffer &buffer, const BufferInput& input)
 {

@@ -38,6 +38,7 @@ namespace vkinit
             {
                 std::cout << "Failed to create pipeline_ pipeline_layout_!" << std::endl;
             }
+            return vk::PipelineLayout{};
         }
     }
     /**
@@ -89,6 +90,7 @@ namespace vkinit
             {
                 std::cout << "Failed to create render_pass_!" << std::endl;
             }
+            return vk::RenderPass{};
         }
     }
     /**
@@ -111,8 +113,8 @@ namespace vkinit
         std::vector<vk::PipelineShaderStageCreateInfo> shaderStages;
 
         // vertex input
-        vk::VertexInputBindingDescription bindingDescription = vkMesh::getPosColorBindingDescription();
-        std::array<vk::VertexInputAttributeDescription, 2> attributeDescriptions = vkMesh::getPosColorAttributeDescriptions();
+        vk::VertexInputBindingDescription bindingDescription = vkmesh::getPosColorBindingDescription();
+        std::array<vk::VertexInputAttributeDescription, 2> attributeDescriptions = vkmesh::getPosColorAttributeDescriptions();
         vk::PipelineVertexInputStateCreateInfo vertexInputInfo = { };
         vertexInputInfo.flags = vk::PipelineVertexInputStateCreateFlags();
         vertexInputInfo.vertexBindingDescriptionCount = 1;

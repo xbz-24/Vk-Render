@@ -238,7 +238,7 @@ void Engine::RecordDrawCommands(vk::CommandBuffer commandBuffer, uint32_t imageI
     for(glm::vec3 position : scene->triangle_positions_)
     {
         glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
-        vkutil::ObjectData objectdata;
+        vkutil::ObjectData objectdata{};
         objectdata.model = model;
         commandBuffer.pushConstants(pipeline_layout_, vk::ShaderStageFlagBits::eVertex, 0, sizeof(objectdata), &objectdata);
         commandBuffer.draw(3, 1, 0, 0);
@@ -267,7 +267,12 @@ void Engine::RecordDrawCommands(vk::CommandBuffer commandBuffer, uint32_t imageI
  */
 void Engine::render(Scene* scene)
 {
-    device_.waitForFences(1, &swap_chain_frames_[frame_number_].inFlight, VK_TRUE, UINT64_MAX);
+    vk::Result waitResult = device_.waitForFences(1, &swap_chain_frames_[static_cast<size_t>(frame_number_)].inFlight, VK_TRUE, UINT64_MAX);
+    if (waitResult != vk::Result::eSuccess)
+    {
+        std::cerr << "Error: Failed to wait for fence. Result: " << waitResult << std::endl;
+        return;
+    }
     uint32_t imageIndex;
     try
     {
@@ -275,12 +280,12 @@ void Engine::render(Scene* scene)
         (
                 swapchain_,
                 UINT64_MAX,
-                swap_chain_frames_[frame_number_].imageAvailable,
+                swap_chain_frames_[static_cast<size_t>(frame_number_)].imageAvailable,
                 nullptr
         );
         imageIndex = acquire.value;
     }
-    catch(vk::OutOfDateKHRError)
+    catch(vk::OutOfDateKHRError &error)
     {
         std::cout << "Recreate" << std::endl;
         RecreateSwapchain();
@@ -290,20 +295,24 @@ void Engine::render(Scene* scene)
     commandBuffer.reset();
     RecordDrawCommands(commandBuffer, imageIndex, scene);
     vk::SubmitInfo submitInfo = { };
-    vk::Semaphore waitSemaphores[] = {swap_chain_frames_[frame_number_].imageAvailable };
+    vk::Semaphore waitSemaphores[] = { swap_chain_frames_[static_cast<size_t>(frame_number_)].imageAvailable };
     vk::PipelineStageFlags waitStages[] = { vk::PipelineStageFlagBits::eColorAttachmentOutput };
     submitInfo.waitSemaphoreCount = 1;
     submitInfo.pWaitSemaphores = waitSemaphores;
     submitInfo.pWaitDstStageMask = waitStages;
     submitInfo.commandBufferCount = 1;
     submitInfo.pCommandBuffers = &commandBuffer;
-    vk::Semaphore signalSemaphores[] = {swap_chain_frames_[frame_number_].renderFinished };
+    vk::Semaphore signalSemaphores[] = { swap_chain_frames_[static_cast<size_t>(frame_number_)].renderFinished };
     submitInfo.signalSemaphoreCount = 1;
     submitInfo.pSignalSemaphores = signalSemaphores;
-    device_.resetFences(1, &swap_chain_frames_[frame_number_].inFlight);
+    vk::Result resetResult = device_.resetFences(1, &swap_chain_frames_[static_cast<size_t>(frame_number_)].inFlight);
+    if (resetResult != vk::Result::eSuccess)
+    {
+        std::cerr << "Error: Failed to reset fences. Result: " << resetResult << std::endl;
+    }
     try
     {
-        graphics_queue_.submit(submitInfo, swap_chain_frames_[frame_number_].inFlight);
+        graphics_queue_.submit(submitInfo, swap_chain_frames_[static_cast<size_t>(frame_number_)].inFlight);
     }
     catch(vk::SystemError &err)
     {

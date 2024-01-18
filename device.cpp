@@ -1,7 +1,8 @@
-//
-// Created by daily on 27-12-23.
-//
-
+/**
+ * @file device.cpp
+ * @brief Defines functions for creating Vulkan devices.
+ * @date Created by Renato on 27-12-23.
+ */
 #include "device.hpp"
 /**
  * @brief Checks if a Vulkan physical device_ supports the required extensions.
@@ -59,7 +60,7 @@ bool vkinit::IsSuitable(const vk::PhysicalDevice& device, const bool debug)
     }
     if(bool extensionSupported = CheckDeviceExtensionSupport(device, requestedExtensions, debug))
     {
-        if(debug)
+        if(debug && extensionSupported)
         {
             std::cout << "Device can support the requested extensions!\n";
         }
@@ -136,16 +137,15 @@ vk::Device vkinit::CreateLogicalDevice(vk::PhysicalDevice physical_device, vk::S
 
     float queuePriority = 1.0f;
     std::vector<vk::DeviceQueueCreateInfo> queueCreateInfo;
-    for(uint32_t queueFamilyIndex : uniqueIndices)
+    for([[maybe_unused]] uint32_t queueFamilyIndex : uniqueIndices)
     {
-        queueCreateInfo.push_back
-                (
-                        vk::DeviceQueueCreateInfo
-                                (
-                                        vk::DeviceQueueCreateFlags(), indices.graphicsFamily.value(),
-                                        1, &queuePriority
-                                )
-                );
+        queueCreateInfo.emplace_back
+        (
+            vk::DeviceQueueCreateFlags(),
+            indices.graphicsFamily.value(),
+            1,
+            &queuePriority
+        );
     }
 
     std::vector<const char*> deviceExtensions = {
@@ -160,16 +160,16 @@ vk::Device vkinit::CreateLogicalDevice(vk::PhysicalDevice physical_device, vk::S
         enabledLayers.push_back("VK_LAYER_KHRONOS_validation");
     }
     vk::DeviceCreateInfo deviceInfo = vk::DeviceCreateInfo
-            (
-                    vk::DeviceCreateFlags(),
-                    static_cast<uint32_t>(queueCreateInfo.size()),
-                    queueCreateInfo.data(),
-                    static_cast<uint32_t>(enabledLayers.size()),
-                    enabledLayers.data(),
-                    deviceExtensions.size(),
-                    deviceExtensions.data(),
-                    &deviceFeatures
-            );
+    (
+        vk::DeviceCreateFlags(),
+        static_cast<uint32_t>(queueCreateInfo.size()),
+        queueCreateInfo.data(),
+        static_cast<uint32_t>(enabledLayers.size()),
+        enabledLayers.data(),
+        static_cast<uint32_t>(deviceExtensions.size()),
+        deviceExtensions.data(),
+        &deviceFeatures
+    );
     try
     {
         vk::Device device = physical_device.createDevice(deviceInfo);
@@ -203,10 +203,10 @@ std::array<vk::Queue, 2> vkinit::GetQueues(vk::PhysicalDevice physical_device, v
     vkutil::QueueFamilyIndices indices = vkutil::findQueueFamilies(physical_device, surface, debug);
 
     return
-            {
-                    {
-                            device.getQueue(indices.graphicsFamily.value(), 0),
-                            device.getQueue(indices.presentFamily.value(), 0)
-                    }
-            };
+    {
+        {
+            device.getQueue(indices.graphicsFamily.value(), 0),
+            device.getQueue(indices.presentFamily.value(), 0)
+        }
+    };
 }
