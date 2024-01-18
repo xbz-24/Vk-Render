@@ -73,7 +73,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         add_compile_options(/W4 /WX)
     endif()
 elseif (CMAKE_BUILD_TYPE STREQUAL "Release")
-
+    # NO warnings in release mode
 endif()
 
 add_executable(
