@@ -1,3 +1,0 @@
-/home/daily/CLionProjects/3DLoaderVk/cmake-build-debug/CMakeFiles/3DLoaderVk.dir
-/home/daily/CLionProjects/3DLoaderVk/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/daily/CLionProjects/3DLoaderVk/cmake-build-debug/CMakeFiles/rebuild_cache.dir

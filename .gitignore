@@ -2,6 +2,7 @@
 .idea/
 *.iml
 cmake-build-*/
+!cmake-build-debug/3DLoaderVk
 
 ### C++ ###
 # Prerequisites

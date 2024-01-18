@@ -7,13 +7,12 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
-
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             vulkan-tools
             vulkan-headers
@@ -28,16 +27,26 @@
             glm
             boost
           ];
-
-          shellHook = ''
+        shellHook = ''
             export VK_LAYER_PATH="${pkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d"
             export Vulkan_INCLUDE_DIR="${pkgs.vulkan-headers}/include"
             export Vulkan_LIBRARY="${pkgs.vulkan-loader}/lib"
             if [ -z "$CLION_AUTO_LAUNCHED" ]; then
               export CLION_AUTO_LAUNCHED=1
-              clion . &
-              exit
+              nohup clion . > /dev/null 2>&1 &
+              echo "CLion launched in background."
             fi
+            BUILD_DIR="cmake-build-debug"
+            sleep 5
+            if [ -d "$BUILD_DIR" ]; then
+              echo "Clearing existing build directory: $BUILD_DIR"
+              rm -rf "$BUILD_DIR"
+            fi
+            mkdir -p "$BUILD_DIR"
+            cd "$BUILD_DIR"
+            cmake .. -DCMAKE_BUILD_TYPE=Debug
+            cd ..
+            echo "CMake project reconfigured."
           '';
         };
       }
