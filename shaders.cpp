@@ -20,7 +20,7 @@ namespace vkutil
         file.close();
         return buffer;
     }
-    vk::ShaderModule createModule(std::string filename, vk::Device device, bool debug)
+    vk::ShaderModule createModule(const std::string& filename, vk::Device device, bool debug)
     {
         std::vector<char> sourceCode = readFile(filename, debug);
         vk::ShaderModuleCreateInfo moduleInfo = {};
@@ -37,6 +37,7 @@ namespace vkutil
             {
                 std::cout << "Failed to create shader module for \"" << filename << "\"" << std::endl;
             }
+            return vk::ShaderModule{};
         }
     }
 }

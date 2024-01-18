@@ -191,22 +191,22 @@ namespace vkinit
                 );
 
         vk::SwapchainCreateInfoKHR createInfo = vk::SwapchainCreateInfoKHR
-                (
-                        vk::SwapchainCreateFlagsKHR(),
-                        surface,
-                        imageCount,
-                        format.format,
-                        format.colorSpace,
-                        extent,
-                        1,
-                        vk::ImageUsageFlagBits::eColorAttachment
-                );
+        (
+            vk::SwapchainCreateFlagsKHR(),
+            surface,
+            imageCount,
+            format.format,
+            format.colorSpace,
+            extent,
+            1,
+            vk::ImageUsageFlagBits::eColorAttachment
+        );
         vkutil::QueueFamilyIndices indices = vkutil::findQueueFamilies
-                (
-                        physicalDevice,
-                        surface,
-                        debug
-                );
+        (
+            physicalDevice,
+            surface,
+            debug
+        );
         uint32_t queueFamilyIndices[] = { indices.graphicsFamily.value(), indices.presentFamily.value() };
 
         if(indices.graphicsFamily.value() != indices.presentFamily.value())
@@ -244,22 +244,22 @@ namespace vkinit
 
         for(size_t i = 0; i < images.size(); i++)
         {
-            vk::ImageViewCreateInfo createInfo = { };
-            createInfo.image = images[i];
-            createInfo.viewType = vk::ImageViewType::e2D;
-            createInfo.format = format.format;
-            createInfo.components.r = vk::ComponentSwizzle::eIdentity;
-            createInfo.components.g = vk::ComponentSwizzle::eIdentity;
-            createInfo.components.b = vk::ComponentSwizzle::eIdentity;
-            createInfo.components.a = vk::ComponentSwizzle::eIdentity;
-            createInfo.subresourceRange.aspectMask = vk::ImageAspectFlagBits::eColor;
-            createInfo.subresourceRange.baseMipLevel = 0;
-            createInfo.subresourceRange.levelCount = 1;
-            createInfo.subresourceRange.baseArrayLayer = 0;
-            createInfo.subresourceRange.layerCount = 1;
+            vk::ImageViewCreateInfo imageViewCreateInfo = { };
+            imageViewCreateInfo.image = images[i];
+            imageViewCreateInfo.viewType = vk::ImageViewType::e2D;
+            imageViewCreateInfo.format = format.format;
+            imageViewCreateInfo.components.r = vk::ComponentSwizzle::eIdentity;
+            imageViewCreateInfo.components.g = vk::ComponentSwizzle::eIdentity;
+            imageViewCreateInfo.components.b = vk::ComponentSwizzle::eIdentity;
+            imageViewCreateInfo.components.a = vk::ComponentSwizzle::eIdentity;
+            imageViewCreateInfo.subresourceRange.aspectMask = vk::ImageAspectFlagBits::eColor;
+            imageViewCreateInfo.subresourceRange.baseMipLevel = 0;
+            imageViewCreateInfo.subresourceRange.levelCount = 1;
+            imageViewCreateInfo.subresourceRange.baseArrayLayer = 0;
+            imageViewCreateInfo.subresourceRange.layerCount = 1;
 
             bundle.frames[i].image = images[i];
-            bundle.frames[i].imageView = logicalDevice.createImageView(createInfo);
+            bundle.frames[i].imageView = logicalDevice.createImageView(imageViewCreateInfo);
         }
         bundle.format = format.format;
         bundle.extent = extent;

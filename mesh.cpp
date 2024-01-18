@@ -6,7 +6,7 @@
 
 #include "mesh.hpp"
 
-namespace vkMesh
+namespace vkmesh
 {
     vk::VertexInputBindingDescription getPosColorBindingDescription()
     {
