@@ -80,12 +80,11 @@ jobs:
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: |
+        CXX_COMPILER_ARG=""
+        C_COMPILER_ARG=""
         if [ "${{ matrix.c_compiler }}" = "clang" ]; then
           CXX_COMPILER_ARG="-DCMAKE_CXX_COMPILER=/usr/bin/clang++-16"
           C_COMPILER_ARG="-DCMAKE_C_COMPILER=/usr/bin/clang-16"
-        else
-          CXX_COMPILER_ARG=""
-          C_COMPILER_ARG=""
         fi
         cmake -B ${{ steps.strings.outputs.build-output-dir }} \
         ${CXX_COMPILER_ARG} \
