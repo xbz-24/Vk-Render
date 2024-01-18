@@ -46,6 +46,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Print GCC version
+      if: matrix.os == 'ubuntu-latest' && (matrix.c_compiler == 'gcc' || matrix.cpp_compiler == 'g++')
+      run: gcc --version
+
+    - name: Print Clang version
+      if: matrix.os == 'ubuntu-latest' && (matrix.c_compiler == 'clang' || matrix.cpp_compiler == 'clang++')
+      run: clang --version
+
     - name: Install dependencies(Ubuntu)
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt-get install -y build-essential libvulkan-dev libglfw3-dev libglm-dev
