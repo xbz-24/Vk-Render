@@ -83,13 +83,17 @@ jobs:
       run: |
         CXX_COMPILER_ARG=""
         C_COMPILER_ARG=""
-        if [ ${{ runner.os }} = "Linux" ] && [ "${{ matrix.c_compiler }}" = "clang" ]; then
+        if [[ "${{ runner.os }}" == "Linux" && "${{ matrix.c_compiler }}" == "clang" ]]; then
           CXX_COMPILER_ARG="-DCMAKE_CXX_COMPILER=/usr/bin/clang++-16"
           C_COMPILER_ARG="-DCMAKE_C_COMPILER=/usr/bin/clang-16"
+        elif [[ "${{ runner.os }}" == "Windows" ]]; then
+          # For Windows, MSVC will be used automatically, no need to set compiler args
+          CXX_COMPILER_ARG=""
+          C_COMPILER_ARG=""
         fi
         cmake -B ${{ steps.strings.outputs.build-output-dir }} \
-        ${CXX_COMPILER_ARG} \
-        ${C_COMPILER_ARG} \
+        $CXX_COMPILER_ARG \
+        $C_COMPILER_ARG \
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
         -S ${{ github.workspace }}
 
