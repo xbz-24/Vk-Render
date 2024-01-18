@@ -47,6 +47,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Install vcpkg (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git
+        .\vcpkg\bootstrap-vcpkg.bat
+
+    - name: Install dependencies with vcpkg (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        .\vcpkg\vcpkg install glfw3
+        .\vcpkg\vcpkg install glm
+        .\vcpkg\vcpkg install vulkan
+
     - name: Install Clang 16 (Ubuntu)
       if: matrix.os == 'ubuntu-latest' && matrix.c_compiler == 'clang'
       run: |
@@ -67,7 +80,7 @@ jobs:
 
     - name: Install dependencies(Ubuntu)
       if: matrix.os == 'ubuntu-latest'
-      run: sudo apt-get install -y build-essential libvulkan-dev libglfw3-dev libglm-dev
+      run: sudo apt-get install -y build-essential libvulkan-dev libglfw3-dev libglm-dev pkg-config
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
@@ -83,13 +96,12 @@ jobs:
       run: |
         CXX_COMPILER_ARG=""
         C_COMPILER_ARG=""
+        VCPKG_TOOLCHAIN_FILE=""
         if [[ "${{ runner.os }}" == "Linux" && "${{ matrix.c_compiler }}" == "clang" ]]; then
           CXX_COMPILER_ARG="-DCMAKE_CXX_COMPILER=/usr/bin/clang++-16"
           C_COMPILER_ARG="-DCMAKE_C_COMPILER=/usr/bin/clang-16"
         elif [[ "${{ runner.os }}" == "Windows" ]]; then
-          # For Windows, MSVC will be used automatically, no need to set compiler args
-          CXX_COMPILER_ARG=""
-          C_COMPILER_ARG=""
+          VCPKG_TOOLCHAIN_FILE="-DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake"
         fi
         BUILD_DIR="${{ github.workspace }}/build"
         SOURCE_DIR="${{ github.workspace }}"
@@ -101,6 +113,7 @@ jobs:
         cmake -B "$BUILD_DIR" \
         $CXX_COMPILER_ARG \
         $C_COMPILER_ARG \
+        $VCPKG_TOOLCHAIN_FILE \
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
         -S "$SOURCE_DIR"
 
