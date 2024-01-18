@@ -47,6 +47,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Install vcpkg (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git
+        .\vcpkg\bootstrap-vcpkg.bat
+
+    - name: Install dependencies with vcpkg (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        .\vcpkg\vcpkg install glfw3
+        .\vcpkg\vcpkg install glm
+        .\vcpkg\vcpkg install vulkan
+
     - name: Install Clang 16 (Ubuntu)
       if: matrix.os == 'ubuntu-latest' && matrix.c_compiler == 'clang'
       run: |
@@ -88,7 +101,7 @@ jobs:
           C_COMPILER_ARG="-DCMAKE_C_COMPILER=/usr/bin/clang-16"
         elif [[ "${{ runner.os }}" == "Windows" ]]; then
           # For Windows, MSVC will be used automatically, no need to set compiler args
-          CXX_COMPILER_ARG=""
+          CXX_COMPILER_ARG="" 
           C_COMPILER_ARG=""
         fi
         BUILD_DIR="${{ github.workspace }}/build"
