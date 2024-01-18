@@ -3,10 +3,12 @@ project(3DLoaderVk)
 set(CMAKE_CXX_STANDARD 23)
 set(GLFW_BUILD_STATIC_LIBS ON)
 
-find_package(PkgConfig REQUIRED)
 find_package(Vulkan QUIET)
 find_package(GLFW3 QUIET)
 find_package(GLM QUIET)
+if(UNIX)
+    find_package(PkgConfig REQUIRED)
+endif()
 
 if(Vulkan_FOUND)
     message(STATUS "Using Vulkan found by find_package")
