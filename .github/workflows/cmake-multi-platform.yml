@@ -91,11 +91,18 @@ jobs:
           CXX_COMPILER_ARG=""
           C_COMPILER_ARG=""
         fi
-        cmake -B ${{ steps.strings.outputs.build-output-dir }} \
+        BUILD_DIR="${{ github.workspace }}/build"
+        SOURCE_DIR="${{ github.workspace }}"
+        if [[ "${{ runner.os }}" == "Windows" ]]; then
+          # Convert Windows-style paths to Unix-style paths for Git Bash
+          BUILD_DIR=$(echo "$BUILD_DIR" | sed -e 's/\\/\//g' -e 's/://')
+          SOURCE_DIR=$(echo "$SOURCE_DIR" | sed -e 's/\\/\//g' -e 's/://')
+        fi
+        cmake -B "$BUILD_DIR" \
         $CXX_COMPILER_ARG \
         $C_COMPILER_ARG \
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-        -S ${{ github.workspace }}
+        -S "$SOURCE_DIR"
 
     - name: Build
       # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
