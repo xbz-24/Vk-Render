@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(3DLoaderVk)
+project(vkloader)
 set(CMAKE_CXX_STANDARD 23)
 set(GLFW_BUILD_STATIC_LIBS ON)
 include(FindPkgConfig)
@@ -74,7 +74,7 @@ elseif (CMAKE_BUILD_TYPE STREQUAL "Release")
 endif()
 
 add_executable(
-    3DLoaderVk
+    main
     main.cpp
     engine.cpp
     engine.hpp
@@ -113,9 +113,11 @@ add_executable(
     logging.cpp
         quad_mesh.cpp
         quad_mesh.hpp
+        CubeMesh.cpp
+        CubeMesh.hpp
 )
 target_link_libraries(
-    3DLoaderVk
+    main
     ${VULKAN_LIBS}
     ${GLFW_LIBS}
 )

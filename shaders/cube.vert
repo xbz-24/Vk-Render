@@ -12,5 +12,5 @@ layout(set = 0, binding = 0) uniform UBO {
 
 void main() {
     gl_Position = ubo.proj * ubo.view * ubo.model * vec4(inPosition, 1.0);
-    fragColor = inColor; // Pass color to the fragment shader
+    fragColor = inColor;
 }
