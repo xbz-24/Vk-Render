@@ -239,14 +239,18 @@ void Engine::RecordDrawCommands(vk::CommandBuffer commandBuffer, uint32_t imageI
     commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics , pipeline_);
 
     PrepareScene(commandBuffer);
-
+    int index = 0;
     for(glm::vec3 position : scene->triangle_positions_)
     {
         glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
-        vkutil::ObjectData objectdata{};
+        if(index == 1){
+            model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        }
+        vkutil::ObjectData objectdata{ };
         objectdata.model = model;
         commandBuffer.pushConstants(pipeline_layout_, vk::ShaderStageFlagBits::eVertex, 0, sizeof(objectdata), &objectdata);
         commandBuffer.draw(4, 1, 0, 0);
+        index++;
     }
     commandBuffer.endRenderPass();
     try
@@ -394,6 +398,5 @@ Engine::~Engine()
         instance_.destroyDebugUtilsMessengerEXT(debug_messenger_, nullptr, dldi_);
     }
     instance_.destroy();
-    // terminate glfw
     glfwTerminate();
 }
