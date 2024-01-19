@@ -6,6 +6,7 @@
 
 QuadMesh::QuadMesh(vk::Device logical_device, vk::PhysicalDevice physical_device)
 {
+    this->logical_device_ = logical_device;
     std::vector<float> vertices = {
 //eTriangleStrip
             -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
