@@ -12,7 +12,7 @@ namespace vkutil
         std::optional<uint32_t> graphicsFamily;
         std::optional<uint32_t> presentFamily;
 
-        bool isComplete() const;
+        [[nodiscard]] bool isComplete() const;
     };
 
     QueueFamilyIndices findQueueFamilies(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug);

@@ -12,4 +12,6 @@ Scene::Scene()
             triangle_positions_.push_back(glm::vec3(x, y, 0.0f));
         }
     }
+//triangle_positions_.emplace_back(0.0f, 0.0f, 0.0f);
+
 }

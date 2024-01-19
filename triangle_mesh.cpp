@@ -8,11 +8,11 @@ TriangleMesh::TriangleMesh(vk::Device logical_device, vk::PhysicalDevice physica
 {
     this->logical_device_ = logical_device;
     std::vector<float> vertices = {
-            {
-                0.0f, -0.05f, 0.0f, 1.0f, 0.0f,
-                0.05f, 0.05f, 0.0f, 1.0f, 0.0f,
-                -0.05f, 0.05f, 0.0f, 1.0f, 0.0f
-            }
+        {
+            0.0f, -0.05f, 0.0f, 1.0f, 0.0f,
+            0.05f, 0.05f, 0.0f, 1.0f, 0.0f,
+            -0.05f, 0.05f, 0.0f, 1.0f, 0.0f
+        }
     };
     BufferInput inputChunk;
     inputChunk.logical_device = logical_device;
