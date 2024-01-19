@@ -125,7 +125,8 @@ namespace vkinit
         //Input Assembly
         vk::PipelineInputAssemblyStateCreateInfo inputAssemblyInfo = { };
         inputAssemblyInfo.flags = vk::PipelineInputAssemblyStateCreateFlags();
-        inputAssemblyInfo.topology = vk::PrimitiveTopology::eTriangleList;
+//        inputAssemblyInfo.topology = vk::PrimitiveTopology::eTriangleList;
+        inputAssemblyInfo.topology = vk::PrimitiveTopology::eTriangleStrip;
         pipelineInfo.pInputAssemblyState = &inputAssemblyInfo;
 
         //vertex shader

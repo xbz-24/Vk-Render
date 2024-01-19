@@ -10,6 +10,7 @@
 #include "frame.hpp"
 #include "scene.hpp"
 #include "triangle_mesh.hpp"
+#include "quad_mesh.hpp"
 /**
  * @class Engine
  * @brief The Engine class initializes and manages the core components of a Vulkan-based graphics application.
@@ -55,10 +56,10 @@ private:
 
     //device_-related variables
     vk::PhysicalDevice physical_device_ {nullptr };
-    vk::Device device_ {nullptr };
-    vk::Queue graphics_queue_ {nullptr };
-    vk::Queue present_queue_ {nullptr};
-    vk::SwapchainKHR swapchain_ {nullptr };
+    vk::Device device_ { nullptr };
+    vk::Queue graphics_queue_ { nullptr };
+    vk::Queue present_queue_ { nullptr};
+    vk::SwapchainKHR swapchain_ { nullptr };
     std::vector<vkutil::SwapChainFrame> swap_chain_frames_;
     vk::Format swapchain_format_;
     vk::Extent2D swapchain_extent_;
@@ -78,6 +79,7 @@ private:
 
     //asset pointers
     TriangleMesh* triangle_mesh_;
+    QuadMesh* quad_mesh_;
 
     //instance_ setup
     void MakeInstance();

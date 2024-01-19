@@ -1,6 +1,3 @@
-//
-// Created by daily on 27-12-23.
-//
 /**
  * @file frame.hpp
  * @brief Defines the SwapChainFrame structure for managing Vulkan swap chain frames.

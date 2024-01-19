@@ -16,6 +16,7 @@
  * @param debugMode
  */
 #include "engine.hpp"
+
 #include "instance.hpp"
 #include "logging.hpp"
 #include "device.hpp"
@@ -185,12 +186,16 @@ void Engine::FinalizeSetup()
 
 void Engine::MakeAssets()
 {
-    triangle_mesh_ = new TriangleMesh(device_, physical_device_);
+//    triangle_mesh_ = new TriangleMesh(device_, physical_device_);
+    quad_mesh_ = new QuadMesh(device_, physical_device_);
 }
 
 void Engine::PrepareScene(vk::CommandBuffer commandBuffer)
 {
-    vk::Buffer vertexBuffers[] = {triangle_mesh_ -> vertex_buffer.buffer };
+    vk::Buffer vertexBuffers[] = {
+//            triangle_mesh_ -> vertex_buffer.buffer,
+            quad_mesh_ -> vertex_buffer.buffer
+    };
     vk::DeviceSize offsets[] = { 0 };
     commandBuffer.bindVertexBuffers(0, 1, vertexBuffers, offsets);
 }
@@ -241,7 +246,7 @@ void Engine::RecordDrawCommands(vk::CommandBuffer commandBuffer, uint32_t imageI
         vkutil::ObjectData objectdata{};
         objectdata.model = model;
         commandBuffer.pushConstants(pipeline_layout_, vk::ShaderStageFlagBits::eVertex, 0, sizeof(objectdata), &objectdata);
-        commandBuffer.draw(3, 1, 0, 0);
+        commandBuffer.draw(4, 1, 0, 0);
     }
     commandBuffer.endRenderPass();
     try
@@ -380,7 +385,8 @@ Engine::~Engine()
     device_.destroyPipelineLayout(pipeline_layout_);
     device_.destroyRenderPass(render_pass_);
     CleanupSwapchain();
-    delete triangle_mesh_;
+//    delete triangle_mesh_;
+    delete quad_mesh_;
     device_.destroy();
     instance_.destroySurfaceKHR(surface_);
     if(debug_mode_)

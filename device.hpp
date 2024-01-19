@@ -39,7 +39,7 @@ namespace vkinit
         const std::vector<const char*>& requested_extensions,
         const bool& debug
     );
-    bool IsSuitable(const vk::PhysicalDevice& device, const bool debug);
+    bool IsSuitable(const vk::PhysicalDevice& device, bool debug);
     vk::PhysicalDevice ChoosePhysicalDevice(vk::Instance& instance, bool debug);
     vk::Device CreateLogicalDevice(vk::PhysicalDevice physical_device, vk::SurfaceKHR surface, bool debug);
     std::array<vk::Queue, 2> GetQueues(vk::PhysicalDevice physical_device, vk::Device device, vk::SurfaceKHR surface, bool debug);

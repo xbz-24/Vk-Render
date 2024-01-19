@@ -88,7 +88,7 @@ add_executable(
     swapchain.hpp
     queue_families.cpp
     queue_families.hpp
-    frame.cpp frame.hpp
+        frame.hpp
     shaders.cpp
     shaders.hpp
     pipeline.cpp
@@ -101,8 +101,7 @@ add_executable(
     sync.hpp
     app.cpp
     app.hpp
-    render_structs.cpp
-    render_structs.hpp
+        render_structs.hpp
     scene.cpp
     scene.hpp
     mesh.cpp
@@ -112,6 +111,8 @@ add_executable(
     triangle_mesh.cpp
     triangle_mesh.hpp
     logging.cpp
+        quad_mesh.cpp
+        quad_mesh.hpp
 )
 target_link_libraries(
     3DLoaderVk
