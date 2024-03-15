@@ -79,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EA410082BA4918900C354EE /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
 		0FB7B9D5FEF6462A934DEEAC /* instance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = instance.cpp; sourceTree = SOURCE_ROOT; };
 		16D03545EF1944C2B86BC619 /* shaders.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = shaders.cpp; sourceTree = SOURCE_ROOT; };
 		1F91F05D2F7546FA86C34201 /* triangle_mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = triangle_mesh.hpp; sourceTree = SOURCE_ROOT; };
@@ -239,6 +240,7 @@
 				BD531F5158BB44EEBBA8FA72 /* shaders.hpp */,
 				E2468E46ACA548B2B30AB21A /* swapchain.hpp */,
 				BAF8F007CD1A4EB9A68D5922 /* sync.hpp */,
+				0EA410082BA4918900C354EE /* shaders */,
 				1F91F05D2F7546FA86C34201 /* triangle_mesh.hpp */,
 			);
 			name = "Header Files";

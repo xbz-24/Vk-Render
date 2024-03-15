@@ -4,6 +4,9 @@
  * @date Created by Renato on 27-12-23.
  */
 #include "device.hpp"
+#ifndef VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME
+#define VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME "VK_KHR_portability_subset"
+#endif
 /**
  * @brief Checks if a Vulkan physical device_ supports the required extensions.
  *
@@ -148,9 +151,7 @@ vk::Device vkinit::CreateLogicalDevice(vk::PhysicalDevice physical_device, vk::S
         );
     }
 
-#ifndef VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME
-#define VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME "VK_KHR_portability_subset"
-#endif
+
     std::vector<const char*> deviceExtensions = {
             VK_KHR_SWAPCHAIN_EXTENSION_NAME,
             VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME

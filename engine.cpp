@@ -141,11 +141,21 @@ void Engine::MakePipeline()
 {
     vkinit::GraphicsPipelineInBundle specification = { };
     specification.device = device_;
-    std::string prefix;
-    prefix = "../../"; // only if using visual studio (windows only)
-    prefix = "Developer/Vk-Render";
-    specification.vertexFilepath = prefix + "/shaders/vertex.spv";
-    specification.fragmentFilepath = prefix + "/shaders/fragment.spv";
+    std::string vertexShaderPath, fragmentShaderPath;
+    try {
+        std::filesystem::path currentPath = std::filesystem::current_path();
+        std::cout << "Current Path: " << currentPath << std::endl;
+        std::string shaderBasePath = (currentPath / "Developer" / "Vk-Render" / "shaders/").string();
+        std::cout << "shaderBase Path: " << shaderBasePath << std::endl;
+        vertexShaderPath = shaderBasePath + "vertex.spv";
+        fragmentShaderPath = shaderBasePath + "fragment.spv";
+    } catch (const std::filesystem::filesystem_error& e) {
+        std::cerr << "Filesystem error: " << e.what() << '\n';
+    } catch (const std::exception& e) {
+        std::cerr << "General exception: " << e.what() << '\n';
+    }    
+    specification.vertexFilepath = vertexShaderPath;
+    specification.fragmentFilepath = fragmentShaderPath;
     specification.swapchainExtent = swapchain_extent_;
     specification.swapchainImageFormat = swapchain_format_;
     vkinit::GraphicsPipelineOutBundle output = vkinit::create_graphics_pipeline(specification, debug_mode_);

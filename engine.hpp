@@ -7,6 +7,7 @@
 #define INC_3DLOADERVK_ENGINE_HPP
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+#include <filesystem>
 #include "frame.hpp"
 #include "scene.hpp"
 #include "triangle_mesh.hpp"

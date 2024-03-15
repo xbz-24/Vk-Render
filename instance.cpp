@@ -4,6 +4,10 @@
  * @date Created by Renato on 27-12-23.
  */
 #include "instance.hpp"
+#ifndef VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME
+#define VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME "VK_KHR_portability_enumeration"
+#endif
+
 /**
  * @brief Checks if the specified extensions and layers are supported.
  *
