@@ -1,12 +1,10 @@
 /**
  * @file instance_.cpp
  * @brief Implements functions for Vulkan instance_ creation and validation.
- * @date Created by Renato on 27-12-23.
+ * @date Created on 27-12-23.
+ * @author Renato German Chavez Chicoma
  */
 #include "instance.hpp"
-#ifndef VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME
-#define VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME "VK_KHR_portability_enumeration"
-#endif
 
 /**
  * @brief Checks if the specified extensions and layers are supported.
@@ -190,7 +188,7 @@ vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
 
     std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
 
-    extensions.push_back(VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME);
+    extensions.push_back("VK_KHR_portability_enumeration");
     
     //In order to hook in a custom validation callback
     if (debug)

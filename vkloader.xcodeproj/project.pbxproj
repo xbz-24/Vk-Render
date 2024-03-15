@@ -9,20 +9,20 @@
 /* Begin PBXAggregateTarget section */
 		500D8A2A58D84C69877FD0D7 /* ALL_BUILD */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = C9BB54E092894442A22771B0 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildConfigurationList = 908C1FFF175047BABCA07132 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
 			buildPhases = (
 				E2DA7899E4012E40BB9B8DD8 /* Generate CMakeFiles/ALL_BUILD */,
 			);
 			dependencies = (
-				21B5983BFAE64B2A91FA467D /* PBXTargetDependency */,
-				1E3BEC95A3EA4165AE94C182 /* PBXTargetDependency */,
+				7CEA326EEC554FA88CE6DB95 /* PBXTargetDependency */,
+				367C9F0A46F4481ABD0649AA /* PBXTargetDependency */,
 			);
 			name = ALL_BUILD;
 			productName = ALL_BUILD;
 		};
 		CE8AE22C07AB45D38A3C65FB /* ZERO_CHECK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 7FAA2BD9F82A45289666C541 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildConfigurationList = 42EB88B0327E452BB4162A59 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
 			buildPhases = (
 				0797F8B8F13D0805298CA9C1 /* Generate CMakeFiles/ZERO_CHECK */,
 			);
@@ -34,96 +34,96 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		02D0EBDB9004457DA5A51BBD /* /Users/xbz/Developer/Vk-Render/scene.cpp */ = {isa = PBXBuildFile; fileRef = 1F6E322C051C4CB087E7F193 /* /Users/xbz/Developer/Vk-Render/scene.cpp */; };
-		035C256506D34FC0A3B8F76E /* /Users/xbz/Developer/Vk-Render/commands.hpp */ = {isa = PBXBuildFile; fileRef = D49FAE1C98FB4D0DB5A6C4CA /* /Users/xbz/Developer/Vk-Render/commands.hpp */; };
-		09A655A370DF4510893827F2 /* /Users/xbz/Developer/Vk-Render/config.hpp */ = {isa = PBXBuildFile; fileRef = 32F615323FF74682BC51806F /* /Users/xbz/Developer/Vk-Render/config.hpp */; };
-		0E407722A234428C9FF22788 /* /Users/xbz/Developer/Vk-Render/queue_families.hpp */ = {isa = PBXBuildFile; fileRef = 3ADC620577864346A74428EC /* /Users/xbz/Developer/Vk-Render/queue_families.hpp */; };
-		19ACCE4278CC40A1912A5D93 /* /Users/xbz/Developer/Vk-Render/memory.cpp */ = {isa = PBXBuildFile; fileRef = 81CCCDBF381C48A6A5FB6DF8 /* /Users/xbz/Developer/Vk-Render/memory.cpp */; };
-		21014C6D301D44CA87170EEB /* /Users/xbz/Developer/Vk-Render/scene.hpp */ = {isa = PBXBuildFile; fileRef = D31CF1E917C34022874787A6 /* /Users/xbz/Developer/Vk-Render/scene.hpp */; };
-		284026E58D8C48F29BB1CE3E /* /Users/xbz/Developer/Vk-Render/sync.hpp */ = {isa = PBXBuildFile; fileRef = 0E7657E31DC7499585515FCD /* /Users/xbz/Developer/Vk-Render/sync.hpp */; };
-		297FFFFEC8BC427E8A75FCBA /* /Users/xbz/Developer/Vk-Render/logging.hpp */ = {isa = PBXBuildFile; fileRef = 1C785CB5726F4D09BD86B3E3 /* /Users/xbz/Developer/Vk-Render/logging.hpp */; };
-		2A0078EF21D645D8A0AEA341 /* /Users/xbz/Developer/Vk-Render/instance.cpp */ = {isa = PBXBuildFile; fileRef = E8AD7D43BC004B878E8357C9 /* /Users/xbz/Developer/Vk-Render/instance.cpp */; };
-		35581082CF9C48378AE17E6D /* /Users/xbz/Developer/Vk-Render/triangle_mesh.hpp */ = {isa = PBXBuildFile; fileRef = 2B3B0D00732C47C8A9049B36 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.hpp */; };
-		460C654D50254E478958DF80 /* /Users/xbz/Developer/Vk-Render/swapchain.hpp */ = {isa = PBXBuildFile; fileRef = 7EE4A44A680245DCB005C1DB /* /Users/xbz/Developer/Vk-Render/swapchain.hpp */; };
-		473D76A20CA947AE817FA420 /* /Users/xbz/Developer/Vk-Render/device.cpp */ = {isa = PBXBuildFile; fileRef = DCE0C8278FF447B18DFA1699 /* /Users/xbz/Developer/Vk-Render/device.cpp */; };
-		5EEBA23B46964BD2996C9C59 /* /Users/xbz/Developer/Vk-Render/CubeMesh.hpp */ = {isa = PBXBuildFile; fileRef = F74CFB46171F4C78A1B06FE8 /* /Users/xbz/Developer/Vk-Render/CubeMesh.hpp */; };
-		668892ED02A3496CB6407DA2 /* /Users/xbz/Developer/Vk-Render/memory.hpp */ = {isa = PBXBuildFile; fileRef = C50A961C39EE4A02A0A7287A /* /Users/xbz/Developer/Vk-Render/memory.hpp */; };
-		6C48B0038AC146EB83D5ECC0 /* /Users/xbz/Developer/Vk-Render/render_structs.hpp */ = {isa = PBXBuildFile; fileRef = 6F48E0ADFEEA4EF28F890ACB /* /Users/xbz/Developer/Vk-Render/render_structs.hpp */; };
-		722B40A593994D0687BC025A /* /Users/xbz/Developer/Vk-Render/logging.cpp */ = {isa = PBXBuildFile; fileRef = 35D8F1B954894A07BD067C70 /* /Users/xbz/Developer/Vk-Render/logging.cpp */; };
-		82BD8FA57EB744B49048A4DA /* /Users/xbz/Developer/Vk-Render/engine.hpp */ = {isa = PBXBuildFile; fileRef = 5427C243402944E5BAD0B51F /* /Users/xbz/Developer/Vk-Render/engine.hpp */; };
-		860FD95C66FA4854AE3E9332 /* /Users/xbz/Developer/Vk-Render/mesh.cpp */ = {isa = PBXBuildFile; fileRef = B093F7096DEF4A5A994461C2 /* /Users/xbz/Developer/Vk-Render/mesh.cpp */; };
-		898125E7CD2D4F8A86C0F626 /* /Users/xbz/Developer/Vk-Render/pipeline.hpp */ = {isa = PBXBuildFile; fileRef = DE9DBEBD9ABC4F50B7EFE058 /* /Users/xbz/Developer/Vk-Render/pipeline.hpp */; };
-		9049E80F083D42058F155EDD /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */ = {isa = PBXBuildFile; fileRef = 9A4506A01B1D48DCA39CBCB7 /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */; };
-		A6D59826D99F434A85B28469 /* /Users/xbz/Developer/Vk-Render/main.cpp */ = {isa = PBXBuildFile; fileRef = 0F628C8EDD03444997E7DFD4 /* /Users/xbz/Developer/Vk-Render/main.cpp */; };
-		A88562050F044C7A836CBA02 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */ = {isa = PBXBuildFile; fileRef = 9BBB844129F147C69AFB53F2 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */; };
-		AA8CBE5791154287B6CE6060 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */ = {isa = PBXBuildFile; fileRef = 79A3490B15404778BCA3F30E /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */; };
-		B13EDE1C313D4E6FBF1046F5 /* /Users/xbz/Developer/Vk-Render/device.hpp */ = {isa = PBXBuildFile; fileRef = AD7F332162C44D55A1C49413 /* /Users/xbz/Developer/Vk-Render/device.hpp */; };
-		B180166AD0AE4897842BFA47 /* /Users/xbz/Developer/Vk-Render/commands.cpp */ = {isa = PBXBuildFile; fileRef = 8D8EF873EB9B46819411EECC /* /Users/xbz/Developer/Vk-Render/commands.cpp */; };
-		B36646162A664FA0B041E653 /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */ = {isa = PBXBuildFile; fileRef = 68952A4290D747089F03844F /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */; };
-		B3BA98A00AB94559B8274305 /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */ = {isa = PBXBuildFile; fileRef = 959605D82A084AD1AD2A7AD9 /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */; };
-		B5D6FE29627B445FA849D1CA /* /Users/xbz/Developer/Vk-Render/app.cpp */ = {isa = PBXBuildFile; fileRef = 8152A463EB224BCD854A9649 /* /Users/xbz/Developer/Vk-Render/app.cpp */; };
-		BCC0E3CF1BA349E7AE475DCE /* /Users/xbz/Developer/Vk-Render/app.hpp */ = {isa = PBXBuildFile; fileRef = 6A41F8DD47544574A8D0C035 /* /Users/xbz/Developer/Vk-Render/app.hpp */; };
-		BF28733B1D4B4D198931BF52 /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */ = {isa = PBXBuildFile; fileRef = 003E445A9752429F9888762D /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */; };
-		C4AD692CEB2D4BC4BF038C4F /* /Users/xbz/Developer/Vk-Render/sync.cpp */ = {isa = PBXBuildFile; fileRef = 01CC208352704AE3A979FE10 /* /Users/xbz/Developer/Vk-Render/sync.cpp */; };
-		C995A75BE58A475EA04B8395 /* /Users/xbz/Developer/Vk-Render/instance.hpp */ = {isa = PBXBuildFile; fileRef = 75DE70A3ABFE4565BE83D5CF /* /Users/xbz/Developer/Vk-Render/instance.hpp */; };
-		CAF9AA35114C4722BEF945D6 /* /Users/xbz/Developer/Vk-Render/framebuffer.hpp */ = {isa = PBXBuildFile; fileRef = 36DE2E3DDAFF4470A1820DBE /* /Users/xbz/Developer/Vk-Render/framebuffer.hpp */; };
-		CE7A79294753476FA97C1BC7 /* /Users/xbz/Developer/Vk-Render/shaders.hpp */ = {isa = PBXBuildFile; fileRef = B226B0B4401F482483729105 /* /Users/xbz/Developer/Vk-Render/shaders.hpp */; };
-		D0AB7095916A4C3EA26155B0 /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = AD498AA716D34F1B8F2F3FD5 /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */; };
-		DE9C1A9037DA49CDA0EBD96B /* /Users/xbz/Developer/Vk-Render/mesh.hpp */ = {isa = PBXBuildFile; fileRef = 3C61A546B7EB4B43ACD603DA /* /Users/xbz/Developer/Vk-Render/mesh.hpp */; };
-		E8503908BBC04E9791F02800 /* /Users/xbz/Developer/Vk-Render/frame.hpp */ = {isa = PBXBuildFile; fileRef = F4E51BC66D1A4DA08AC8401F /* /Users/xbz/Developer/Vk-Render/frame.hpp */; };
-		EC240A502173436FB9886857 /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */ = {isa = PBXBuildFile; fileRef = 2369D8E9E77348F6840F37FE /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */; };
-		ECEAFAD48FE0464AA844EC14 /* /Users/xbz/Developer/Vk-Render/shaders.cpp */ = {isa = PBXBuildFile; fileRef = FF3F0034958645B89CEFE4D9 /* /Users/xbz/Developer/Vk-Render/shaders.cpp */; };
-		F1F25CF2B4884A3B912DABA1 /* /Users/xbz/Developer/Vk-Render/engine.cpp */ = {isa = PBXBuildFile; fileRef = 024D14B7AFC2471D8A73A0DC /* /Users/xbz/Developer/Vk-Render/engine.cpp */; };
-		FF11DBA098D047A9967ECDF2 /* /Users/xbz/Developer/Vk-Render/quad_mesh.hpp */ = {isa = PBXBuildFile; fileRef = 19BA478F751A4094B040DC46 /* /Users/xbz/Developer/Vk-Render/quad_mesh.hpp */; };
+		06EC1E3BAE0144BC9E5E1962 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */ = {isa = PBXBuildFile; fileRef = 5B15DEB8C09C478EA0A13DDA /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */; };
+		0D8B731BCF41410F9078FE42 /* /Users/xbz/Developer/Vk-Render/sync.hpp */ = {isa = PBXBuildFile; fileRef = 1BAD95CB6FBC44869A457487 /* /Users/xbz/Developer/Vk-Render/sync.hpp */; };
+		0ED0CFB3C7104670A5CC4A6D /* /Users/xbz/Developer/Vk-Render/CubeMesh.hpp */ = {isa = PBXBuildFile; fileRef = F3C53B2060C74DFA8BBF4D79 /* /Users/xbz/Developer/Vk-Render/CubeMesh.hpp */; };
+		159547CE1C014962855061F9 /* /Users/xbz/Developer/Vk-Render/main.cpp */ = {isa = PBXBuildFile; fileRef = 19113473C0074481A86B209C /* /Users/xbz/Developer/Vk-Render/main.cpp */; };
+		1A44FD4B02B3447BA251EA7E /* /Users/xbz/Developer/Vk-Render/engine.cpp */ = {isa = PBXBuildFile; fileRef = 6C9438454DF2436A8B80CA7A /* /Users/xbz/Developer/Vk-Render/engine.cpp */; };
+		1BD9350DA35244EDACC12ED3 /* /Users/xbz/Developer/Vk-Render/scene.hpp */ = {isa = PBXBuildFile; fileRef = 8E0D4167B5114890ACB3F5BF /* /Users/xbz/Developer/Vk-Render/scene.hpp */; };
+		2E52EA6FBD6B4CF8BE62545A /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */ = {isa = PBXBuildFile; fileRef = C31C05545DFE4D918FE0DB1A /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */; };
+		35CAA5E567B5469583607409 /* /Users/xbz/Developer/Vk-Render/device.hpp */ = {isa = PBXBuildFile; fileRef = A762BAD7CC644351A8605F83 /* /Users/xbz/Developer/Vk-Render/device.hpp */; };
+		3A48C31743F847B1A1F7193C /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */ = {isa = PBXBuildFile; fileRef = 3B51EB3CC6B341F3AF5D988E /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */; };
+		3EA462A2741D4C6D8E668385 /* /Users/xbz/Developer/Vk-Render/instance.hpp */ = {isa = PBXBuildFile; fileRef = DE050C00B27F43A58D4732F6 /* /Users/xbz/Developer/Vk-Render/instance.hpp */; };
+		3F523FB5D8E84685AD51ED00 /* /Users/xbz/Developer/Vk-Render/scene.cpp */ = {isa = PBXBuildFile; fileRef = CFF651CBD73F4E40B50DF76D /* /Users/xbz/Developer/Vk-Render/scene.cpp */; };
+		4BEF85E3681541DD9853730A /* /Users/xbz/Developer/Vk-Render/framebuffer.hpp */ = {isa = PBXBuildFile; fileRef = 2CAE307D80E54AB18C91D9A9 /* /Users/xbz/Developer/Vk-Render/framebuffer.hpp */; };
+		50725DCD0D4E4FC69B5BA403 /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */ = {isa = PBXBuildFile; fileRef = C70BAA9F10AC4F6784B409CD /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */; };
+		53E25E82C1764DED9253BF91 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */ = {isa = PBXBuildFile; fileRef = 3A1A55C88D164717BA13D2B9 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */; };
+		61E426FE8EDC4B3399BAA5BA /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 63658AA937A640B28A8393C7 /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */; };
+		63E8642E4B3B4659B34FBE04 /* /Users/xbz/Developer/Vk-Render/sync.cpp */ = {isa = PBXBuildFile; fileRef = EB39054AA67A4FA9A244E641 /* /Users/xbz/Developer/Vk-Render/sync.cpp */; };
+		6BA22671E3934FD99D08596D /* /Users/xbz/Developer/Vk-Render/swapchain.hpp */ = {isa = PBXBuildFile; fileRef = E0D68B93128D4934B50434B1 /* /Users/xbz/Developer/Vk-Render/swapchain.hpp */; };
+		70A2B5120DA04EFA929E2CA7 /* /Users/xbz/Developer/Vk-Render/frame.hpp */ = {isa = PBXBuildFile; fileRef = B8AD78D59B714758809AE2F2 /* /Users/xbz/Developer/Vk-Render/frame.hpp */; };
+		7490A39359EA477E9695E0AA /* /Users/xbz/Developer/Vk-Render/engine.hpp */ = {isa = PBXBuildFile; fileRef = 0BE269C13EDD4BC5A606DA50 /* /Users/xbz/Developer/Vk-Render/engine.hpp */; };
+		7579F12017C246DEBBCA7A9A /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */ = {isa = PBXBuildFile; fileRef = C096BB7818D14985B989E3CE /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */; };
+		7FBE95987ADB4CEFB2D3202D /* /Users/xbz/Developer/Vk-Render/instance.cpp */ = {isa = PBXBuildFile; fileRef = 4634D22CDE6646049BB398C0 /* /Users/xbz/Developer/Vk-Render/instance.cpp */; };
+		87BC9956F5B94CED9FF86C4D /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */ = {isa = PBXBuildFile; fileRef = 2C2738419FB34C1E80DB3590 /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */; };
+		8AB50ED4BBE6491782D89401 /* /Users/xbz/Developer/Vk-Render/memory.cpp */ = {isa = PBXBuildFile; fileRef = CAF391A8DAA24E2692C42B89 /* /Users/xbz/Developer/Vk-Render/memory.cpp */; };
+		91EDB47C59BF406CB993D1D2 /* /Users/xbz/Developer/Vk-Render/render_structs.hpp */ = {isa = PBXBuildFile; fileRef = AE9FEA6551D846E59C114F77 /* /Users/xbz/Developer/Vk-Render/render_structs.hpp */; };
+		970C0015BE6843F9831CDFD2 /* /Users/xbz/Developer/Vk-Render/queue_families.hpp */ = {isa = PBXBuildFile; fileRef = 35522DD8638E4860AA24A222 /* /Users/xbz/Developer/Vk-Render/queue_families.hpp */; };
+		9B9DB7F644794A508A9E43AA /* /Users/xbz/Developer/Vk-Render/shaders.hpp */ = {isa = PBXBuildFile; fileRef = 1459B5FBFDC549BF864DA609 /* /Users/xbz/Developer/Vk-Render/shaders.hpp */; };
+		B0BB4E3AADA94B32BE821986 /* /Users/xbz/Developer/Vk-Render/app.hpp */ = {isa = PBXBuildFile; fileRef = 86613FE6C34C4F6D9B34FA8B /* /Users/xbz/Developer/Vk-Render/app.hpp */; };
+		B1C4DA4E6C0045A394B715F5 /* /Users/xbz/Developer/Vk-Render/app.cpp */ = {isa = PBXBuildFile; fileRef = 43AD73D5B1A34B499341F2EE /* /Users/xbz/Developer/Vk-Render/app.cpp */; };
+		C7B90E368E1347578B676EEE /* /Users/xbz/Developer/Vk-Render/triangle_mesh.hpp */ = {isa = PBXBuildFile; fileRef = 23B02E4554414757BA9C4E96 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.hpp */; };
+		D8614412114748B4A760E30D /* /Users/xbz/Developer/Vk-Render/pipeline.hpp */ = {isa = PBXBuildFile; fileRef = 52EBBB46F0FC411C97CC7D7B /* /Users/xbz/Developer/Vk-Render/pipeline.hpp */; };
+		D9961E4250C94A8DA6C71166 /* /Users/xbz/Developer/Vk-Render/logging.cpp */ = {isa = PBXBuildFile; fileRef = FC601D2E185B4F37A36CE902 /* /Users/xbz/Developer/Vk-Render/logging.cpp */; };
+		DAEC21DD421348709EA1ACE0 /* /Users/xbz/Developer/Vk-Render/commands.hpp */ = {isa = PBXBuildFile; fileRef = 750F9DCC61D64DADAC284FD5 /* /Users/xbz/Developer/Vk-Render/commands.hpp */; };
+		DE9112829E4848728FF7E162 /* /Users/xbz/Developer/Vk-Render/commands.cpp */ = {isa = PBXBuildFile; fileRef = 5B3B9FA023E943FD91241A9C /* /Users/xbz/Developer/Vk-Render/commands.cpp */; };
+		E151690910FB4ADA8F5836A2 /* /Users/xbz/Developer/Vk-Render/mesh.cpp */ = {isa = PBXBuildFile; fileRef = 08BAF14AB1F1482DAD98D80F /* /Users/xbz/Developer/Vk-Render/mesh.cpp */; };
+		E614631CC3C34762B0CB70D9 /* /Users/xbz/Developer/Vk-Render/device.cpp */ = {isa = PBXBuildFile; fileRef = 9997004CA31545C9A6466FFA /* /Users/xbz/Developer/Vk-Render/device.cpp */; };
+		E649A243024C4E24BB3501B3 /* /Users/xbz/Developer/Vk-Render/quad_mesh.hpp */ = {isa = PBXBuildFile; fileRef = 8456102C3772401390CC3FC1 /* /Users/xbz/Developer/Vk-Render/quad_mesh.hpp */; };
+		E7C7ECE2E1AA4AB6B7A8EF88 /* /Users/xbz/Developer/Vk-Render/memory.hpp */ = {isa = PBXBuildFile; fileRef = B19027782E574F779899F670 /* /Users/xbz/Developer/Vk-Render/memory.hpp */; };
+		F48AF3FF45A74EF696FFC3E2 /* /Users/xbz/Developer/Vk-Render/mesh.hpp */ = {isa = PBXBuildFile; fileRef = 4CDF67C8C4D14F3D882EFF24 /* /Users/xbz/Developer/Vk-Render/mesh.hpp */; };
+		F7C40989803F48F3A99BA482 /* /Users/xbz/Developer/Vk-Render/logging.hpp */ = {isa = PBXBuildFile; fileRef = F4304802680F4A06A63A7127 /* /Users/xbz/Developer/Vk-Render/logging.hpp */; };
+		FB3512B85C914CEBB2031076 /* /Users/xbz/Developer/Vk-Render/shaders.cpp */ = {isa = PBXBuildFile; fileRef = 03B2E747C1CB49B49E6EBE0D /* /Users/xbz/Developer/Vk-Render/shaders.cpp */; };
+		FB89CD34A3F6405A8FCAF78C /* /Users/xbz/Developer/Vk-Render/config.hpp */ = {isa = PBXBuildFile; fileRef = 64918FFDB6A241BEB0E5F463 /* /Users/xbz/Developer/Vk-Render/config.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
-		06B35E88508745A1B9D9D66A /* RelWithDebInfo */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = RelWithDebInfo;
-		};
-		07A854C1F91943B692D1885A /* Debug */ = {
+		2F34D4F45619448EB1EF7A92 /* Debug */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = Debug;
 		};
-		6C0FFFFB43854B3CB7B2215C /* Release */ = {
+		595EB437280049CCBEBA6D2F /* Release */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = Release;
 		};
-		D98A27D6F2F442BF97488AE9 /* MinSizeRel */ = {
+		842E7227A31A43649E1E3CA1 /* MinSizeRel */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = MinSizeRel;
 		};
+		B54499FFB797494EBA6BCD15 /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
-		2DB2B76815AF47B981A12FD1 /* PBXContainerItemProxy */ = {
+		04BABD954E414AFCA33BA8D2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 459A1D90C19B40D9B634782D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CE8AE22C07AB45D38A3C65FB;
 			remoteInfo = ZERO_CHECK;
 		};
-		A3EA2F6B4CC044728A29E9B7 /* PBXContainerItemProxy */ = {
+		62BDE1F3753F4010B3077F62 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 459A1D90C19B40D9B634782D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CE8AE22C07AB45D38A3C65FB;
 			remoteInfo = ZERO_CHECK;
 		};
-		FCB6787A82BB4814834F5964 /* PBXContainerItemProxy */ = {
+		A34EE1A016D846B084CF892B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 459A1D90C19B40D9B634782D /* Project object */;
 			proxyType = 1;
@@ -133,53 +133,53 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		003E445A9752429F9888762D /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = queue_families.cpp; path = queue_families.cpp; sourceTree = SOURCE_ROOT; };
-		01CC208352704AE3A979FE10 /* /Users/xbz/Developer/Vk-Render/sync.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = sync.cpp; path = sync.cpp; sourceTree = SOURCE_ROOT; };
-		024D14B7AFC2471D8A73A0DC /* /Users/xbz/Developer/Vk-Render/engine.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = engine.cpp; path = engine.cpp; sourceTree = SOURCE_ROOT; };
-		0E7657E31DC7499585515FCD /* /Users/xbz/Developer/Vk-Render/sync.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = sync.hpp; path = sync.hpp; sourceTree = SOURCE_ROOT; };
-		0F628C8EDD03444997E7DFD4 /* /Users/xbz/Developer/Vk-Render/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
-		19BA478F751A4094B040DC46 /* /Users/xbz/Developer/Vk-Render/quad_mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = quad_mesh.hpp; path = quad_mesh.hpp; sourceTree = SOURCE_ROOT; };
-		1C785CB5726F4D09BD86B3E3 /* /Users/xbz/Developer/Vk-Render/logging.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = logging.hpp; path = logging.hpp; sourceTree = SOURCE_ROOT; };
-		1F6E322C051C4CB087E7F193 /* /Users/xbz/Developer/Vk-Render/scene.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = scene.cpp; path = scene.cpp; sourceTree = SOURCE_ROOT; };
-		2369D8E9E77348F6840F37FE /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = swapchain.cpp; path = swapchain.cpp; sourceTree = SOURCE_ROOT; };
-		2B3B0D00732C47C8A9049B36 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = triangle_mesh.hpp; path = triangle_mesh.hpp; sourceTree = SOURCE_ROOT; };
-		32F615323FF74682BC51806F /* /Users/xbz/Developer/Vk-Render/config.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = config.hpp; path = config.hpp; sourceTree = SOURCE_ROOT; };
-		35D8F1B954894A07BD067C70 /* /Users/xbz/Developer/Vk-Render/logging.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = logging.cpp; path = logging.cpp; sourceTree = SOURCE_ROOT; };
-		36DE2E3DDAFF4470A1820DBE /* /Users/xbz/Developer/Vk-Render/framebuffer.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = framebuffer.hpp; path = framebuffer.hpp; sourceTree = SOURCE_ROOT; };
-		3ADC620577864346A74428EC /* /Users/xbz/Developer/Vk-Render/queue_families.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = queue_families.hpp; path = queue_families.hpp; sourceTree = SOURCE_ROOT; };
-		3C61A546B7EB4B43ACD603DA /* /Users/xbz/Developer/Vk-Render/mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = mesh.hpp; path = mesh.hpp; sourceTree = SOURCE_ROOT; };
-		5427C243402944E5BAD0B51F /* /Users/xbz/Developer/Vk-Render/engine.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = engine.hpp; path = engine.hpp; sourceTree = SOURCE_ROOT; };
-		68952A4290D747089F03844F /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = quad_mesh.cpp; path = quad_mesh.cpp; sourceTree = SOURCE_ROOT; };
-		6A41F8DD47544574A8D0C035 /* /Users/xbz/Developer/Vk-Render/app.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = app.hpp; path = app.hpp; sourceTree = SOURCE_ROOT; };
-		6F48E0ADFEEA4EF28F890ACB /* /Users/xbz/Developer/Vk-Render/render_structs.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = render_structs.hpp; path = render_structs.hpp; sourceTree = SOURCE_ROOT; };
-		75DE70A3ABFE4565BE83D5CF /* /Users/xbz/Developer/Vk-Render/instance.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = instance.hpp; path = instance.hpp; sourceTree = SOURCE_ROOT; };
-		79A3490B15404778BCA3F30E /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = triangle_mesh.cpp; path = triangle_mesh.cpp; sourceTree = SOURCE_ROOT; };
-		7EE4A44A680245DCB005C1DB /* /Users/xbz/Developer/Vk-Render/swapchain.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = swapchain.hpp; path = swapchain.hpp; sourceTree = SOURCE_ROOT; };
-		8152A463EB224BCD854A9649 /* /Users/xbz/Developer/Vk-Render/app.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = app.cpp; path = app.cpp; sourceTree = SOURCE_ROOT; };
-		81CCCDBF381C48A6A5FB6DF8 /* /Users/xbz/Developer/Vk-Render/memory.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = memory.cpp; path = memory.cpp; sourceTree = SOURCE_ROOT; };
-		8D8EF873EB9B46819411EECC /* /Users/xbz/Developer/Vk-Render/commands.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = commands.cpp; path = commands.cpp; sourceTree = SOURCE_ROOT; };
-		959605D82A084AD1AD2A7AD9 /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = pipeline.cpp; path = pipeline.cpp; sourceTree = SOURCE_ROOT; };
-		9A4506A01B1D48DCA39CBCB7 /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = framebuffer.cpp; path = framebuffer.cpp; sourceTree = SOURCE_ROOT; };
-		9BBB844129F147C69AFB53F2 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CubeMesh.cpp; path = CubeMesh.cpp; sourceTree = SOURCE_ROOT; };
-		AD498AA716D34F1B8F2F3FD5 /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		AD7F332162C44D55A1C49413 /* /Users/xbz/Developer/Vk-Render/device.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = device.hpp; path = device.hpp; sourceTree = SOURCE_ROOT; };
-		B093F7096DEF4A5A994461C2 /* /Users/xbz/Developer/Vk-Render/mesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = mesh.cpp; path = mesh.cpp; sourceTree = SOURCE_ROOT; };
-		B226B0B4401F482483729105 /* /Users/xbz/Developer/Vk-Render/shaders.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = shaders.hpp; path = shaders.hpp; sourceTree = SOURCE_ROOT; };
-		B590153656184F7A86B9433E /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		C50A961C39EE4A02A0A7287A /* /Users/xbz/Developer/Vk-Render/memory.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = memory.hpp; path = memory.hpp; sourceTree = SOURCE_ROOT; };
-		CA91CDF8EFA14576A9AC489F /* main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = main; sourceTree = BUILT_PRODUCTS_DIR; };
-		D31CF1E917C34022874787A6 /* /Users/xbz/Developer/Vk-Render/scene.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = scene.hpp; path = scene.hpp; sourceTree = SOURCE_ROOT; };
-		D49FAE1C98FB4D0DB5A6C4CA /* /Users/xbz/Developer/Vk-Render/commands.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = commands.hpp; path = commands.hpp; sourceTree = SOURCE_ROOT; };
-		DCE0C8278FF447B18DFA1699 /* /Users/xbz/Developer/Vk-Render/device.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = device.cpp; path = device.cpp; sourceTree = SOURCE_ROOT; };
-		DE9DBEBD9ABC4F50B7EFE058 /* /Users/xbz/Developer/Vk-Render/pipeline.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = pipeline.hpp; path = pipeline.hpp; sourceTree = SOURCE_ROOT; };
-		E8AD7D43BC004B878E8357C9 /* /Users/xbz/Developer/Vk-Render/instance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = instance.cpp; path = instance.cpp; sourceTree = SOURCE_ROOT; };
-		F4E51BC66D1A4DA08AC8401F /* /Users/xbz/Developer/Vk-Render/frame.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = frame.hpp; path = frame.hpp; sourceTree = SOURCE_ROOT; };
-		F74CFB46171F4C78A1B06FE8 /* /Users/xbz/Developer/Vk-Render/CubeMesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = CubeMesh.hpp; path = CubeMesh.hpp; sourceTree = SOURCE_ROOT; };
-		FF3F0034958645B89CEFE4D9 /* /Users/xbz/Developer/Vk-Render/shaders.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = shaders.cpp; path = shaders.cpp; sourceTree = SOURCE_ROOT; };
+		03B2E747C1CB49B49E6EBE0D /* /Users/xbz/Developer/Vk-Render/shaders.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = shaders.cpp; path = shaders.cpp; sourceTree = SOURCE_ROOT; };
+		08BAF14AB1F1482DAD98D80F /* /Users/xbz/Developer/Vk-Render/mesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = mesh.cpp; path = mesh.cpp; sourceTree = SOURCE_ROOT; };
+		0BE269C13EDD4BC5A606DA50 /* /Users/xbz/Developer/Vk-Render/engine.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = engine.hpp; path = engine.hpp; sourceTree = SOURCE_ROOT; };
+		1459B5FBFDC549BF864DA609 /* /Users/xbz/Developer/Vk-Render/shaders.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = shaders.hpp; path = shaders.hpp; sourceTree = SOURCE_ROOT; };
+		19113473C0074481A86B209C /* /Users/xbz/Developer/Vk-Render/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		1BAD95CB6FBC44869A457487 /* /Users/xbz/Developer/Vk-Render/sync.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = sync.hpp; path = sync.hpp; sourceTree = SOURCE_ROOT; };
+		23B02E4554414757BA9C4E96 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = triangle_mesh.hpp; path = triangle_mesh.hpp; sourceTree = SOURCE_ROOT; };
+		2C2738419FB34C1E80DB3590 /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = quad_mesh.cpp; path = quad_mesh.cpp; sourceTree = SOURCE_ROOT; };
+		2CAE307D80E54AB18C91D9A9 /* /Users/xbz/Developer/Vk-Render/framebuffer.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = framebuffer.hpp; path = framebuffer.hpp; sourceTree = SOURCE_ROOT; };
+		35522DD8638E4860AA24A222 /* /Users/xbz/Developer/Vk-Render/queue_families.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = queue_families.hpp; path = queue_families.hpp; sourceTree = SOURCE_ROOT; };
+		3A1A55C88D164717BA13D2B9 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CubeMesh.cpp; path = CubeMesh.cpp; sourceTree = SOURCE_ROOT; };
+		3B51EB3CC6B341F3AF5D988E /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = swapchain.cpp; path = swapchain.cpp; sourceTree = SOURCE_ROOT; };
+		43AD73D5B1A34B499341F2EE /* /Users/xbz/Developer/Vk-Render/app.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = app.cpp; path = app.cpp; sourceTree = SOURCE_ROOT; };
+		4634D22CDE6646049BB398C0 /* /Users/xbz/Developer/Vk-Render/instance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = instance.cpp; path = instance.cpp; sourceTree = SOURCE_ROOT; };
+		4CDF67C8C4D14F3D882EFF24 /* /Users/xbz/Developer/Vk-Render/mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = mesh.hpp; path = mesh.hpp; sourceTree = SOURCE_ROOT; };
+		52EBBB46F0FC411C97CC7D7B /* /Users/xbz/Developer/Vk-Render/pipeline.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = pipeline.hpp; path = pipeline.hpp; sourceTree = SOURCE_ROOT; };
+		5B15DEB8C09C478EA0A13DDA /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = triangle_mesh.cpp; path = triangle_mesh.cpp; sourceTree = SOURCE_ROOT; };
+		5B3B9FA023E943FD91241A9C /* /Users/xbz/Developer/Vk-Render/commands.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = commands.cpp; path = commands.cpp; sourceTree = SOURCE_ROOT; };
+		63658AA937A640B28A8393C7 /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		64918FFDB6A241BEB0E5F463 /* /Users/xbz/Developer/Vk-Render/config.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = config.hpp; path = config.hpp; sourceTree = SOURCE_ROOT; };
+		6C9438454DF2436A8B80CA7A /* /Users/xbz/Developer/Vk-Render/engine.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = engine.cpp; path = engine.cpp; sourceTree = SOURCE_ROOT; };
+		750F9DCC61D64DADAC284FD5 /* /Users/xbz/Developer/Vk-Render/commands.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = commands.hpp; path = commands.hpp; sourceTree = SOURCE_ROOT; };
+		8456102C3772401390CC3FC1 /* /Users/xbz/Developer/Vk-Render/quad_mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = quad_mesh.hpp; path = quad_mesh.hpp; sourceTree = SOURCE_ROOT; };
+		86613FE6C34C4F6D9B34FA8B /* /Users/xbz/Developer/Vk-Render/app.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = app.hpp; path = app.hpp; sourceTree = SOURCE_ROOT; };
+		8E0D4167B5114890ACB3F5BF /* /Users/xbz/Developer/Vk-Render/scene.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = scene.hpp; path = scene.hpp; sourceTree = SOURCE_ROOT; };
+		95EC48135F9D4BB18B1D0587 /* main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = main; sourceTree = BUILT_PRODUCTS_DIR; };
+		9997004CA31545C9A6466FFA /* /Users/xbz/Developer/Vk-Render/device.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = device.cpp; path = device.cpp; sourceTree = SOURCE_ROOT; };
+		A762BAD7CC644351A8605F83 /* /Users/xbz/Developer/Vk-Render/device.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = device.hpp; path = device.hpp; sourceTree = SOURCE_ROOT; };
+		AE9FEA6551D846E59C114F77 /* /Users/xbz/Developer/Vk-Render/render_structs.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = render_structs.hpp; path = render_structs.hpp; sourceTree = SOURCE_ROOT; };
+		B19027782E574F779899F670 /* /Users/xbz/Developer/Vk-Render/memory.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = memory.hpp; path = memory.hpp; sourceTree = SOURCE_ROOT; };
+		B8AD78D59B714758809AE2F2 /* /Users/xbz/Developer/Vk-Render/frame.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = frame.hpp; path = frame.hpp; sourceTree = SOURCE_ROOT; };
+		B9271BAFB7834390B3836ABC /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		C096BB7818D14985B989E3CE /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = framebuffer.cpp; path = framebuffer.cpp; sourceTree = SOURCE_ROOT; };
+		C31C05545DFE4D918FE0DB1A /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = pipeline.cpp; path = pipeline.cpp; sourceTree = SOURCE_ROOT; };
+		C70BAA9F10AC4F6784B409CD /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = queue_families.cpp; path = queue_families.cpp; sourceTree = SOURCE_ROOT; };
+		CAF391A8DAA24E2692C42B89 /* /Users/xbz/Developer/Vk-Render/memory.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = memory.cpp; path = memory.cpp; sourceTree = SOURCE_ROOT; };
+		CFF651CBD73F4E40B50DF76D /* /Users/xbz/Developer/Vk-Render/scene.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = scene.cpp; path = scene.cpp; sourceTree = SOURCE_ROOT; };
+		DE050C00B27F43A58D4732F6 /* /Users/xbz/Developer/Vk-Render/instance.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = instance.hpp; path = instance.hpp; sourceTree = SOURCE_ROOT; };
+		E0D68B93128D4934B50434B1 /* /Users/xbz/Developer/Vk-Render/swapchain.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = swapchain.hpp; path = swapchain.hpp; sourceTree = SOURCE_ROOT; };
+		EB39054AA67A4FA9A244E641 /* /Users/xbz/Developer/Vk-Render/sync.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = sync.cpp; path = sync.cpp; sourceTree = SOURCE_ROOT; };
+		F3C53B2060C74DFA8BBF4D79 /* /Users/xbz/Developer/Vk-Render/CubeMesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = CubeMesh.hpp; path = CubeMesh.hpp; sourceTree = SOURCE_ROOT; };
+		F4304802680F4A06A63A7127 /* /Users/xbz/Developer/Vk-Render/logging.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = logging.hpp; path = logging.hpp; sourceTree = SOURCE_ROOT; };
+		FC601D2E185B4F37A36CE902 /* /Users/xbz/Developer/Vk-Render/logging.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = logging.cpp; path = logging.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F1FB09042CBE4D9196AE4F13 /* Frameworks */ = {
+		D42F78D44C5C4F9F9025589D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -189,117 +189,117 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40342B4D3B8D42AB916BB85C /* Resources */ = {
+		0302C8E2374A404CB8CC19B5 /* ALL_BUILD */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		7B30ABC6AE3D437C91F813BA /* ALL_BUILD */ = {
-			isa = PBXGroup;
-			children = (
-				E066B422445A4BCE875BF3AA /* CMake Rules */,
-				B590153656184F7A86B9433E /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */,
+				4FECB409EE014E87B5AFAA19 /* CMake Rules */,
+				B9271BAFB7834390B3836ABC /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */,
 			);
 			name = ALL_BUILD;
 			sourceTree = "<group>";
 		};
-		836164878A0E4A80AEE85455 /* Source Files */ = {
+		12E9E122994B4748BC0F9125 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9BBB844129F147C69AFB53F2 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */,
-				8152A463EB224BCD854A9649 /* /Users/xbz/Developer/Vk-Render/app.cpp */,
-				8D8EF873EB9B46819411EECC /* /Users/xbz/Developer/Vk-Render/commands.cpp */,
-				DCE0C8278FF447B18DFA1699 /* /Users/xbz/Developer/Vk-Render/device.cpp */,
-				024D14B7AFC2471D8A73A0DC /* /Users/xbz/Developer/Vk-Render/engine.cpp */,
-				9A4506A01B1D48DCA39CBCB7 /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */,
-				E8AD7D43BC004B878E8357C9 /* /Users/xbz/Developer/Vk-Render/instance.cpp */,
-				35D8F1B954894A07BD067C70 /* /Users/xbz/Developer/Vk-Render/logging.cpp */,
-				0F628C8EDD03444997E7DFD4 /* /Users/xbz/Developer/Vk-Render/main.cpp */,
-				81CCCDBF381C48A6A5FB6DF8 /* /Users/xbz/Developer/Vk-Render/memory.cpp */,
-				B093F7096DEF4A5A994461C2 /* /Users/xbz/Developer/Vk-Render/mesh.cpp */,
-				959605D82A084AD1AD2A7AD9 /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */,
-				68952A4290D747089F03844F /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */,
-				003E445A9752429F9888762D /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */,
-				1F6E322C051C4CB087E7F193 /* /Users/xbz/Developer/Vk-Render/scene.cpp */,
-				FF3F0034958645B89CEFE4D9 /* /Users/xbz/Developer/Vk-Render/shaders.cpp */,
-				2369D8E9E77348F6840F37FE /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */,
-				01CC208352704AE3A979FE10 /* /Users/xbz/Developer/Vk-Render/sync.cpp */,
-				79A3490B15404778BCA3F30E /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */,
-			);
-			name = "Source Files";
-			sourceTree = "<group>";
-		};
-		84B625DF9B324A4A8275FFC4 = {
-			isa = PBXGroup;
-			children = (
-				E91F078B1AFE461ABC44D9C6 /* main */,
-				7B30ABC6AE3D437C91F813BA /* ALL_BUILD */,
-				AFDD14E02CE34C09BF4A54E8 /* Products */,
-				9D036707344946B78E0E6229 /* Frameworks */,
-				40342B4D3B8D42AB916BB85C /* Resources */,
-			);
-			sourceTree = "<group>";
-		};
-		9D036707344946B78E0E6229 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A5237943D96D494AA234D92C /* Header Files */ = {
-			isa = PBXGroup;
-			children = (
-				F74CFB46171F4C78A1B06FE8 /* /Users/xbz/Developer/Vk-Render/CubeMesh.hpp */,
-				6A41F8DD47544574A8D0C035 /* /Users/xbz/Developer/Vk-Render/app.hpp */,
-				D49FAE1C98FB4D0DB5A6C4CA /* /Users/xbz/Developer/Vk-Render/commands.hpp */,
-				32F615323FF74682BC51806F /* /Users/xbz/Developer/Vk-Render/config.hpp */,
-				AD7F332162C44D55A1C49413 /* /Users/xbz/Developer/Vk-Render/device.hpp */,
-				5427C243402944E5BAD0B51F /* /Users/xbz/Developer/Vk-Render/engine.hpp */,
-				F4E51BC66D1A4DA08AC8401F /* /Users/xbz/Developer/Vk-Render/frame.hpp */,
-				36DE2E3DDAFF4470A1820DBE /* /Users/xbz/Developer/Vk-Render/framebuffer.hpp */,
-				75DE70A3ABFE4565BE83D5CF /* /Users/xbz/Developer/Vk-Render/instance.hpp */,
-				1C785CB5726F4D09BD86B3E3 /* /Users/xbz/Developer/Vk-Render/logging.hpp */,
-				C50A961C39EE4A02A0A7287A /* /Users/xbz/Developer/Vk-Render/memory.hpp */,
-				3C61A546B7EB4B43ACD603DA /* /Users/xbz/Developer/Vk-Render/mesh.hpp */,
-				DE9DBEBD9ABC4F50B7EFE058 /* /Users/xbz/Developer/Vk-Render/pipeline.hpp */,
-				19BA478F751A4094B040DC46 /* /Users/xbz/Developer/Vk-Render/quad_mesh.hpp */,
-				3ADC620577864346A74428EC /* /Users/xbz/Developer/Vk-Render/queue_families.hpp */,
-				6F48E0ADFEEA4EF28F890ACB /* /Users/xbz/Developer/Vk-Render/render_structs.hpp */,
-				D31CF1E917C34022874787A6 /* /Users/xbz/Developer/Vk-Render/scene.hpp */,
-				B226B0B4401F482483729105 /* /Users/xbz/Developer/Vk-Render/shaders.hpp */,
-				7EE4A44A680245DCB005C1DB /* /Users/xbz/Developer/Vk-Render/swapchain.hpp */,
-				0E7657E31DC7499585515FCD /* /Users/xbz/Developer/Vk-Render/sync.hpp */,
-				2B3B0D00732C47C8A9049B36 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.hpp */,
-			);
-			name = "Header Files";
-			sourceTree = "<group>";
-		};
-		AFDD14E02CE34C09BF4A54E8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CA91CDF8EFA14576A9AC489F /* main */,
+				95EC48135F9D4BB18B1D0587 /* main */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E066B422445A4BCE875BF3AA /* CMake Rules */ = {
+		4FECB409EE014E87B5AFAA19 /* CMake Rules */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "CMake Rules";
 			sourceTree = "<group>";
 		};
-		E91F078B1AFE461ABC44D9C6 /* main */ = {
+		548ACBECA85E49D9AF9AE107 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
-				836164878A0E4A80AEE85455 /* Source Files */,
-				A5237943D96D494AA234D92C /* Header Files */,
-				AD498AA716D34F1B8F2F3FD5 /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */,
+				3A1A55C88D164717BA13D2B9 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */,
+				43AD73D5B1A34B499341F2EE /* /Users/xbz/Developer/Vk-Render/app.cpp */,
+				5B3B9FA023E943FD91241A9C /* /Users/xbz/Developer/Vk-Render/commands.cpp */,
+				9997004CA31545C9A6466FFA /* /Users/xbz/Developer/Vk-Render/device.cpp */,
+				6C9438454DF2436A8B80CA7A /* /Users/xbz/Developer/Vk-Render/engine.cpp */,
+				C096BB7818D14985B989E3CE /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */,
+				4634D22CDE6646049BB398C0 /* /Users/xbz/Developer/Vk-Render/instance.cpp */,
+				FC601D2E185B4F37A36CE902 /* /Users/xbz/Developer/Vk-Render/logging.cpp */,
+				19113473C0074481A86B209C /* /Users/xbz/Developer/Vk-Render/main.cpp */,
+				CAF391A8DAA24E2692C42B89 /* /Users/xbz/Developer/Vk-Render/memory.cpp */,
+				08BAF14AB1F1482DAD98D80F /* /Users/xbz/Developer/Vk-Render/mesh.cpp */,
+				C31C05545DFE4D918FE0DB1A /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */,
+				2C2738419FB34C1E80DB3590 /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */,
+				C70BAA9F10AC4F6784B409CD /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */,
+				CFF651CBD73F4E40B50DF76D /* /Users/xbz/Developer/Vk-Render/scene.cpp */,
+				03B2E747C1CB49B49E6EBE0D /* /Users/xbz/Developer/Vk-Render/shaders.cpp */,
+				3B51EB3CC6B341F3AF5D988E /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */,
+				EB39054AA67A4FA9A244E641 /* /Users/xbz/Developer/Vk-Render/sync.cpp */,
+				5B15DEB8C09C478EA0A13DDA /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		5864EA7836BB4CB288061FC7 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				F3C53B2060C74DFA8BBF4D79 /* /Users/xbz/Developer/Vk-Render/CubeMesh.hpp */,
+				86613FE6C34C4F6D9B34FA8B /* /Users/xbz/Developer/Vk-Render/app.hpp */,
+				750F9DCC61D64DADAC284FD5 /* /Users/xbz/Developer/Vk-Render/commands.hpp */,
+				64918FFDB6A241BEB0E5F463 /* /Users/xbz/Developer/Vk-Render/config.hpp */,
+				A762BAD7CC644351A8605F83 /* /Users/xbz/Developer/Vk-Render/device.hpp */,
+				0BE269C13EDD4BC5A606DA50 /* /Users/xbz/Developer/Vk-Render/engine.hpp */,
+				B8AD78D59B714758809AE2F2 /* /Users/xbz/Developer/Vk-Render/frame.hpp */,
+				2CAE307D80E54AB18C91D9A9 /* /Users/xbz/Developer/Vk-Render/framebuffer.hpp */,
+				DE050C00B27F43A58D4732F6 /* /Users/xbz/Developer/Vk-Render/instance.hpp */,
+				F4304802680F4A06A63A7127 /* /Users/xbz/Developer/Vk-Render/logging.hpp */,
+				B19027782E574F779899F670 /* /Users/xbz/Developer/Vk-Render/memory.hpp */,
+				4CDF67C8C4D14F3D882EFF24 /* /Users/xbz/Developer/Vk-Render/mesh.hpp */,
+				52EBBB46F0FC411C97CC7D7B /* /Users/xbz/Developer/Vk-Render/pipeline.hpp */,
+				8456102C3772401390CC3FC1 /* /Users/xbz/Developer/Vk-Render/quad_mesh.hpp */,
+				35522DD8638E4860AA24A222 /* /Users/xbz/Developer/Vk-Render/queue_families.hpp */,
+				AE9FEA6551D846E59C114F77 /* /Users/xbz/Developer/Vk-Render/render_structs.hpp */,
+				8E0D4167B5114890ACB3F5BF /* /Users/xbz/Developer/Vk-Render/scene.hpp */,
+				1459B5FBFDC549BF864DA609 /* /Users/xbz/Developer/Vk-Render/shaders.hpp */,
+				E0D68B93128D4934B50434B1 /* /Users/xbz/Developer/Vk-Render/swapchain.hpp */,
+				1BAD95CB6FBC44869A457487 /* /Users/xbz/Developer/Vk-Render/sync.hpp */,
+				23B02E4554414757BA9C4E96 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.hpp */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		9A3B55FF0F6243A9AFFE163D /* main */ = {
+			isa = PBXGroup;
+			children = (
+				548ACBECA85E49D9AF9AE107 /* Source Files */,
+				5864EA7836BB4CB288061FC7 /* Header Files */,
+				63658AA937A640B28A8393C7 /* /Users/xbz/Developer/Vk-Render/CMakeLists.txt */,
 			);
 			name = main;
+			sourceTree = "<group>";
+		};
+		CDA3F6E892EE423EA569237E = {
+			isa = PBXGroup;
+			children = (
+				9A3B55FF0F6243A9AFFE163D /* main */,
+				0302C8E2374A404CB8CC19B5 /* ALL_BUILD */,
+				12E9E122994B4748BC0F9125 /* Products */,
+				E105FDC8D51049FAA93DE461 /* Frameworks */,
+				E0F676DBD1DA4FEEB209FD59 /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		E0F676DBD1DA4FEEB209FD59 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E105FDC8D51049FAA93DE461 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,19 +307,19 @@
 /* Begin PBXNativeTarget section */
 		8EE4D95CC23741C6B28ADEBD /* main */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2BB7E776F78B48C192AFD34F /* Build configuration list for PBXNativeTarget "main" */;
+			buildConfigurationList = 6008586572BB4ED987CB772F /* Build configuration list for PBXNativeTarget "main" */;
 			buildPhases = (
-				310F0E5B0B7E4892826E799A /* Sources */,
-				F1FB09042CBE4D9196AE4F13 /* Frameworks */,
+				1724C299DF8D4840A696AD1F /* Sources */,
+				D42F78D44C5C4F9F9025589D /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				03576F7AB1264E6DA649A6AA /* PBXTargetDependency */,
+				20136D7E5727431E8178B2BC /* PBXTargetDependency */,
 			);
 			name = main;
 			productName = main;
-			productReference = CA91CDF8EFA14576A9AC489F /* main */;
+			productReference = 95EC48135F9D4BB18B1D0587 /* main */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -331,18 +331,18 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1530;
 			};
-			buildConfigurationList = A0745B7187F34B3EBD480A1D /* Build configuration list for PBXProject "vkloader" */;
+			buildConfigurationList = FE3F9D79C31E4E7E89414DDB /* Build configuration list for PBXProject "vkloader" */;
 			buildSettings = {
 			};
 			buildStyles = (
-				07A854C1F91943B692D1885A /* Debug */,
-				6C0FFFFB43854B3CB7B2215C /* Release */,
-				D98A27D6F2F442BF97488AE9 /* MinSizeRel */,
-				06B35E88508745A1B9D9D66A /* RelWithDebInfo */,
+				2F34D4F45619448EB1EF7A92 /* Debug */,
+				595EB437280049CCBEBA6D2F /* Release */,
+				842E7227A31A43649E1E3CA1 /* MinSizeRel */,
+				B54499FFB797494EBA6BCD15 /* RelWithDebInfo */,
 			);
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
-			mainGroup = 84B625DF9B324A4A8275FFC4;
+			mainGroup = CDA3F6E892EE423EA569237E;
 			projectDirPath = .;
 			projectRoot = "";
 			targets = (
@@ -453,201 +453,64 @@ fi
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		310F0E5B0B7E4892826E799A /* Sources */ = {
+		1724C299DF8D4840A696AD1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A88562050F044C7A836CBA02 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */,
-				B5D6FE29627B445FA849D1CA /* /Users/xbz/Developer/Vk-Render/app.cpp */,
-				B180166AD0AE4897842BFA47 /* /Users/xbz/Developer/Vk-Render/commands.cpp */,
-				473D76A20CA947AE817FA420 /* /Users/xbz/Developer/Vk-Render/device.cpp */,
-				F1F25CF2B4884A3B912DABA1 /* /Users/xbz/Developer/Vk-Render/engine.cpp */,
-				9049E80F083D42058F155EDD /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */,
-				2A0078EF21D645D8A0AEA341 /* /Users/xbz/Developer/Vk-Render/instance.cpp */,
-				722B40A593994D0687BC025A /* /Users/xbz/Developer/Vk-Render/logging.cpp */,
-				A6D59826D99F434A85B28469 /* /Users/xbz/Developer/Vk-Render/main.cpp */,
-				19ACCE4278CC40A1912A5D93 /* /Users/xbz/Developer/Vk-Render/memory.cpp */,
-				860FD95C66FA4854AE3E9332 /* /Users/xbz/Developer/Vk-Render/mesh.cpp */,
-				B3BA98A00AB94559B8274305 /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */,
-				B36646162A664FA0B041E653 /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */,
-				BF28733B1D4B4D198931BF52 /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */,
-				02D0EBDB9004457DA5A51BBD /* /Users/xbz/Developer/Vk-Render/scene.cpp */,
-				ECEAFAD48FE0464AA844EC14 /* /Users/xbz/Developer/Vk-Render/shaders.cpp */,
-				EC240A502173436FB9886857 /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */,
-				C4AD692CEB2D4BC4BF038C4F /* /Users/xbz/Developer/Vk-Render/sync.cpp */,
-				AA8CBE5791154287B6CE6060 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */,
+				53E25E82C1764DED9253BF91 /* /Users/xbz/Developer/Vk-Render/CubeMesh.cpp */,
+				B1C4DA4E6C0045A394B715F5 /* /Users/xbz/Developer/Vk-Render/app.cpp */,
+				DE9112829E4848728FF7E162 /* /Users/xbz/Developer/Vk-Render/commands.cpp */,
+				E614631CC3C34762B0CB70D9 /* /Users/xbz/Developer/Vk-Render/device.cpp */,
+				1A44FD4B02B3447BA251EA7E /* /Users/xbz/Developer/Vk-Render/engine.cpp */,
+				7579F12017C246DEBBCA7A9A /* /Users/xbz/Developer/Vk-Render/framebuffer.cpp */,
+				7FBE95987ADB4CEFB2D3202D /* /Users/xbz/Developer/Vk-Render/instance.cpp */,
+				D9961E4250C94A8DA6C71166 /* /Users/xbz/Developer/Vk-Render/logging.cpp */,
+				159547CE1C014962855061F9 /* /Users/xbz/Developer/Vk-Render/main.cpp */,
+				8AB50ED4BBE6491782D89401 /* /Users/xbz/Developer/Vk-Render/memory.cpp */,
+				E151690910FB4ADA8F5836A2 /* /Users/xbz/Developer/Vk-Render/mesh.cpp */,
+				2E52EA6FBD6B4CF8BE62545A /* /Users/xbz/Developer/Vk-Render/pipeline.cpp */,
+				87BC9956F5B94CED9FF86C4D /* /Users/xbz/Developer/Vk-Render/quad_mesh.cpp */,
+				50725DCD0D4E4FC69B5BA403 /* /Users/xbz/Developer/Vk-Render/queue_families.cpp */,
+				3F523FB5D8E84685AD51ED00 /* /Users/xbz/Developer/Vk-Render/scene.cpp */,
+				FB3512B85C914CEBB2031076 /* /Users/xbz/Developer/Vk-Render/shaders.cpp */,
+				3A48C31743F847B1A1F7193C /* /Users/xbz/Developer/Vk-Render/swapchain.cpp */,
+				63E8642E4B3B4659B34FBE04 /* /Users/xbz/Developer/Vk-Render/sync.cpp */,
+				06EC1E3BAE0144BC9E5E1962 /* /Users/xbz/Developer/Vk-Render/triangle_mesh.cpp */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		03576F7AB1264E6DA649A6AA /* PBXTargetDependency */ = {
+		20136D7E5727431E8178B2BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CE8AE22C07AB45D38A3C65FB /* ZERO_CHECK */;
-			targetProxy = A3EA2F6B4CC044728A29E9B7 /* PBXContainerItemProxy */;
+			targetProxy = 04BABD954E414AFCA33BA8D2 /* PBXContainerItemProxy */;
 		};
-		1E3BEC95A3EA4165AE94C182 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE8AE22C07AB45D38A3C65FB /* ZERO_CHECK */;
-			targetProxy = 2DB2B76815AF47B981A12FD1 /* PBXContainerItemProxy */;
-		};
-		21B5983BFAE64B2A91FA467D /* PBXTargetDependency */ = {
+		367C9F0A46F4481ABD0649AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8EE4D95CC23741C6B28ADEBD /* main */;
-			targetProxy = FCB6787A82BB4814834F5964 /* PBXContainerItemProxy */;
+			targetProxy = A34EE1A016D846B084CF892B /* PBXContainerItemProxy */;
+		};
+		7CEA326EEC554FA88CE6DB95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE8AE22C07AB45D38A3C65FB /* ZERO_CHECK */;
+			targetProxy = 62BDE1F3753F4010B3077F62 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		001ED9CB6F4047AAACE02AB1 /* Release */ = {
+		0AC6FABC48F54C58ACB3AB1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Release;
-		};
-		015A5FE3B83F423F81512D04 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/MinSizeRel";
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/include,"$(inherited)");
-				INSTALL_PATH = "";
-				LD_RUNPATH_SEARCH_PATHS = ("/usr/local/Cellar/glfw/3.4/lib /usr/local/lib","$(inherited)");
-				LIBRARY_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/lib,"$(inherited)");
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++2b' ";
-				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libvulkan.dylib,/usr/local/lib/libglfw.3.4.dylib,"$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = main;
-				SECTORDER_FLAGS = "";
-				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
-				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/main.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		0D415EE09D994434AF3855C0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Debug;
-		};
-		0DCEBC78345A41028DF166D9 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		10397D50D7BD432FA2B77978 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = x86_64;
+				ARCHS = arm64;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
 			};
 			name = Release;
 		};
-		1C48E86AB324441D9B9682E8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/Debug";
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/include,"$(inherited)");
-				INSTALL_PATH = "";
-				LD_RUNPATH_SEARCH_PATHS = ("/usr/local/Cellar/glfw/3.4/lib /usr/local/lib","$(inherited)");
-				LIBRARY_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/lib,"$(inherited)");
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++2b' ";
-				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libvulkan.dylib,/usr/local/lib/libglfw.3.4.dylib,"$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = main;
-				SECTORDER_FLAGS = "";
-				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
-				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/main.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Debug;
-		};
-		22409B1735EB467BBDDC1F28 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = x86_64;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
-				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
-			};
-			name = Debug;
-		};
-		299D72C12CF8409880C18342 /* Debug */ = {
+		16F96988D1C94832B840B53D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -662,34 +525,24 @@ fi
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = ("","$(inherited)");
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
+				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("$(inherited)");
 			};
 			name = Debug;
 		};
-		51E48A37C027493BA7A45DA7 /* MinSizeRel */ = {
+		1D49B9E8B9894E90AD974DDF /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
+				ARCHS = arm64;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
 			};
 			name = MinSizeRel;
 		};
-		5467D9FBA6264F9EB929DD20 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = x86_64;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
-			};
-			name = RelWithDebInfo;
-		};
-		5AD83DA1AF9D4CFABBED2AEC /* MinSizeRel */ = {
+		23C2B0383B8F4702BA26F583 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -711,108 +564,11 @@ fi
 			};
 			name = MinSizeRel;
 		};
-		76FB25BC413A4CB7A58137DF /* Release */ = {
+		2E147671A88A4541A92405BD /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Release;
-		};
-		7A30A219A63A4759AD3FFC5D /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		8326192188034694B436D585 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = ("","$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		D3236C55B4564F94877F883B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/Release";
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/include,"$(inherited)");
-				INSTALL_PATH = "";
-				LD_RUNPATH_SEARCH_PATHS = ("/usr/local/Cellar/glfw/3.4/lib /usr/local/lib","$(inherited)");
-				LIBRARY_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/lib,"$(inherited)");
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++2b' ";
-				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libvulkan.dylib,/usr/local/lib/libglfw.3.4.dylib,"$(inherited)");
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = main;
-				SECTORDER_FLAGS = "";
-				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
-				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/main.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("$(inherited)");
-			};
-			name = Release;
-		};
-		E253604DE620420BA4C13F51 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
+				ARCHS = arm64;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/RelWithDebInfo";
 				EXECUTABLE_PREFIX = "";
@@ -839,49 +595,293 @@ fi
 			};
 			name = RelWithDebInfo;
 		};
+		3AB6F0C692EA43BBA29B803A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		3BD8FF0F594E4DC2B49F2AF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/Debug";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/include,"$(inherited)");
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = ("/usr/local/Cellar/glfw/3.4/lib /usr/local/lib","$(inherited)");
+				LIBRARY_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/lib,"$(inherited)");
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++2b' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libvulkan.dylib,/usr/local/lib/libglfw.3.4.dylib,"$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = main;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
+				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/main.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		6591B6D596AB4F7E93CBFD77 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
+			};
+			name = RelWithDebInfo;
+		};
+		6731D9B1A853461BBF05C103 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		67E90D2E115E47BE8A254FAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		73FE63A5D099443FA2B033C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
+				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
+			};
+			name = Debug;
+		};
+		80F94497811E4D50AE1EA9CB /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		8B46CBC87B7F475E8CC9D542 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/Release";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/include,"$(inherited)");
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = ("/usr/local/Cellar/glfw/3.4/lib /usr/local/lib","$(inherited)");
+				LIBRARY_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/lib,"$(inherited)");
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++2b' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libvulkan.dylib,/usr/local/lib/libglfw.3.4.dylib,"$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = main;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
+				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/main.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		B61BFDEB3C6F490BBB1F7293 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/MinSizeRel";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/include,"$(inherited)");
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = ("/usr/local/Cellar/glfw/3.4/lib /usr/local/lib","$(inherited)");
+				LIBRARY_SEARCH_PATHS = (/usr/local/Cellar/glfw/3.4/lib,"$(inherited)");
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++2b' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names",/usr/local/lib/libvulkan.dylib,/usr/local/lib/libglfw.3.4.dylib,"$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = main;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,"$(inherited)");
+				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/main.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		BCB0E38E80D6461792CF2AE8 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		D2D8D9283077490B98D49B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2BB7E776F78B48C192AFD34F /* Build configuration list for PBXNativeTarget "main" */ = {
+		42EB88B0327E452BB4162A59 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1C48E86AB324441D9B9682E8 /* Debug */,
-				D3236C55B4564F94877F883B /* Release */,
-				015A5FE3B83F423F81512D04 /* MinSizeRel */,
-				E253604DE620420BA4C13F51 /* RelWithDebInfo */,
+				16F96988D1C94832B840B53D /* Debug */,
+				67E90D2E115E47BE8A254FAA /* Release */,
+				80F94497811E4D50AE1EA9CB /* MinSizeRel */,
+				6731D9B1A853461BBF05C103 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		7FAA2BD9F82A45289666C541 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+		6008586572BB4ED987CB772F /* Build configuration list for PBXNativeTarget "main" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0D415EE09D994434AF3855C0 /* Debug */,
-				76FB25BC413A4CB7A58137DF /* Release */,
-				0DCEBC78345A41028DF166D9 /* MinSizeRel */,
-				8326192188034694B436D585 /* RelWithDebInfo */,
+				3BD8FF0F594E4DC2B49F2AF2 /* Debug */,
+				8B46CBC87B7F475E8CC9D542 /* Release */,
+				B61BFDEB3C6F490BBB1F7293 /* MinSizeRel */,
+				2E147671A88A4541A92405BD /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		A0745B7187F34B3EBD480A1D /* Build configuration list for PBXProject "vkloader" */ = {
+		908C1FFF175047BABCA07132 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				22409B1735EB467BBDDC1F28 /* Debug */,
-				10397D50D7BD432FA2B77978 /* Release */,
-				51E48A37C027493BA7A45DA7 /* MinSizeRel */,
-				5467D9FBA6264F9EB929DD20 /* RelWithDebInfo */,
+				D2D8D9283077490B98D49B7E /* Debug */,
+				3AB6F0C692EA43BBA29B803A /* Release */,
+				23C2B0383B8F4702BA26F583 /* MinSizeRel */,
+				BCB0E38E80D6461792CF2AE8 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		C9BB54E092894442A22771B0 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+		FE3F9D79C31E4E7E89414DDB /* Build configuration list for PBXProject "vkloader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				299D72C12CF8409880C18342 /* Debug */,
-				001ED9CB6F4047AAACE02AB1 /* Release */,
-				5AD83DA1AF9D4CFABBED2AEC /* MinSizeRel */,
-				7A30A219A63A4759AD3FFC5D /* RelWithDebInfo */,
+				73FE63A5D099443FA2B033C8 /* Debug */,
+				0AC6FABC48F54C58ACB3AB1F /* Release */,
+				1D49B9E8B9894E90AD974DDF /* MinSizeRel */,
+				6591B6D596AB4F7E93CBFD77 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

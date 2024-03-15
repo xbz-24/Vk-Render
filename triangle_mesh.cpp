@@ -1,7 +1,9 @@
-//
-// Created by daily on 02-01-24.
-//
-
+/**
+ * @file triangle_mesh.cpp
+ * @brief
+ * @date Created on 02-01-24.
+ * @author Renato German Chavez Chicoma
+ */
 #include "triangle_mesh.hpp"
 
 TriangleMesh::TriangleMesh(vk::Device logical_device, vk::PhysicalDevice physical_device)

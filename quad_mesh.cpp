@@ -1,7 +1,9 @@
-//
-// Created by daily on 19-01-24.
-//
-
+/**
+ * @file quad_mesh.cpp
+ * @brief
+ * @date Created on 19-01-24.
+ * @author Renato German Chavez Chicoma
+ */
 #include "quad_mesh.hpp"
 
 QuadMesh::QuadMesh(vk::Device logical_device, vk::PhysicalDevice physical_device)

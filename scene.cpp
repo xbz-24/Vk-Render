@@ -1,6 +1,9 @@
-//
-// Created by daily on 01-01-24.
-//
+/**
+ * @file scene.cpp
+ * @brief
+ * @date Created on 01-01-24.
+ * @author Renato German Chavez Chicoma
+ */
 #include "scene.hpp"
 
 Scene::Scene()

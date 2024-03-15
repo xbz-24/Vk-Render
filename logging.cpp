@@ -1,6 +1,9 @@
-//
-// Created by daily on 15-01-24.
-//
+/**
+ * @file logging.cpp
+ * @brief
+ * @date Created on 15-01-24.
+ * @author Renato German Chavez Chicoma
+ */
 #include "logging.hpp"
 
 VKAPI_ATTR VkBool32 VKAPI_CALL vkinit::debugCallback

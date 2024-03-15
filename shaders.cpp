@@ -1,7 +1,9 @@
-//
-// Created by daily on 27-12-23.
-//
-
+/**
+ * @file shaders.cpp
+ * @brief
+ * @date Created on 27-12-23.
+ * @author Renato German Chavez Chicoma
+ */
 #include "shaders.hpp"
 namespace vkutil
 {

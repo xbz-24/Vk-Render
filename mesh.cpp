@@ -1,9 +1,9 @@
 /**
  * @file mesh.cpp
  * @brief Implements functions for mesh handling in Vulkan.
- * @date Created by daily on 02-01-24.
+ * @date Created on 02-01-24.
+ * @author Renato German Chavez Chicoma
  */
-
 #include "mesh.hpp"
 
 namespace vkmesh

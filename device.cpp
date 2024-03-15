@@ -1,7 +1,8 @@
 /**
  * @file device.cpp
  * @brief Defines functions for creating Vulkan devices.
- * @date Created by Renato on 27-12-23.
+ * @author Renato German Chavez Chicoma
+ * @date Created on 27-12-23.
  */
 #include "device.hpp"
 #ifndef VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME

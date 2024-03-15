@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
 project(vkloader)
+set(CMAKE_OSX_ARCHITECTURES "arm64")
 set(CMAKE_CXX_STANDARD 23)
 set(GLFW_BUILD_STATIC_LIBS ON)
 include(FindPkgConfig)

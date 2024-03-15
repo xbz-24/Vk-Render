@@ -1,8 +1,8 @@
-//
-// Created by daily on 27-12-23.
-//
 /**
- *
+ * @file device.cpp
+ * @brief Defines functions for creating Vulkan devices.
+ * @author Renato German Chavez Chicoma
+ * @date Created on 27-12-23.
  */
 #include "commands.hpp"
 namespace vkinit
@@ -19,7 +19,13 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return A Vulkan command pool object.
      */
-    vk::CommandPool make_command_pool(vk::Device device, vk::PhysicalDevice physical_device, vk::SurfaceKHR surface, bool debug)
+    vk::CommandPool make_command_pool
+    (
+     vk::Device device,
+     vk::PhysicalDevice physical_device,
+     vk::SurfaceKHR surface,
+     bool debug
+    )
     {
         vkutil::QueueFamilyIndices queueFamilyIndices = vkutil::findQueueFamilies(physical_device, surface, debug);
         vk::CommandPoolCreateInfo poolInfo = { };

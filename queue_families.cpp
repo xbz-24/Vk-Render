@@ -1,7 +1,9 @@
-//
-// Created by daily on 27-12-23.
-//
-
+/**
+ * @file queue_families.cpp
+ * @brief
+ * @date Created on 27-12-23.
+ * @author Renato German Chavez Chicoma
+ */
 #include "queue_families.hpp"
 namespace vkutil {
     bool QueueFamilyIndices::isComplete() const

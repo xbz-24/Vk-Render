@@ -1,7 +1,9 @@
-//
-// Created by daily on 02-01-24.
-//
-
+/**
+ * @file memory.cpp
+ * @brief
+ * @date Created on 02-01-24.
+ * @author Renato German Chavez Chicoma
+ */
 #include "memory.hpp"
 
 Buffer vkutil::createBuffer(BufferInput input)

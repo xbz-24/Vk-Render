@@ -1,10 +1,8 @@
-//
-// Created by daily on 27-12-23.
-//
 /**
- * @class Engine
- *
- * @brief This class represents the main engine of a Vulkan-based graphics application.
+ * @Class Engine
+ * @Brief This class represents the main engine of a Vulkan-based graphics application.
+ * @Author Renato
+ * @Date Created on 27-12-23
  *
  * Engine initializes and manages the Vulkan instances, devices, swapchains, pipelines, and
  * other necessary components to render a scene_ using Vulkan. It is designed to
@@ -141,19 +139,22 @@ void Engine::MakePipeline()
 {
     vkinit::GraphicsPipelineInBundle specification = { };
     specification.device = device_;
-    std::string vertexShaderPath, fragmentShaderPath;
-    try {
-        std::filesystem::path currentPath = std::filesystem::current_path();
-        std::cout << "Current Path: " << currentPath << std::endl;
-        std::string shaderBasePath = (currentPath / "Developer" / "Vk-Render" / "shaders/").string();
-        std::cout << "shaderBase Path: " << shaderBasePath << std::endl;
-        vertexShaderPath = shaderBasePath + "vertex.spv";
-        fragmentShaderPath = shaderBasePath + "fragment.spv";
-    } catch (const std::filesystem::filesystem_error& e) {
-        std::cerr << "Filesystem error: " << e.what() << '\n';
-    } catch (const std::exception& e) {
-        std::cerr << "General exception: " << e.what() << '\n';
-    }    
+//    std::string vertexShaderPath, fragmentShaderPath;
+//    try {
+//        std::filesystem::path currentPath = std::filesystem::current_path();
+//        std::cout << "Current Path: " << currentPath << std::endl;
+//        currentPath = "";
+//        std::string shaderBasePath = (currentPath / "Developer" / "Vk-Render" / "shaders/").string();
+//        std::cout << "shaderBase Path: " << shaderBasePath << std::endl;
+//        vertexShaderPath = shaderBasePath + "vertex.spv";
+//        fragmentShaderPath = shaderBasePath + "fragment.spv";
+//    } catch (const std::filesystem::filesystem_error& e) {
+//        std::cerr << "Filesystem error: " << e.what() << '\n';
+//    } catch (const std::exception& e) {
+//        std::cerr << "General exception: " << e.what() << '\n';
+//    }
+    std::string vertexShaderPath = "/Users/xbz/Developer/Vk-Render/shaders/vertex.spv";
+    std::string fragmentShaderPath = "/Users/xbz/Developer/Vk-Render/shaders/fragment.spv";
     specification.vertexFilepath = vertexShaderPath;
     specification.fragmentFilepath = fragmentShaderPath;
     specification.swapchainExtent = swapchain_extent_;

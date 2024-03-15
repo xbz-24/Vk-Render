@@ -1,7 +1,8 @@
 /**
  * @file app.cpp
  * @brief Implementation of the App class.
- * @date Created by Renato on 27-12-23.
+ * @autor Renato German Chavez Chicoma
+ * @date Created on 27-12-23.
  */
 #include "app.hpp"
 #include <iostream>
