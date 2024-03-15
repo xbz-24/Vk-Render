@@ -141,10 +141,11 @@ void Engine::MakePipeline()
 {
     vkinit::GraphicsPipelineInBundle specification = { };
     specification.device = device_;
-    
-    std::string prefix = "../../"; // only if using visual studio (windows only)
-    specification.vertexFilepath = prefix + "../shaders/vertex.spv";
-    specification.fragmentFilepath = prefix + "../shaders/fragment.spv";
+    std::string prefix;
+    prefix = "../../"; // only if using visual studio (windows only)
+    prefix = "Developer/Vk-Render";
+    specification.vertexFilepath = prefix + "/shaders/vertex.spv";
+    specification.fragmentFilepath = prefix + "/shaders/fragment.spv";
     specification.swapchainExtent = swapchain_extent_;
     specification.swapchainImageFormat = swapchain_format_;
     vkinit::GraphicsPipelineOutBundle output = vkinit::create_graphics_pipeline(specification, debug_mode_);
