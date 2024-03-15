@@ -1,0 +1,888 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		500D8A2A58D84C69877FD0D7 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5256A28647D54B58BB64433B /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				E2DA7899E4012E40BB9B8DD8 /* Generate CMakeFiles/ALL_BUILD */,
+			);
+			dependencies = (
+				F08120020634432FB2DBBA74 /* PBXTargetDependency */,
+				29A45FADA9C34EA0A7635C00 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		CE8AE22C07AB45D38A3C65FB /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 71EC95DF7CB643C286987917 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				0797F8B8F13D0805298CA9C1 /* Generate CMakeFiles/ZERO_CHECK */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		04BB3BF851F34923891F1DE6 /* swapchain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C19D731A95B6470E940DC962 /* swapchain.cpp */; };
+		05FC518950354185A61FCFA5 /* pipeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AC8EEA503D94F359F7D418E /* pipeline.cpp */; };
+		1433AC1614984CC4907CFDAD /* memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E07C960B9DE043CB8C120E1E /* memory.cpp */; };
+		14EA38ED89D6420CB4457B44 /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF83655DF90A40B58F785A83 /* scene.cpp */; };
+		25D9637D542241B8B1B8EFA7 /* app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E9F3FA1550B4BE992A0B2DF /* app.cpp */; };
+		286F2579161541E793850333 /* sync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AB47E60EEEA4E9DAF9328B6 /* sync.cpp */; };
+		2ED719EB7A8E486D856F4561 /* device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D01428A2EE645508AF8F8E9 /* device.cpp */; };
+		421A16858BEF49A5A29AC19B /* quad_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4697C466387944E9A238567D /* quad_mesh.cpp */; };
+		4FB064E502FD4E88B90AEF1F /* queue_families.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518F8EF20CEA450795CEA00F /* queue_families.cpp */; };
+		6D8C52798ECC41268AF81051 /* framebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E799FBA950241CBB142B3E4 /* framebuffer.cpp */; };
+		84F144FDBAB74CDEBF5B4762 /* logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDA585B8D5BB4162B0EE6ECE /* logging.cpp */; };
+		9EBEA6856BEB450A983287F6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44D3E61D66894820B9D608A7 /* main.cpp */; };
+		AB6395F7680742A0B9E5FFA5 /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7E35A9270B14375B5F9ACD9 /* mesh.cpp */; };
+		AC40E7F409E3484993FD01FB /* triangle_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C9D5938E34185954380A8 /* triangle_mesh.cpp */; };
+		DB68F872C05142F1B7D793BB /* shaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16D03545EF1944C2B86BC619 /* shaders.cpp */; };
+		E2C445B2FE564E26BA467391 /* instance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7B9D5FEF6462A934DEEAC /* instance.cpp */; };
+		E811338102B44AA184048424 /* engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FD218415EA34D90B7C72B64 /* engine.cpp */; };
+		FAC68556862E4E2695F59575 /* commands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBBCB2631E9E490CAA89265F /* commands.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		230C557ABFF44BBBAB9DDFF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D2DA4511A1F477EB5A9BF63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE8AE22C07AB45D38A3C65FB;
+			remoteInfo = ZERO_CHECK;
+		};
+		5904078CBCFC4FC0BB07CA91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D2DA4511A1F477EB5A9BF63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE8AE22C07AB45D38A3C65FB;
+			remoteInfo = ZERO_CHECK;
+		};
+		5CD7CF03DC9D4AF6BD6E4E7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D2DA4511A1F477EB5A9BF63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13E71A96D26240C7B45F1800;
+			remoteInfo = 3DLoaderVk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0FB7B9D5FEF6462A934DEEAC /* instance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = instance.cpp; sourceTree = SOURCE_ROOT; };
+		16D03545EF1944C2B86BC619 /* shaders.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = shaders.cpp; sourceTree = SOURCE_ROOT; };
+		1F91F05D2F7546FA86C34201 /* triangle_mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = triangle_mesh.hpp; sourceTree = SOURCE_ROOT; };
+		1FD218415EA34D90B7C72B64 /* engine.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = engine.cpp; sourceTree = SOURCE_ROOT; };
+		24E1C4DC7E0344F989027F05 /* scene.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = scene.hpp; sourceTree = SOURCE_ROOT; };
+		25B7F3622F504982B413ABE1 /* queue_families.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = queue_families.hpp; sourceTree = SOURCE_ROOT; };
+		2AB47E60EEEA4E9DAF9328B6 /* sync.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = sync.cpp; sourceTree = SOURCE_ROOT; };
+		2AC8EEA503D94F359F7D418E /* pipeline.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = pipeline.cpp; sourceTree = SOURCE_ROOT; };
+		2D01428A2EE645508AF8F8E9 /* device.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = device.cpp; sourceTree = SOURCE_ROOT; };
+		32E815F0A7A941F6A6A503C7 /* frame.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = frame.hpp; sourceTree = SOURCE_ROOT; };
+		365F166984C84154B9ACBB5A /* commands.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = commands.hpp; sourceTree = SOURCE_ROOT; };
+		3E9F3FA1550B4BE992A0B2DF /* app.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = app.cpp; sourceTree = SOURCE_ROOT; };
+		44D3E61D66894820B9D608A7 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		4697C466387944E9A238567D /* quad_mesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = quad_mesh.cpp; sourceTree = SOURCE_ROOT; };
+		4C49A3A59D5849E19595E777 /* device.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = device.hpp; sourceTree = SOURCE_ROOT; };
+		518F8EF20CEA450795CEA00F /* queue_families.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = queue_families.cpp; sourceTree = SOURCE_ROOT; };
+		66E848D770C9454FAE16030E /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		6E799FBA950241CBB142B3E4 /* framebuffer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = framebuffer.cpp; sourceTree = SOURCE_ROOT; };
+		7BB7E1BB599040819BACB741 /* engine.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = engine.hpp; sourceTree = SOURCE_ROOT; };
+		7E4A0145EDF946D193B66980 /* render_structs.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = render_structs.hpp; sourceTree = SOURCE_ROOT; };
+		8483B5C458554FB8BF7D94E8 /* config.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = config.hpp; sourceTree = SOURCE_ROOT; };
+		8A883F5856CE4721AD68102B /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		8F0C9D5938E34185954380A8 /* triangle_mesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = triangle_mesh.cpp; sourceTree = SOURCE_ROOT; };
+		9748739CF77045A49436FDA9 /* pipeline.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = pipeline.hpp; sourceTree = SOURCE_ROOT; };
+		9CE5AF39CA6241E4A89A2A69 /* framebuffer.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = framebuffer.hpp; sourceTree = SOURCE_ROOT; };
+		9FAA722CAC58408C8D2B9306 /* memory.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = memory.hpp; sourceTree = SOURCE_ROOT; };
+		B83A56CB2DC24387B8B5C306 /* app.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = app.hpp; sourceTree = SOURCE_ROOT; };
+		BAF8F007CD1A4EB9A68D5922 /* sync.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = sync.hpp; sourceTree = SOURCE_ROOT; };
+		BD531F5158BB44EEBBA8FA72 /* shaders.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = shaders.hpp; sourceTree = SOURCE_ROOT; };
+		BDA585B8D5BB4162B0EE6ECE /* logging.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = logging.cpp; sourceTree = SOURCE_ROOT; };
+		BF83655DF90A40B58F785A83 /* scene.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = scene.cpp; sourceTree = SOURCE_ROOT; };
+		C19D731A95B6470E940DC962 /* swapchain.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = swapchain.cpp; sourceTree = SOURCE_ROOT; };
+		C6BD29C7324D4289AB143159 /* mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = mesh.hpp; sourceTree = SOURCE_ROOT; };
+		C71836E55573402E8621CDB1 /* 3DLoaderVk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = 3DLoaderVk; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7B0E9826B0C4EF6AB6435AB /* quad_mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = quad_mesh.hpp; sourceTree = SOURCE_ROOT; };
+		D7E35A9270B14375B5F9ACD9 /* mesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = mesh.cpp; sourceTree = SOURCE_ROOT; };
+		DD76A7D94795486286A24255 /* logging.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = logging.hpp; sourceTree = SOURCE_ROOT; };
+		E07C960B9DE043CB8C120E1E /* memory.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = memory.cpp; sourceTree = SOURCE_ROOT; };
+		E2468E46ACA548B2B30AB21A /* swapchain.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = swapchain.hpp; sourceTree = SOURCE_ROOT; };
+		FBBCB2631E9E490CAA89265F /* commands.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = commands.cpp; sourceTree = SOURCE_ROOT; };
+		FCF5BB527AD24A0B9D491EBB /* instance.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = instance.hpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DE054F6000148F49B47CC73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		34C1821692DE4E829E220C13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		674D63C8C42E4988A5E4C74D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		682A73D511B949C18FF95FA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C71836E55573402E8621CDB1 /* 3DLoaderVk */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		804EDD1242F643458FCBCD5D /* 3DLoaderVk */ = {
+			isa = PBXGroup;
+			children = (
+				D602E4E8848B453A9650565F /* Source Files */,
+				DD2127E3D61A426F9CECCAD0 /* Header Files */,
+				66E848D770C9454FAE16030E /* CMakeLists.txt */,
+			);
+			name = 3DLoaderVk;
+			sourceTree = "<group>";
+		};
+		AF46FFC52F42453E83498374 = {
+			isa = PBXGroup;
+			children = (
+				804EDD1242F643458FCBCD5D /* 3DLoaderVk */,
+				B9BB54448C1040DC9D0B87D1 /* ALL_BUILD */,
+				682A73D511B949C18FF95FA2 /* Products */,
+				34C1821692DE4E829E220C13 /* Frameworks */,
+				674D63C8C42E4988A5E4C74D /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		B9BB54448C1040DC9D0B87D1 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				C84AF757644C4D33B263E209 /* CMake Rules */,
+				8A883F5856CE4721AD68102B /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		C84AF757644C4D33B263E209 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		D602E4E8848B453A9650565F /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E9F3FA1550B4BE992A0B2DF /* app.cpp */,
+				FBBCB2631E9E490CAA89265F /* commands.cpp */,
+				2D01428A2EE645508AF8F8E9 /* device.cpp */,
+				1FD218415EA34D90B7C72B64 /* engine.cpp */,
+				6E799FBA950241CBB142B3E4 /* framebuffer.cpp */,
+				0FB7B9D5FEF6462A934DEEAC /* instance.cpp */,
+				BDA585B8D5BB4162B0EE6ECE /* logging.cpp */,
+				44D3E61D66894820B9D608A7 /* main.cpp */,
+				E07C960B9DE043CB8C120E1E /* memory.cpp */,
+				D7E35A9270B14375B5F9ACD9 /* mesh.cpp */,
+				2AC8EEA503D94F359F7D418E /* pipeline.cpp */,
+				4697C466387944E9A238567D /* quad_mesh.cpp */,
+				518F8EF20CEA450795CEA00F /* queue_families.cpp */,
+				BF83655DF90A40B58F785A83 /* scene.cpp */,
+				16D03545EF1944C2B86BC619 /* shaders.cpp */,
+				C19D731A95B6470E940DC962 /* swapchain.cpp */,
+				2AB47E60EEEA4E9DAF9328B6 /* sync.cpp */,
+				8F0C9D5938E34185954380A8 /* triangle_mesh.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		DD2127E3D61A426F9CECCAD0 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				B83A56CB2DC24387B8B5C306 /* app.hpp */,
+				365F166984C84154B9ACBB5A /* commands.hpp */,
+				8483B5C458554FB8BF7D94E8 /* config.hpp */,
+				4C49A3A59D5849E19595E777 /* device.hpp */,
+				7BB7E1BB599040819BACB741 /* engine.hpp */,
+				32E815F0A7A941F6A6A503C7 /* frame.hpp */,
+				9CE5AF39CA6241E4A89A2A69 /* framebuffer.hpp */,
+				FCF5BB527AD24A0B9D491EBB /* instance.hpp */,
+				DD76A7D94795486286A24255 /* logging.hpp */,
+				9FAA722CAC58408C8D2B9306 /* memory.hpp */,
+				C6BD29C7324D4289AB143159 /* mesh.hpp */,
+				9748739CF77045A49436FDA9 /* pipeline.hpp */,
+				D7B0E9826B0C4EF6AB6435AB /* quad_mesh.hpp */,
+				25B7F3622F504982B413ABE1 /* queue_families.hpp */,
+				7E4A0145EDF946D193B66980 /* render_structs.hpp */,
+				24E1C4DC7E0344F989027F05 /* scene.hpp */,
+				BD531F5158BB44EEBBA8FA72 /* shaders.hpp */,
+				E2468E46ACA548B2B30AB21A /* swapchain.hpp */,
+				BAF8F007CD1A4EB9A68D5922 /* sync.hpp */,
+				1F91F05D2F7546FA86C34201 /* triangle_mesh.hpp */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		13E71A96D26240C7B45F1800 /* 3DLoaderVk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2744E5C034E4D9FBF40F646 /* Build configuration list for PBXNativeTarget "3DLoaderVk" */;
+			buildPhases = (
+				F76ADC0BFFD7489CA39F7D63 /* Sources */,
+				3DE054F6000148F49B47CC73 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				849C0F3F06C64374A40AE48C /* PBXTargetDependency */,
+			);
+			name = 3DLoaderVk;
+			productName = 3DLoaderVk;
+			productReference = C71836E55573402E8621CDB1 /* 3DLoaderVk */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4D2DA4511A1F477EB5A9BF63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1530;
+			};
+			buildConfigurationList = A89D7ADC111841EF83AF9510 /* Build configuration list for PBXProject "3DLoaderVk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF46FFC52F42453E83498374;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				500D8A2A58D84C69877FD0D7 /* ALL_BUILD */,
+				13E71A96D26240C7B45F1800 /* 3DLoaderVk */,
+				CE8AE22C07AB45D38A3C65FB /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0797F8B8F13D0805298CA9C1 /* Generate CMakeFiles/ZERO_CHECK */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ZERO_CHECK";
+			outputPaths = (
+				"/Users/xbz/Developer/Vk-Render/CMakeFiles/ZERO_CHECK",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/xbz/Developer/Vk-Render\n  make -f /Users/xbz/Developer/Vk-Render/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/xbz/Developer/Vk-Render\n  make -f /Users/xbz/Developer/Vk-Render/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/xbz/Developer/Vk-Render\n  make -f /Users/xbz/Developer/Vk-Render/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/xbz/Developer/Vk-Render\n  make -f /Users/xbz/Developer/Vk-Render/CMakeScripts/ReRunCMake.make\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E2DA7899E4012E40BB9B8DD8 /* Generate CMakeFiles/ALL_BUILD */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ALL_BUILD";
+			outputPaths = (
+				"/Users/xbz/Developer/Vk-Render/CMakeFiles/ALL_BUILD",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/xbz/Developer/Vk-Render\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/xbz/Developer/Vk-Render\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/xbz/Developer/Vk-Render\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/xbz/Developer/Vk-Render\n  echo Build\\ all\\ projects\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F76ADC0BFFD7489CA39F7D63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25D9637D542241B8B1B8EFA7 /* app.cpp in Sources */,
+				FAC68556862E4E2695F59575 /* commands.cpp in Sources */,
+				2ED719EB7A8E486D856F4561 /* device.cpp in Sources */,
+				E811338102B44AA184048424 /* engine.cpp in Sources */,
+				6D8C52798ECC41268AF81051 /* framebuffer.cpp in Sources */,
+				E2C445B2FE564E26BA467391 /* instance.cpp in Sources */,
+				84F144FDBAB74CDEBF5B4762 /* logging.cpp in Sources */,
+				9EBEA6856BEB450A983287F6 /* main.cpp in Sources */,
+				1433AC1614984CC4907CFDAD /* memory.cpp in Sources */,
+				AB6395F7680742A0B9E5FFA5 /* mesh.cpp in Sources */,
+				05FC518950354185A61FCFA5 /* pipeline.cpp in Sources */,
+				421A16858BEF49A5A29AC19B /* quad_mesh.cpp in Sources */,
+				4FB064E502FD4E88B90AEF1F /* queue_families.cpp in Sources */,
+				14EA38ED89D6420CB4457B44 /* scene.cpp in Sources */,
+				DB68F872C05142F1B7D793BB /* shaders.cpp in Sources */,
+				04BB3BF851F34923891F1DE6 /* swapchain.cpp in Sources */,
+				286F2579161541E793850333 /* sync.cpp in Sources */,
+				AC40E7F409E3484993FD01FB /* triangle_mesh.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		29A45FADA9C34EA0A7635C00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13E71A96D26240C7B45F1800 /* 3DLoaderVk */;
+			targetProxy = 5CD7CF03DC9D4AF6BD6E4E7C /* PBXContainerItemProxy */;
+		};
+		849C0F3F06C64374A40AE48C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE8AE22C07AB45D38A3C65FB /* ZERO_CHECK */;
+			targetProxy = 230C557ABFF44BBBAB9DDFF7 /* PBXContainerItemProxy */;
+		};
+		F08120020634432FB2DBBA74 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE8AE22C07AB45D38A3C65FB /* ZERO_CHECK */;
+			targetProxy = 5904078CBCFC4FC0BB07CA91 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0B96099871034D22A030CB06 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		1CFC069BCDB14CD8A7252241 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		21C5D355182A4091A366C051 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		32E0128327BF4748A2734850 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
+				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
+			};
+			name = Debug;
+		};
+		32E6E35E189F4357B0F0ECA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		3ADB7F79DFF741A88878B03E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		45B5E03C2D14424CB41CB982 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		45CA36835FD24120B3966E4B /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
+			};
+			name = MinSizeRel;
+		};
+		5776AC7F0F6C4E239ABC7B53 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/MinSizeRel";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/include,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/lib,
+					/usr/local/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/lib,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=gnu++2b'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/usr/local/lib/libvulkan.dylib,
+					/usr/local/lib/libglfw.3.4.dylib,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = 3DLoaderVk;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"$(inherited)",
+				);
+				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/3DLoaderVk.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		5A2CAFA509754E38BFF8B9AB /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		5D8AC554A268478982568F75 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/RelWithDebInfo";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/include,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/lib,
+					/usr/local/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/lib,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=gnu++2b'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/usr/local/lib/libvulkan.dylib,
+					/usr/local/lib/libglfw.3.4.dylib,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = 3DLoaderVk;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"$(inherited)",
+				);
+				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/3DLoaderVk.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		6261713CF9134609AAB80DE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		9317D5B3B281497494F042FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/Release";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/include,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/lib,
+					/usr/local/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/lib,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=gnu++2b'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/usr/local/lib/libvulkan.dylib,
+					/usr/local/lib/libglfw.3.4.dylib,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = 3DLoaderVk;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"$(inherited)",
+				);
+				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/3DLoaderVk.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		A7A7119C881842ACA7B9E22E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/xbz/Developer/Vk-Render/Debug";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/include,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/lib,
+					/usr/local/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.4/lib,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++2b' ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/usr/local/lib/libvulkan.dylib,
+					/usr/local/lib/libglfw.3.4.dylib,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = 3DLoaderVk;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"$(inherited)",
+				);
+				TARGET_TEMP_DIR = "/Users/xbz/Developer/Vk-Render/build/3DLoaderVk.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		C292727AF927455CBAEEEE2A /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
+			};
+			name = RelWithDebInfo;
+		};
+		EFEBFCBD9B4845B685936663 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "/Users/xbz/Developer/Vk-Render/build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5256A28647D54B58BB64433B /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CFC069BCDB14CD8A7252241 /* Debug */,
+				32E6E35E189F4357B0F0ECA5 /* Release */,
+				21C5D355182A4091A366C051 /* MinSizeRel */,
+				5A2CAFA509754E38BFF8B9AB /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		71EC95DF7CB643C286987917 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6261713CF9134609AAB80DE8 /* Debug */,
+				3ADB7F79DFF741A88878B03E /* Release */,
+				45B5E03C2D14424CB41CB982 /* MinSizeRel */,
+				0B96099871034D22A030CB06 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A89D7ADC111841EF83AF9510 /* Build configuration list for PBXProject "3DLoaderVk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32E0128327BF4748A2734850 /* Debug */,
+				EFEBFCBD9B4845B685936663 /* Release */,
+				45CA36835FD24120B3966E4B /* MinSizeRel */,
+				C292727AF927455CBAEEEE2A /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E2744E5C034E4D9FBF40F646 /* Build configuration list for PBXNativeTarget "3DLoaderVk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7A7119C881842ACA7B9E22E /* Debug */,
+				9317D5B3B281497494F042FD /* Release */,
+				5776AC7F0F6C4E239ABC7B53 /* MinSizeRel */,
+				5D8AC554A268478982568F75 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4D2DA4511A1F477EB5A9BF63 /* Project object */;
+}

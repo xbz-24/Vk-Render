@@ -186,6 +186,8 @@ vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
 
     std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
 
+    extensions.push_back(VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME);
+    
     //In order to hook in a custom validation callback
     if (debug)
     {
@@ -226,7 +228,7 @@ vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
     */
     vk::InstanceCreateInfo createInfo = vk::InstanceCreateInfo
     (
-        vk::InstanceCreateFlags(),
+        vk::InstanceCreateFlagBits::eEnumeratePortabilityKHR,
         &appInfo,
         static_cast<uint32_t>(layers.size()), layers.data(), // enabled layers
         static_cast<uint32_t>(extensions.size()), extensions.data() // enabled extensions
@@ -250,6 +252,7 @@ vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
         if (debug)
         {
             std::cout << "Failed to create Instance!\n";
+            std::cout << err.what() << std::endl;
         }
         return nullptr;
     }
