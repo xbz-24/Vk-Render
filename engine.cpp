@@ -141,7 +141,8 @@ void Engine::MakePipeline()
 {
     vkinit::GraphicsPipelineInBundle specification = { };
     specification.device = device_;
-    std::string prefix = "../../"; // remove prefix addition unless using visual studio (windows only)
+    
+    std::string prefix = "../../"; // only if using visual studio (windows only)
     specification.vertexFilepath = prefix + "../shaders/vertex.spv";
     specification.fragmentFilepath = prefix + "../shaders/fragment.spv";
     specification.swapchainExtent = swapchain_extent_;
