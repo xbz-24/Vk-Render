@@ -11,7 +11,8 @@
 class QuadMesh
 {
 public:
-    QuadMesh(vk::Device logical_device, vk::PhysicalDevice physical_device);
+    QuadMesh(vk::Device logical_device, 
+             vk::PhysicalDevice physical_device);
     ~QuadMesh();
     Buffer vertex_buffer;
 private:

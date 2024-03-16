@@ -6,8 +6,7 @@
  */
 #include "memory.hpp"
 
-Buffer vkutil::createBuffer(BufferInput input)
-{
+Buffer vkutil::createBuffer(BufferInput input){
     vk::BufferCreateInfo bufferInfo;
     bufferInfo.flags = vk::BufferCreateFlags();
     bufferInfo.size = input.size;
@@ -18,22 +17,21 @@ Buffer vkutil::createBuffer(BufferInput input)
     allocateBufferMemory(buffer, input);
     return buffer;
 }
-uint32_t vkutil::findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t supportedMemoryIndices, vk::MemoryPropertyFlags requestedProperties)
-{
+uint32_t vkutil::findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, 
+                                     uint32_t supportedMemoryIndices,
+                                     vk::MemoryPropertyFlags requestedProperties){
     vk::PhysicalDeviceMemoryProperties memoryProperties = physicalDevice.getMemoryProperties();
-    for(uint32_t i = 0; i < memoryProperties.memoryTypeCount; i++)
-    {
+    for(uint32_t i = 0; i < memoryProperties.memoryTypeCount; i++){
         bool supported { static_cast<bool>(supportedMemoryIndices & (1 << i)) };
         bool sufficient { (memoryProperties.memoryTypes[i].propertyFlags & requestedProperties) == requestedProperties };
-        if(supported && sufficient)
-        {
+        if(supported && sufficient){
             return i;
         }
     }
     throw std::runtime_error("Failed to find suitable memory type.");
 }
-void vkutil::allocateBufferMemory(Buffer &buffer, const BufferInput& input)
-{
+void vkutil::allocateBufferMemory(Buffer &buffer, 
+                                  const BufferInput& input){
     vk::MemoryRequirements memoryRequirements = input.logical_device.getBufferMemoryRequirements(buffer.buffer);
     vk::MemoryAllocateInfo allocInfo;
     allocInfo.allocationSize = memoryRequirements.size;

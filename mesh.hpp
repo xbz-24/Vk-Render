@@ -10,8 +10,7 @@
 #include <array>
 #include <vulkan/vulkan.hpp>
 
-namespace vkmesh
-{
+namespace vkmesh{
     vk::VertexInputBindingDescription getPosColorBindingDescription();
     std::array<vk::VertexInputAttributeDescription, 2> getPosColorAttributeDescriptions();
 }

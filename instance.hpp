@@ -4,9 +4,10 @@
 #include <GLFW/glfw3.h>
 #include <vulkan/vulkan.hpp>
 #include <vector>
+#include <span>
 #include <iostream>
-namespace vkinit
-{
+#include <format>
+namespace vkinit{
     /**
         Check whether the requested extensions and layers are supported.
 
@@ -15,7 +16,9 @@ namespace vkinit
         \param debug whether to log error messages.
         \returns whether all of the extensions and layers are supported.
     */
-    bool supported(std::vector<const char*>& extensions, std::vector<const char*>& layers, bool debug);
+    bool supported(std::span<const char* const> extensions,
+                   std::span<const char* const> layers,
+                   bool debug);
 
     /**
         Create a Vulkan instance_.
@@ -24,6 +27,7 @@ namespace vkinit
         \param applicationName the name of the application.
         \returns the instance_ created.
     */
-    vk::Instance make_instance(bool debug, const char* applicationName);
+    vk::Instance make_instance(bool debug, 
+                               const char* applicationName);
 }
 #endif //INC_3DLOADERVK_INSTANCE_HPP

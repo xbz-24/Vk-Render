@@ -5,9 +5,7 @@
  * @author Renato German Chavez Chicoma
  */
 #include "swapchain.hpp"
-namespace vkinit
-{
-
+namespace vkinit {
     /**
      * @brief Queries the swap chain support details for a given physical device_ and surface_.
      *
@@ -19,72 +17,69 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return SwapChainSupportDetails for the given device_ and surface_.
      */
-    SwapChainSupportDetails query_swapchain_support(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug)
-    {
+    SwapChainSupportDetails query_swapchain_support(vk::PhysicalDevice device, 
+                                                    vk::SurfaceKHR surface,
+                                                    bool debug) {
         SwapChainSupportDetails support;
         support.capabilities = device.getSurfaceCapabilitiesKHR(surface);
 
-        if (debug)
-        {
+        if (debug) {
             std::cout << "Swapchain can support the following surface_ cappabilities\n";
-            std::cout << "\tminimum image count: " << support.capabilities.minImageCount << '\n';
-            std::cout << "\tmaximum image count: " << support.capabilities.maxImageCount << '\n';
-            std::cout << "\tcurrent extent: \n";
+            std::cout << std::format("\tminimum image count: {}\n", support.capabilities.minImageCount);
+            std::cout << std::format("\tmaximum image count: {}\n", support.capabilities.maxImageCount);
+            std::cout << std::format("\tcurrent extent: \n");
             //vk::Extent2D extent(230, 234);
-            std::cout << "\t\twidth: " << support.capabilities.currentExtent.width << '\n';
-            std::cout << "\t\theight: " << support.capabilities.currentExtent.height << '\n';
+            std::cout << std::format("\t\twidth: {}\n", support.capabilities.currentExtent.width);
+            std::cout << std::format("\t\theight: {}\n", support.capabilities.currentExtent.height);
 
-            std::cout << "\t\tminimum supported extent: \n";
-            std::cout << "\t\twidth: " << support.capabilities.minImageExtent.width << '\n';
-            std::cout << "\t\theight: " << support.capabilities.minImageExtent.height << '\n';
+            std::cout << std::format("\t\tminimum supported extent: \n");
+            std::cout << std::format("\t\twidth: {}\n", support.capabilities.minImageExtent.width);
+            std::cout << std::format("\t\theight: {}\n", support.capabilities.minImageExtent.height);
 
-            std::cout << "\t\tmaximum supported extent: \n";
-            std::cout << "\t\twidth: " << support.capabilities.maxImageExtent.width << '\n';
-            std::cout << "\t\theight: " << support.capabilities.maxImageExtent.height << '\n';
+            std::cout << std::format("\t\tmaximum supported extent: \n");
+            std::cout << std::format("\t\twidth: {}\n", support.capabilities.maxImageExtent.width);
+            std::cout << std::format("\t\theight: {}\n", support.capabilities.maxImageExtent.height);
 
-            std::cout << "\tmaxximum image array layers: " << support.capabilities.maxImageArrayLayers << '\n';
+            std::cout << std::format("\tmaxximum image array layers: {}\n", support.capabilities.maxImageArrayLayers);
 
             std::cout << "\tSupported transforms:\n";
             std::vector<std::string> stringList = log_transform_bits(support.capabilities.supportedTransforms);
-            for (std::string line: stringList)
-            {
-                std::cout << "\t\t" << line << '\n';
+            for (std::string &line : stringList | std::views::all) {
+                std::cout << "\t\t" << line << std::endl;
             }
 
             std::cout << "\tcurrent transform:\n";
             stringList = log_transform_bits(support.capabilities.currentTransform);
-            for (std::string line: stringList)
-            {
-                std::cout << "\t\t" << line << '\n';
+            for (std::string &line : stringList | std::views::all) {
+                std::cout << "\t\t" << line << std::endl;
             }
 
             std::cout << "\tsupported alpha operations:\n";
             stringList = log_alpha_composite_bits(support.capabilities.supportedCompositeAlpha);
-            for (std::string line: stringList)
-            {
-                std::cout << "\t\t" << line << '\n';
+            for (std::string &line : stringList | std::views::all) {
+                std::cout << "\t\t" << line << std::endl;
             }
 
             std::cout << "\tsupported image usage:\n";
             stringList = log_image_usage_bits(support.capabilities.supportedUsageFlags);
-            for (std::string line: stringList)
-            {
-                std::cout << "\t\t" << line << '\n';
+            for (std::string &line : stringList | std::views::all) {
+                std::cout << "\t\t" << line << std::endl;
             }
         }
 
         support.formats = device.getSurfaceFormatsKHR(surface);
-        if (debug)
-        {
-            for (vk::SurfaceFormatKHR supportedFormat: support.formats)
-            {
+        if (debug){
+            std::ranges::for_each(support.formats, [](const vk::SurfaceFormatKHR &supportedFormat) {
                 std::cout << "supported pixel format: " << vk::to_string(supportedFormat.format) << '\n';
                 std::cout << "supported color space: " << vk::to_string(supportedFormat.colorSpace) << '\n';
-            }
+            });
+//            for (const vk::SurfaceFormatKHR &supportedFormat: support.formats){
+//                std::cout << "supported pixel format: " << vk::to_string(supportedFormat.format) << '\n';
+//                std::cout << "supported color space: " << vk::to_string(supportedFormat.colorSpace) << '\n';
+//            }
         }
         support.presentModes = device.getSurfacePresentModesKHR(surface);
-        for (vk::PresentModeKHR presentMode: support.presentModes)
-        {
+        for (vk::PresentModeKHR presentMode: support.presentModes){
             std::cout << '\t' << log_present_mode(presentMode) << '\n';
         }
         return support;
@@ -99,12 +94,9 @@ namespace vkinit
      * @param formats A vector of available surface_ formats.
      * @return The chosen vk::SurfaceFormatKHR
      */
-    vk::SurfaceFormatKHR choose_swapchain_surface_format(std::vector<vk::SurfaceFormatKHR> formats)
-    {
-        for (vk::SurfaceFormatKHR format: formats)
-        {
-            if (format.format == vk::Format::eB8G8R8A8Unorm && format.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear)
-            {
+    vk::SurfaceFormatKHR choose_swapchain_surface_format(std::vector<vk::SurfaceFormatKHR> formats){
+        for (vk::SurfaceFormatKHR format: formats){
+            if (format.format == vk::Format::eB8G8R8A8Unorm && format.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear){
                 return format;
             }
         }
@@ -120,12 +112,9 @@ namespace vkinit
      * @param presentModes A vector of available presentation modes.
      * @return The chosen vk::PresentModeKHR.
      */
-    vk::PresentModeKHR choose_swapchain_present_mode(std::vector<vk::PresentModeKHR> presentModes)
-    {
-        for (vk::PresentModeKHR presentMode: presentModes)
-        {
-            if (presentMode == vk::PresentModeKHR::eMailbox)
-            {
+    vk::PresentModeKHR choose_swapchain_present_mode(std::vector<vk::PresentModeKHR> presentModes){
+        for (vk::PresentModeKHR presentMode: presentModes){
+            if (presentMode == vk::PresentModeKHR::eMailbox){
                 return presentMode;
             }
         }
@@ -143,14 +132,11 @@ namespace vkinit
      * @param capabilities The surface_ capabilities.
      * @return The vk::Extent2D representing the swap chain image extent.
      */
-    vk::Extent2D choose_swapchain_extent(uint32_t width, uint32_t height, vk::SurfaceCapabilitiesKHR capabilities)
-    {
-        if (capabilities.currentExtent.width != UINT32_MAX)
-        {
+    vk::Extent2D choose_swapchain_extent(uint32_t width, uint32_t height, vk::SurfaceCapabilitiesKHR capabilities){
+        if (capabilities.currentExtent.width != UINT32_MAX){
             return capabilities.currentExtent;
         }
-        else
-        {
+        else{
             vk::Extent2D extent = {width, height};
             extent.width = std::min
                     (
@@ -180,45 +166,44 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return A SwapChainBlundle containing the swap chain and its related components.
      */
-    SwapChainBundle create_swapchain(vk::Device logicalDevice, vk::PhysicalDevice physicalDevice, vk::SurfaceKHR surface, int width, int height, bool debug)
-    {
-        SwapChainSupportDetails support = query_swapchain_support(physicalDevice, surface, debug);
+    SwapChainBundle create_swapchain(vk::Device logicalDevice, 
+                                     vk::PhysicalDevice physicalDevice,
+                                     vk::SurfaceKHR surface,
+                                     int width,
+                                     int height,
+                                     bool debug){
+        SwapChainSupportDetails support = query_swapchain_support(physicalDevice,
+                                                                  surface,
+                                                                  debug);
         vk::SurfaceFormatKHR format = choose_swapchain_surface_format(support.formats);
         vk::PresentModeKHR presentMode = choose_swapchain_present_mode(support.presentModes);
-        vk::Extent2D extent = choose_swapchain_extent(static_cast<uint32_t>(width), static_cast<uint32_t>(height), support.capabilities);
-        uint32_t imageCount = std::min
-                (
-                        support.capabilities.maxImageCount,
-                        support.capabilities.minImageCount + 1
-                );
+        vk::Extent2D extent = choose_swapchain_extent(static_cast<uint32_t>(width), 
+                                                      static_cast<uint32_t>(height), support.capabilities);
+        uint32_t imageCount = std::min(support.capabilities.maxImageCount,
+                                       support.capabilities.minImageCount + 1);
 
-        vk::SwapchainCreateInfoKHR createInfo = vk::SwapchainCreateInfoKHR
-        (
-            vk::SwapchainCreateFlagsKHR(),
-            surface,
-            imageCount,
-            format.format,
-            format.colorSpace,
-            extent,
-            1,
-            vk::ImageUsageFlagBits::eColorAttachment
-        );
-        vkutil::QueueFamilyIndices indices = vkutil::findQueueFamilies
-        (
-            physicalDevice,
-            surface,
-            debug
-        );
-        uint32_t queueFamilyIndices[] = { indices.graphicsFamily.value(), indices.presentFamily.value() };
+        vk::SwapchainCreateInfoKHR createInfo = vk::SwapchainCreateInfoKHR(vk::SwapchainCreateFlagsKHR(),
+                                                                           surface,
+                                                                           imageCount,
+                                                                           format.format,
+                                                                           format.colorSpace,
+                                                                           extent,
+                                                                           1,
+                                                                           vk::ImageUsageFlagBits::eColorAttachment);
+        vkutil::QueueFamilyIndices indices = vkutil::findQueueFamilies(physicalDevice,
+                                                                       surface,
+                                                                       debug);
+        uint32_t queueFamilyIndices[] = {
+            indices.graphicsFamily.value(),
+            indices.presentFamily.value()
+        };
 
-        if(indices.graphicsFamily.value() != indices.presentFamily.value())
-        {
+        if(indices.graphicsFamily.value() != indices.presentFamily.value()) {
             createInfo.imageSharingMode = vk::SharingMode::eConcurrent;
             createInfo.queueFamilyIndexCount = 2;
             createInfo.pQueueFamilyIndices = queueFamilyIndices;
         }
-        else
-        {
+        else{
             createInfo.imageSharingMode = vk::SharingMode::eExclusive;
         }
 
@@ -230,22 +215,16 @@ namespace vkinit
         createInfo.oldSwapchain = vk::SwapchainKHR(nullptr);
 
         SwapChainBundle bundle{ };
-        try
-        {
+        try{
             bundle.swapchain = logicalDevice.createSwapchainKHR(createInfo);
         }
-        catch(vk::SystemError &err)
-        {
+        catch(vk::SystemError &err){
             throw std::runtime_error("failed to create swapchain_!");
         }
         std::vector<vk::Image> images = logicalDevice.getSwapchainImagesKHR(bundle.swapchain);
-        bundle.frames.resize
-        (
-            images.size()
-        );
+        bundle.frames.resize(images.size());
 
-        for(size_t i = 0; i < images.size(); i++)
-        {
+        for(size_t i = 0; i < images.size(); i++){
             vk::ImageViewCreateInfo imageViewCreateInfo = { };
             imageViewCreateInfo.image = images[i];
             imageViewCreateInfo.viewType = vk::ImageViewType::e2D;
@@ -265,7 +244,6 @@ namespace vkinit
         }
         bundle.format = format.format;
         bundle.extent = extent;
-
         return bundle;
     }
 };

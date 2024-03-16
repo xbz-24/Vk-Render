@@ -15,7 +15,9 @@ namespace vkutil
         [[nodiscard]] bool isComplete() const;
     };
 
-    QueueFamilyIndices findQueueFamilies(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug);
+    QueueFamilyIndices findQueueFamilies(vk::PhysicalDevice device, 
+                                         vk::SurfaceKHR surface,
+                                         bool debug);
 }
 
 #endif //INC_3DLOADERVK_QUEUE_FAMILIES_HPP

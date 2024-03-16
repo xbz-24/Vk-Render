@@ -6,8 +6,7 @@
  */
 #include "queue_families.hpp"
 namespace vkutil {
-    bool QueueFamilyIndices::isComplete() const
-    {
+    bool QueueFamilyIndices::isComplete() const{
         return graphicsFamily.has_value() && presentFamily.has_value();
     }
 
@@ -22,14 +21,16 @@ namespace vkutil {
      * @param debug Flag indicating whether to enable debug logging.
      * @return QueueFamilyIndices with the indices of the suitable queue families.
      */
-    QueueFamilyIndices findQueueFamilies(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug) {
+    QueueFamilyIndices findQueueFamilies(vk::PhysicalDevice device, 
+                                         vk::SurfaceKHR surface,
+                                         bool debug) {
         QueueFamilyIndices indices;
         std::vector<vk::QueueFamilyProperties> queueFamilies = device.getQueueFamilyProperties();
         if (debug) {
             std::cout << "System can support " << queueFamilies.size() << " queue families.\n";
         }
         int i = 0;
-        for (vk::QueueFamilyProperties queueFamily: queueFamilies) {
+        for (vk::QueueFamilyProperties queueFamily : queueFamilies) {
             if (queueFamily.queueFlags & vk::QueueFlagBits::eGraphics) {
                 indices.graphicsFamily = i;
                 indices.presentFamily = i;

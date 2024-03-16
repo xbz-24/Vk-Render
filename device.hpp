@@ -8,11 +8,15 @@
 #include <vulkan/vulkan.hpp>
 #include <iostream>
 #include <vector>
+#include <format>
 #include <set>
 #include <string>
 #include <array>
+#include <optional>
+#include <ranges>
 #include "queue_families.hpp"
 #include "logging.hpp"
+#include <functional>
 /**
  * Vulkan represents the concept of physic  al and logical devices.
  *
@@ -31,18 +35,21 @@
   * determining if a physical device_ is suitable, choosing a physical device_,
   * creating a logical device_ and retrieving device_ queues.
   */
-namespace vkinit
-{
-    bool CheckDeviceExtensionSupport
-    (
-        const vk::PhysicalDevice& device,
-        const std::vector<const char*>& requested_extensions,
-        const bool& debug
-    );
-    bool IsSuitable(const vk::PhysicalDevice& device, bool debug);
-    vk::PhysicalDevice ChoosePhysicalDevice(vk::Instance& instance, bool debug);
-    vk::Device CreateLogicalDevice(vk::PhysicalDevice physical_device, vk::SurfaceKHR surface, bool debug);
-    std::array<vk::Queue, 2> GetQueues(vk::PhysicalDevice physical_device, vk::Device device, vk::SurfaceKHR surface, bool debug);
+namespace vkinit{
+    bool CheckDeviceExtensionSupport(const vk::PhysicalDevice& device,
+                                     const std::vector<const char*>& requested_extensions,
+                                     const bool& debug);
+    bool IsSuitable(const vk::PhysicalDevice& device, 
+                    bool debug);
+    std::optional<vk::PhysicalDevice> ChoosePhysicalDevice(vk::Instance& instance, 
+                                            bool debug);
+    std::optional<vk::Device> CreateLogicalDevice(vk::PhysicalDevice physical_device,
+                                   vk::SurfaceKHR surface,
+                                   bool debug);
+    std::array<vk::Queue, 2> GetQueues(vk::PhysicalDevice physical_device, 
+                                       vk::Device device,
+                                       vk::SurfaceKHR surface,
+                                       bool debug);
 
 }
 #endif //INC_3DLOADERVK_DEVICE_HPP

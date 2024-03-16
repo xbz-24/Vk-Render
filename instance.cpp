@@ -17,39 +17,30 @@
  * @param debug Flag indicating whether to enable debug logging.
  * @return true if all extensions and layers are supported, false otherwise
  */
-bool vkinit::supported(std::vector<const char*>& extensions, std::vector<const char*>& layers, bool debug)
-{
+bool vkinit::supported(std::span<const char* const> extensions,
+                       std::span<const char* const> layers,
+                       bool debug) {
     //check extension support
     std::vector<vk::ExtensionProperties> supportedExtensions = vk::enumerateInstanceExtensionProperties();
-
-    if (debug)
-    {
+    if (debug){
         std::cout << "Device can support the following extensions:\n";
-        for (vk::ExtensionProperties supportedExtension : supportedExtensions)
-        {
+        for (vk::ExtensionProperties supportedExtension : supportedExtensions){
             std::cout << '\t' << supportedExtension.extensionName << '\n';
         }
     }
-
     bool found;
-    for (const char* extension : extensions)
-    {
+    for (const char* extension : extensions){
         found = false;
-        for (vk::ExtensionProperties supportedExtension : supportedExtensions)
-        {
-            if (strcmp(extension, supportedExtension.extensionName) == 0)
-            {
+        for (vk::ExtensionProperties supportedExtension : supportedExtensions){
+            if (strcmp(extension, supportedExtension.extensionName) == 0){
                 found = true;
-                if (debug)
-                {
+                if (debug){
                     std::cout << "Extension \"" << extension << "\" is supported!\n";
                 }
             }
         }
-        if (!found)
-        {
-            if (debug)
-            {
+        if (!found){
+            if (debug){
                 std::cout << "Extension \"" << extension << "\" is not supported!\n";
             }
             return false;
@@ -58,40 +49,30 @@ bool vkinit::supported(std::vector<const char*>& extensions, std::vector<const c
 
     //check layer support
     std::vector<vk::LayerProperties> supportedLayers = vk::enumerateInstanceLayerProperties();
-
-    if (debug)
-    {
+    if (debug){
         std::cout << "Device can support the following layers:\n";
-        for (vk::LayerProperties supportedLayer : supportedLayers)
-        {
+        for (vk::LayerProperties &supportedLayer : supportedLayers){
             std::cout << '\t' << supportedLayer.layerName << '\n';
         }
     }
 
-    for (const char* layer : layers)
-    {
+    for (const char* layer : layers){
         found = false;
-        for (vk::LayerProperties supportedLayer : supportedLayers)
-        {
-            if (strcmp(layer, supportedLayer.layerName) == 0)
-            {
+        for (vk::LayerProperties supportedLayer : supportedLayers){
+            if (strcmp(layer, supportedLayer.layerName) == 0){
                 found = true;
-                if (debug)
-                {
+                if (debug){
                     std::cout << "Layer \"" << layer << "\" is supported!\n";
                 }
             }
         }
-        if (!found)
-        {
-            if (debug)
-            {
+        if (!found){
+            if (debug){
                 std::cout << "Layer \"" << layer << "\" is not supported!\n";
             }
             return false;
         }
     }
-
     return true;
 }
 /**
@@ -105,11 +86,9 @@ bool vkinit::supported(std::vector<const char*>& extensions, std::vector<const c
  * @param applicationName The name of the application.
  * @return A Vulkan instance_, or nullptr if instance_ creation fails.
  */
-vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
-{
-
-    if (debug)
-    {
+vk::Instance vkinit::make_instance(bool debug, 
+                                   const char* applicationName){
+    if (debug){
         std::cout << "Making an instance_...\n";
     }
 
@@ -134,12 +113,9 @@ vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
     * VkResult vkEnumerateInstanceVersion(
         uint32_t*                                   pApiVersion);
     */
-
     uint32_t version{ 0 };
     vkEnumerateInstanceVersion(&version);
-
-    if (debug)
-    {
+    if (debug){
         std::cout << "System can support vulkan Variant: "
                   << VK_API_VERSION_VARIANT(version)
                   << ", Major: " << VK_API_VERSION_MAJOR(version)
@@ -169,14 +145,11 @@ vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
                                       uint32_t     apiVersion_         = {} )
     */
 
-    vk::ApplicationInfo appInfo = vk::ApplicationInfo
-    (
-        applicationName,
-        version,
-        "Doing it the hard way",
-        version,
-        version
-    );
+    vk::ApplicationInfo appInfo = vk::ApplicationInfo(applicationName,
+                                                      version,
+                                                      "Doing it the hard way",
+                                                      version,
+                                                      version);
 
     /*
     * Everything with Vulkan is "opt-in", so we need to query which extensions glfw needs
@@ -186,34 +159,30 @@ vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
     const char** glfwExtensions;
     glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
-    std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+    std::vector<const char*> extensions(glfwExtensions, 
+                                        glfwExtensions + glfwExtensionCount);
 
     extensions.push_back("VK_KHR_portability_enumeration");
     
     //In order to hook in a custom validation callback
-    if (debug)
-    {
+    if (debug){
         extensions.push_back("VK_EXT_debug_utils");
     }
 
-    if (debug)
-    {
+    if (debug){
         std::cout << "extensions to be requested:\n";
-
-        for (const char* extensionName : extensions)
-        {
+        for (const char* extensionName : extensions){
             std::cout << "\t\"" << extensionName << "\"\n";
         }
     }
 
     std::vector<const char*> layers;
-    if (debug)
-    {
+    if (debug){
         layers.push_back("VK_LAYER_KHRONOS_validation");
     }
-
-    if (!supported(extensions, layers, debug))
-    {
+    if (!supported(extensions, 
+                   layers,
+                   debug)){
         return nullptr;
     }
 
@@ -228,17 +197,15 @@ vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
                                          uint32_t                                      enabledExtensionCount_ = {},
                                          const char * const * ppEnabledExtensionNames_ = {} )
     */
-    vk::InstanceCreateInfo createInfo = vk::InstanceCreateInfo
-    (
-        vk::InstanceCreateFlagBits::eEnumeratePortabilityKHR,
-        &appInfo,
-        static_cast<uint32_t>(layers.size()), layers.data(), // enabled layers
-        static_cast<uint32_t>(extensions.size()), extensions.data() // enabled extensions
-    );
+    vk::InstanceCreateInfo createInfo = vk::InstanceCreateInfo(vk::InstanceCreateFlagBits::eEnumeratePortabilityKHR,
+                               &appInfo,
+                                                               // enabled layers
+                                                               static_cast<uint32_t>(layers.size()), layers.data(),
+                                                               // enabled extensions
+                                                               static_cast<uint32_t>(extensions.size()), extensions.data());
 
 
-    try
-    {
+    try {
         /*
         * from vulkan_funcs.h:
         *
@@ -249,12 +216,9 @@ vk::Instance vkinit::make_instance(bool debug, const char* applicationName)
         */
         return vk::createInstance(createInfo);
     }
-    catch (vk::SystemError &err)
-    {
-        if (debug)
-        {
-            std::cout << "Failed to create Instance!\n";
-            std::cout << err.what() << std::endl;
+    catch (vk::SystemError &err){
+        if (debug){
+            std::cout << std::format("Failed to create Instance: {}\n", err.what());
         }
         return nullptr;
     }

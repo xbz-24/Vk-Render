@@ -5,8 +5,7 @@
  * @author Renato German Chavez Chicoma
  */
 #include "sync.hpp"
-namespace vkinit
-{
+namespace vkinit {
     /**
      * @brief Creates a Vulkan semaphore.
      *
@@ -17,19 +16,17 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return A Vulkan semaphore object, or nullptr if creation fails.
      */
-    vk::Semaphore make_semaphore(vk::Device device, bool debug)
-    {
-        vk::SemaphoreCreateInfo semaphoreInfo = { };
+    vk::Semaphore make_semaphore(vk::Device device, 
+                                 bool debug) {
+        vk::SemaphoreCreateInfo semaphoreInfo = {
+        };
         semaphoreInfo.flags = vk::SemaphoreCreateFlags();
-        try
-        {
+        try {
             return device.createSemaphore(semaphoreInfo);
         }
-        catch(vk::SystemError &err)
-        {
-            if(debug)
-            {
-                std::cout << "Failed to create semaphore" << std::endl;
+        catch(vk::SystemError &err) {
+            if(debug){
+                std::cout << std::format("Failed to create semaphore\n");
             }
             return nullptr;
         }
@@ -44,20 +41,16 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return A Vulkan fence object, or nullptr if creation fails.
      */
-    vk::Fence make_fence(vk::Device device, bool debug)
-    {
-        vk::FenceCreateInfo fenceInfo = { };
+    vk::Fence make_fence(vk::Device device, bool debug){
+        vk::FenceCreateInfo fenceInfo = {
+        };
         fenceInfo.flags = vk::FenceCreateFlags() | vk::FenceCreateFlagBits::eSignaled;
-
-        try
-        {
+        try {
             return device.createFence(fenceInfo);
         }
-        catch(vk::SystemError &err)
-        {
-            if(debug)
-            {
-                std::cout << "Failed to create fence" << std::endl;
+        catch (vk::SystemError &err) {
+            if(debug) {
+                std::cout << std::format("Failed to create fence\n");
             }
             return nullptr;
         }

@@ -15,9 +15,11 @@
 #include <vector>
 #include <vulkan/vulkan.hpp>
 #include <iostream>
+#include <ranges>
+#include <format>
+#include <algorithm>
 
-namespace vkinit
-{
+namespace vkinit {
     /**
      * @struct SwapChainSupportDetails
      * @brief Holds detailed information about the swap chain support of a physical device_.
@@ -25,8 +27,7 @@ namespace vkinit
      * This structure is used to store the capabilities, surface_ formats, and present modes
      * supported by a physical device_ for swap chain creation.
      */
-    struct SwapChainSupportDetails
-    {
+    struct SwapChainSupportDetails{
         vk::SurfaceCapabilitiesKHR capabilities;
         std::vector<vk::SurfaceFormatKHR> formats;
         std::vector<vk::PresentModeKHR> presentModes;
@@ -38,8 +39,7 @@ namespace vkinit
      * This structure encapsulates a swap chain object and its related components, including
      * the frames (images and views), image format, and the extent of the images.
      */
-    struct SwapChainBundle
-    {
+    struct SwapChainBundle{
         vk::SwapchainKHR swapchain;
         std::vector<vkutil::SwapChainFrame> frames;
         vk::Format format;
@@ -57,7 +57,9 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return SwapChainSupportDetails for the given device_ and surface_.
      */
-    SwapChainSupportDetails query_swapchain_support(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug);
+    SwapChainSupportDetails query_swapchain_support(vk::PhysicalDevice device, 
+                                                    vk::SurfaceKHR surface,
+                                                    bool debug);
     /**
      * @brief Chooses the most suitable surface_ format for the swap chain.
      *
@@ -91,7 +93,9 @@ namespace vkinit
      * @param capabilities The surface_ capabilities.
      * @return The vk::Extent2D representing the swap chain image extent.
      */
-    vk::Extent2D choose_swapchain_extent(uint32_t width, uint32_t height, vk::SurfaceCapabilitiesKHR capabilities);
+    vk::Extent2D choose_swapchain_extent(uint32_t width, 
+                                         uint32_t height,
+                                         vk::SurfaceCapabilitiesKHR capabilities);
 
     /**
      * @brief Creates a Vulkan swap chain and associated resources.
@@ -107,6 +111,11 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return A SwapChainBlundle containing the swap chain and its related components.
      */
-    SwapChainBundle create_swapchain(vk::Device logicalDevice, vk::PhysicalDevice physicalDevice, vk::SurfaceKHR surface, int width, int height, bool debug);
+    SwapChainBundle create_swapchain(vk::Device logicalDevice, 
+                                     vk::PhysicalDevice physicalDevice,
+                                     vk::SurfaceKHR surface,
+                                     int width,
+                                     int height,
+                                     bool debug);
 }
 #endif //INC_3DLOADERVK_SWAPCHAIN_HPP

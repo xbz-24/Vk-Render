@@ -5,8 +5,7 @@
  * @date Created on 27-12-23.
  */
 #include "app.hpp"
-#include <iostream>
-#include <sstream>
+
 /**
  * @brief Constructs an App object.
  *
@@ -17,11 +16,24 @@
  * @param height The height_ of the GLFW window_.
  * @param is_debug Indicates whether debugging features should be enabled.
  */
-App::App(int width, int height, bool is_debug)
-{
-    buildGlfwWindow(width, height, is_debug);
-    graphics_engine_ = new Engine(width, height, window_, is_debug);
-    scene_ = new Scene();
+App::App(int width, 
+         int height,
+         bool is_debug) {
+    try {
+        buildGlfwWindow(width,
+                        height,
+                        is_debug);
+        graphics_engine_ = std::make_unique<Engine>(width,
+                                                    height,
+                                                    window_,
+                                                    is_debug);
+        scene_ = std::make_unique<Scene>();
+    }
+    catch(const std::exception& e) {
+        std::cerr << std::format("Initialization failed: {}\n", e.what());
+        glfwTerminate();
+        throw;
+    }
 }
 /**
  * @brief Initializes and creates a GLFW window_.
@@ -33,26 +45,28 @@ App::App(int width, int height, bool is_debug)
  * @param height The height_ of the window_ to create,
  * @param is_debug_mode Indicates whether to enable debug logging.
  */
-void App::buildGlfwWindow(int width, int height, bool is_debug_mode)
-{
-    glfwInit();
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-    window_ = glfwCreateWindow(width, height, "ID Tech 12", nullptr, nullptr);
-    if(window_)
-    {
-        if(is_debug_mode)
-        {
-            std::cout << "Successfully made a glfw window_ called \"ID Tech 12\", width_: ";
-            std::cout << width << ", height_: " << height << '\n';
-        }
+void App::buildGlfwWindow(int width, 
+                          int height,
+                          bool is_debug_mode) {
+    if (!glfwInit()) {
+        throw std::runtime_error("Failed to initialize GLFW.");
     }
-    else
-    {
-        if(is_debug_mode)
-        {
-            std::cout << "GLFW window_ creation failed\n";
-        }
+
+    glfwWindowHint(GLFW_CLIENT_API,
+                   GLFW_NO_API);
+    glfwWindowHint(GLFW_RESIZABLE, 
+                   GLFW_TRUE);
+    
+    window_ = glfwCreateWindow(width,
+                               height,
+                               "ID Tech 12",
+                               nullptr,
+                               nullptr);
+    if (!window_) {
+        throw std::runtime_error("Failed to create GLFW window.");
+    }
+    if (is_debug_mode) {
+        std::cout << std::format("GLFW window created: {} x {}\n", width, height);
     }
 }
 /**
@@ -62,12 +76,10 @@ void App::buildGlfwWindow(int width, int height, bool is_debug_mode)
  * rendering the scene_, and calculating the frame rate. The loop continues until the
  * GLFW window_ should close.
  */
-void App::run()
-{
-    while(!glfwWindowShouldClose(window_))
-    {
+void App::run() {
+    while (!glfwWindowShouldClose(window_)) {
         glfwPollEvents();
-        graphics_engine_->render(scene_);
+        graphics_engine_->render(scene_.get());
         calculateFrameRate();
     }
 }
@@ -77,31 +89,27 @@ void App::run()
  * Measures the time elapsed since the last frame and updates the window_ title with the
  * current frame rate every second. This helps in monitoring the performance of the application.
  */
-void App::calculateFrameRate()
-{
+void App::calculateFrameRate() {
     current_time_ = glfwGetTime();
     double delta = current_time_ - last_time_;
-
-    if(delta >= 1)
-    {
+    if (delta >= 1) {
         int framerate = std::max(1, int(num_frames_ / delta));
-        std::stringstream title;
-        title << "Running at " << framerate << " fps.";
-        glfwSetWindowTitle(window_, title.str().c_str());
+        std::string title = std::format("Running at {} fps.", framerate);
+        glfwSetWindowTitle(window_,
+                           title.c_str());
         last_time_ = current_time_;
         num_frames_ = -1;
         frame_time_ = float(1000.0 / framerate);
     }
-    ++num_frames_;
+    num_frames_++;
 }
-/**
+/**-
  * @brief Destructor of the App class.
  *
  * Cleans up by deleting the instances of Engine and Scene, which were created in the constructor.
  * This ensures proper resource management and prevents memory leaks.
  */
-App::~App()
-{
-    delete graphics_engine_;
-    delete scene_;
+App::~App(){
+    glfwDestroyWindow(window_);
+    glfwTerminate();
 }

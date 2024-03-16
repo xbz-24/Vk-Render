@@ -81,6 +81,7 @@
 /* Begin PBXFileReference section */
 		0EA410082BA4918900C354EE /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
 		0EC5F9D62BA4B67400742799 /* 3DLoaderVk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 3DLoaderVk.entitlements; sourceTree = "<group>"; };
+		0EC5F9D92BA4E62000742799 /* vulkan_result.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vulkan_result.hpp; sourceTree = "<group>"; };
 		0FB7B9D5FEF6462A934DEEAC /* instance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = instance.cpp; sourceTree = SOURCE_ROOT; };
 		16D03545EF1944C2B86BC619 /* shaders.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = shaders.cpp; sourceTree = SOURCE_ROOT; };
 		1F91F05D2F7546FA86C34201 /* triangle_mesh.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = triangle_mesh.hpp; sourceTree = SOURCE_ROOT; };
@@ -160,6 +161,7 @@
 		804EDD1242F643458FCBCD5D /* 3DLoaderVk */ = {
 			isa = PBXGroup;
 			children = (
+				0EA410082BA4918900C354EE /* shaders */,
 				0EC5F9D62BA4B67400742799 /* 3DLoaderVk.entitlements */,
 				D602E4E8848B453A9650565F /* Source Files */,
 				DD2127E3D61A426F9CECCAD0 /* Header Files */,
@@ -242,8 +244,8 @@
 				BD531F5158BB44EEBBA8FA72 /* shaders.hpp */,
 				E2468E46ACA548B2B30AB21A /* swapchain.hpp */,
 				BAF8F007CD1A4EB9A68D5922 /* sync.hpp */,
-				0EA410082BA4918900C354EE /* shaders */,
 				1F91F05D2F7546FA86C34201 /* triangle_mesh.hpp */,
+				0EC5F9D92BA4E62000742799 /* vulkan_result.hpp */,
 			);
 			name = "Header Files";
 			sourceTree = "<group>";

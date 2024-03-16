@@ -1,13 +1,16 @@
 #include "framebuffer.hpp"
 
-namespace vkinit
-{
-    void make_framebuffers(framebufferInput inputChunk, std::vector<vkutil::SwapChainFrame>& frames, bool debug)
-    {
-        for(size_t i = 0; i < frames.size(); i++)
-        {
-            std::vector<vk::ImageView> attachments = { frames[i].imageView };
-            vk::FramebufferCreateInfo framebufferInfo = {};
+namespace vkinit {
+    void make_framebuffers(framebufferInput inputChunk,
+                           std::vector<vkutil::SwapChainFrame>& frames,
+                           bool debug){
+        for(size_t i = 0; i < frames.size(); i++) {
+            std::vector<vk::ImageView> attachments = {
+                frames[i].imageView
+            };
+            vk::FramebufferCreateInfo framebufferInfo = {
+                
+            };
             framebufferInfo.flags = vk::FramebufferCreateFlags();
             framebufferInfo.renderPass = inputChunk.renderpass;
             framebufferInfo.attachmentCount = static_cast<uint32_t>(attachments.size());
@@ -15,19 +18,14 @@ namespace vkinit
             framebufferInfo.width = inputChunk.swapchainExtent.width;
             framebufferInfo.height = inputChunk.swapchainExtent.height;
             framebufferInfo.layers = 1;
-
-            try
-            {
+            try {
                 frames[i].framebuffer = inputChunk.device.createFramebuffer(framebufferInfo);
-                if(debug)
-                {
+                if(debug) {
                     std::cout << "Created framebuffer for frame " << i << std::endl;
                 }
             }
-            catch(const vk::SystemError &err)
-            {
-                if(debug)
-                {
+            catch(const vk::SystemError &err) {
+                if(debug) {
                     std::cout << "Failed to create framebuffer for frame " << i << std::endl;
                 }
             }

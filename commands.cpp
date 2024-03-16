@@ -5,8 +5,7 @@
  * @date Created on 27-12-23.
  */
 #include "commands.hpp"
-namespace vkinit
-{
+namespace vkinit{
     /**
      * @brief Creates a Vulkan command pool.
      *
@@ -19,30 +18,28 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return A Vulkan command pool object.
      */
-    vk::CommandPool make_command_pool
-    (
-     vk::Device device,
-     vk::PhysicalDevice physical_device,
-     vk::SurfaceKHR surface,
-     bool debug
-    )
-    {
-        vkutil::QueueFamilyIndices queueFamilyIndices = vkutil::findQueueFamilies(physical_device, surface, debug);
-        vk::CommandPoolCreateInfo poolInfo = { };
-        poolInfo.flags = vk::CommandPoolCreateFlags() | vk::CommandPoolCreateFlagBits::eResetCommandBuffer;
+    VulkanResult<vk::CommandPool> make_command_pool(vk::Device device,
+                                                     vk::PhysicalDevice physical_device,
+                                                     vk::SurfaceKHR surface,
+                                                     bool debug){
+        vkutil::QueueFamilyIndices queueFamilyIndices = vkutil::findQueueFamilies(physical_device, 
+                                                                                  surface,
+                                                                                  debug);
+        vk::CommandPoolCreateInfo poolInfo = {
+        };
+        poolInfo.flags = vk::CommandPoolCreateFlags() |
+                         vk::CommandPoolCreateFlagBits::eResetCommandBuffer;
         poolInfo.queueFamilyIndex = queueFamilyIndices.graphicsFamily.value();
-
-        try
-        {
-            return device.createCommandPool(poolInfo);
+        try {
+            return VulkanResult<vk::CommandPool>(device.createCommandPool(poolInfo));
         }
-        catch(vk::SystemError &err)
-        {
-            if(debug)
-            {
-                std::cout << "Failed to create Command Pool" << std::endl;
+        catch(const vk::SystemError &err) {
+            
+            std::string errorMessage = std::format("Failed to create Command Pool: {}",err.what());
+            if (debug) {
+                std::cout << std::format("{}\n", errorMessage);
             }
-            return nullptr;
+            return VulkanResult<vk::CommandPool>(errorMessage);
         }
     }
     /**
@@ -55,51 +52,41 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return The main Vulkan command buffer.
      */
-    vk::CommandBuffer make_command_buffer(commandBufferInputChunk input_chunk, bool debug)
-    {
-        vk::CommandBufferAllocateInfo allocInfo = { };
+    VulkanResult<vk::CommandBuffer> make_command_buffer(commandBufferInputChunk input_chunk,
+                                                         bool debug){
+        vk::CommandBufferAllocateInfo allocInfo = {
+        };
         allocInfo.commandPool = input_chunk.command_pool;
         allocInfo.level = vk::CommandBufferLevel::ePrimary;
         allocInfo.commandBufferCount = 1;
-
-        try
-        {
-            vk::CommandBuffer commandbuffer = input_chunk.device.allocateCommandBuffers(allocInfo)[0];
-            if(debug)
-            {
-                std::cout << "Allocated main command buffer" << std::endl;
+        try {
+            if(debug) {
+                std::cout << std::format("Allocating main Command Buffer\n");
             }
-
-            return commandbuffer;
+            return VulkanResult<vk::CommandBuffer>(input_chunk.device.allocateCommandBuffers(allocInfo)[0]);
         }
-        catch(vk::SystemError &err)
-        {
-            if(debug)
-            {
-                std::cout << "Failed to allocate main command buffer" << std::endl;
+        catch (const vk::SystemError &err) {
+            std::string errorMessage = std::format("Failed to create Command Buffer: {}", err.what());
+            if(debug){
+                std::cout << std::format("{}\n", errorMessage);
             }
-
-            return nullptr;
+            return VulkanResult<vk::CommandBuffer>(errorMessage);
         }
     }
-    void make_frame_command_buffer(commandBufferInputChunk input_chunk, bool debug)
-    {
-        vk::CommandBufferAllocateInfo allocInfo = { };
+    void make_frame_command_buffer(commandBufferInputChunk input_chunk, 
+                                   bool debug) {
+        vk::CommandBufferAllocateInfo allocInfo = {
+        };
         allocInfo.commandPool = input_chunk.command_pool;
         allocInfo.level = vk::CommandBufferLevel::ePrimary;
         allocInfo.commandBufferCount = 1;
-
-        for(std::vector<vkutil::SwapChainFrame>::size_type i = 0; i < input_chunk.frames.size(); i++)
-        {
-            try
-            {
+        for (std::vector<vkutil::SwapChainFrame>::size_type i = 0; i < input_chunk.frames.size(); i++) {
+            try {
                 input_chunk.frames[i].commandbuffer = input_chunk.device.allocateCommandBuffers(allocInfo)[0];
             }
-            catch(vk::SystemError &err)
-            {
-                if(debug)
-                {
-                    std::cout << "Failed to allocate command buffer for frame " << i << std::endl;
+            catch (vk::SystemError &err) {
+                if (debug) {
+                    std::cout << std::format("Failed to allocate command buffer for frame {}\n", i);
                 }
             }
         }

@@ -1,17 +1,31 @@
 /**
  * @file engine.hpp
  * @brief Defines the Engine class, which encapsulates the functionality of a Vulkan-based rendering engine.
- * @date Created by Renato on 27-12-23.
+ * @date Created on 27-12-23.
+ * @author Renato German Chavez Chicoma
  */
 #ifndef INC_3DLOADERVK_ENGINE_HPP
 #define INC_3DLOADERVK_ENGINE_HPP
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 #include <filesystem>
+
+#include "instance.hpp"
+#include "logging.hpp"
+#include "device.hpp"
+#include "swapchain.hpp"
+#include "pipeline.hpp"
+#include "framebuffer.hpp"
+#include "commands.hpp"
+#include "sync.hpp"
+#include <glm/gtc/matrix_transform.hpp>
+
 #include "frame.hpp"
 #include "scene.hpp"
 #include "triangle_mesh.hpp"
 #include "quad_mesh.hpp"
+
+#include <format>
 /**
  * @class Engine
  * @brief The Engine class initializes and manages the core components of a Vulkan-based graphics application.
@@ -20,8 +34,7 @@
  * swap chain, graphics pipeline_, and command buffers. It integrates with GLFW for window_ management and
  * provides functionality for rendering scenes.
  */
-class Engine
-{
+class Engine{
 public:
     /**
      * @brief Constructs an Engine object.
@@ -30,7 +43,10 @@ public:
      * @param window Pointer to the GLFWwindow to be used for rendering.
      * @param debug Indicates whether to enable debug mode.
      */
-    Engine(int width, int height, GLFWwindow* window, bool debug);
+    Engine(int width, 
+           int height,
+           GLFWwindow* window,
+           bool debug);
     /**
      * @brief Destructor that cleans up Vulkan and GLFW resources.
      */
@@ -106,7 +122,9 @@ private:
      * @param imageIndex The index of the image in the swap chain to draw to.
      * @param scene Pointer to the scene_ to be drawn.
      */
-    void RecordDrawCommands(vk::CommandBuffer commandBuffer, uint32_t imageIndex, Scene* scene);
+    void RecordDrawCommands(vk::CommandBuffer commandBuffer, 
+                            uint32_t imageIndex,
+                            Scene* scene);
     void CleanupSwapchain();
 };
 

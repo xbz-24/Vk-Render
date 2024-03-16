@@ -10,8 +10,11 @@
 #include <string>
 namespace vkutil
 {
-    std::vector<char> readFile(std::string filename, bool debug);
-    vk::ShaderModule createModule(const std::string& filename, vk::Device device, bool debug);
+    std::vector<char> readFile(std::string filename, 
+                               bool debug);
+    vk::ShaderModule createModule(const std::string& filename, 
+                                  vk::Device device,
+                                  bool debug);
 }
 
 #endif //INC_3DLOADERVK_SHADERS_HPP

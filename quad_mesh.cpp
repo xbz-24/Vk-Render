@@ -6,8 +6,8 @@
  */
 #include "quad_mesh.hpp"
 
-QuadMesh::QuadMesh(vk::Device logical_device, vk::PhysicalDevice physical_device)
-{
+QuadMesh::QuadMesh(vk::Device logical_device, 
+                   vk::PhysicalDevice physical_device){
     this->logical_device_ = logical_device;
     std::vector<float> vertices = {
 //eTriangleStrip
@@ -36,8 +36,7 @@ QuadMesh::QuadMesh(vk::Device logical_device, vk::PhysicalDevice physical_device
     logical_device.unmapMemory(vertex_buffer.buffer_memory);
 }
 
-QuadMesh::~QuadMesh()
-{
+QuadMesh::~QuadMesh(){
     logical_device_.destroyBuffer(vertex_buffer.buffer);
     logical_device_.freeMemory(vertex_buffer.buffer_memory);
 }

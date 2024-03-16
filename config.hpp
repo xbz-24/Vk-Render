@@ -5,16 +5,14 @@
 #define INC_3DLOADERVK_CONFIG_HPP
 #include <vulkan/vulkan.hpp>
 
-struct BufferInput
-{
+struct BufferInput{
     size_t size;
     vk::BufferUsageFlags usage;
     vk::Device logical_device;
     vk::PhysicalDevice physical_device;
 };
 
-struct Buffer
-{
+struct Buffer{
     vk::Buffer buffer;
     vk::DeviceMemory buffer_memory;
 };

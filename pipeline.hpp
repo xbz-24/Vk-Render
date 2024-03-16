@@ -10,6 +10,7 @@
 #define INC_3DLOADERVK_PIPELINE_HPP
 #include <vulkan/vulkan.hpp>
 #include <iostream>
+#include <format>
 #include <vector>
 #include <array>
 #include <string>
@@ -17,8 +18,7 @@
 #include "render_structs.hpp"
 #include "mesh.hpp"
 
-namespace vkinit
-{
+namespace vkinit{
     /**
      * @struct GraphicsPipelineInBundle
      * @brief Holds parameters required for creating a Vulkan graphics pipeline_.
@@ -26,8 +26,7 @@ namespace vkinit
      * This structures includes the Vulkan device_, file paths for vertex and fragment shaders,
      * and specifications related to the swap chain such as image format and extent.
      */
-    struct GraphicsPipelineInBundle
-    {
+    struct GraphicsPipelineInBundle{
         vk::Device device;
         std::string vertexFilepath;
         std::string fragmentFilepath;
@@ -40,8 +39,7 @@ namespace vkinit
      *
      * This structure encapsulates the pipeline_ layout, render pass, and the graphics pipeline_ itself.
      */
-    struct GraphicsPipelineOutBundle
-    {
+    struct GraphicsPipelineOutBundle{
         vk::PipelineLayout layout;
         vk::RenderPass renderpass;
         vk::Pipeline pipeline;
@@ -55,7 +53,8 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return The created Vulkan pipeline_ layout.
      */
-    vk::PipelineLayout make_pipeline_layout(vk::Device device, bool debug);
+    vk::PipelineLayout make_pipeline_layout(vk::Device device, 
+                                            bool debug);
     /**
      * @brief Creates a Vulkan render pass.
      *
@@ -66,7 +65,9 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return The created Vulkan render pass.
      */
-    vk::RenderPass make_renderpass(vk::Device device, vk::Format swapchainImageFormat, bool debug);
+    vk::RenderPass make_renderpass(vk::Device device, 
+                                   vk::Format swapchainImageFormat,
+                                   bool debug);
     /**
      * @brief Creates a Vulkan graphics pipeline_
      *
@@ -77,6 +78,7 @@ namespace vkinit
      * @param debug Flag indicating whether to enable debug logging.
      * @return A bundle containing the components of the created graphics pipeline_.
      */
-    GraphicsPipelineOutBundle create_graphics_pipeline(GraphicsPipelineInBundle specification, bool debug);
+    GraphicsPipelineOutBundle create_graphics_pipeline(GraphicsPipelineInBundle specification, 
+                                                       bool debug);
 }
 #endif //INC_3DLOADERVK_PIPELINE_HPP

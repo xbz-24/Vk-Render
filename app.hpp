@@ -1,7 +1,8 @@
 /**
  * @file app.h
  * @brief Defines the App class, which serves as the main entry point and controller for the Vulkan-based graphics application.
- * @Date Created by Renato on 27-12-23.
+ * @date Created on 27-12-23.
+ * @author Renato German Chavez Chicoma
  *
  * This class manages the creation and lifecycle of a GLFW window_, initializes the graphics engine (Engine), and handles
  * the main application loop including rendering and frame rate calculations.
@@ -10,14 +11,17 @@
 #define INC_3DLOADERVK_APP_HPP
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+#include <memory>
+#include <iostream>
+#include <sstream>
+#include <format>
 #include "engine.hpp"
 #include "scene.hpp"
 /**
  * @class App
  * @brief The app class encapsulates the main application loop and initialization logic for a Vulkan-based graphics application.
  */
-class App
-{
+class App {
 public:
     /**
      * @brief Constructs an App object.
@@ -28,7 +32,9 @@ public:
      * @param height The height_ of the GLFW window_.
      * @param is_debug Flag indicating whether to run in is_debug mode, affecting logging verbosity.
      */
-    App(int width, int height, bool is_debug);
+    App(int width, 
+        int height,
+        bool is_debug);
     /**
      * @brief Destructor for the App class-
      *
@@ -42,9 +48,9 @@ public:
      */
     void run();
 private:
-    Engine* graphics_engine_;
+    std::unique_ptr<Engine> graphics_engine_;
     GLFWwindow* window_;
-    Scene* scene_;
+    std::unique_ptr<Scene> scene_;
 
     double last_time_;
     double current_time_;
@@ -59,7 +65,9 @@ private:
      * @param height The height_ of the GLFW window_.
      * @param is_debug_mode Flag indicating whether to enable debug logging for window_ creation.
      */
-    void buildGlfwWindow(int width, int height, bool is_debug_mode);
+    void buildGlfwWindow(int width, 
+                         int height,
+                         bool is_debug_mode);
     /**
      * @brief Calculates and updates the frame rate of the application.
      *
