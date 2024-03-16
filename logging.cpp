@@ -9,12 +9,12 @@
 VKAPI_ATTR VkBool32 VKAPI_CALL vkinit::debugCallback([[maybe_unused]] VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
                                                      [[maybe_unused]] VkDebugUtilsMessageTypeFlagsEXT messageType,
                                                      const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
-                                                     [[maybe_unused]] void* pUserData){
+                                                     [[maybe_unused]] void* pUserData) {
     std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
     return VK_FALSE;
 }
 vk::DebugUtilsMessengerEXT vkinit::make_debug_messenger(vk::Instance& instance,
-                                                        vk::DispatchLoaderDynamic& dldi){
+                                                        vk::DispatchLoaderDynamic& dldi) {
     vk::DebugUtilsMessengerCreateInfoEXT createInfo = vk::DebugUtilsMessengerCreateInfoEXT(vk::DebugUtilsMessengerCreateFlagsEXT(),
                                                                                            vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning | vk::DebugUtilsMessageSeverityFlagBitsEXT::eError,
                                                                                            vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance,
@@ -23,43 +23,33 @@ vk::DebugUtilsMessengerEXT vkinit::make_debug_messenger(vk::Instance& instance,
     return instance.createDebugUtilsMessengerEXT(createInfo, nullptr, dldi);
 }
 
-std::vector<std::string> vkinit::log_transform_bits(vk::SurfaceTransformFlagsKHR bits)
-{
+std::vector<std::string> vkinit::log_transform_bits(vk::SurfaceTransformFlagsKHR bits){
     std::vector<std::string> result;
-    if(bits & vk::SurfaceTransformFlagBitsKHR::eIdentity)
-    {
+    if(bits & vk::SurfaceTransformFlagBitsKHR::eIdentity){
         result.emplace_back("identity");
     }
-    if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate90)
-    {
+    if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate90){
         result.emplace_back("90 degree rotation");
     }
-    if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate180)
-    {
+    if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate180){
         result.emplace_back("180 degree rotation");
     }
-    if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate270)
-    {
+    if(bits & vk::SurfaceTransformFlagBitsKHR::eRotate270){
         result.emplace_back("270 degree rotation");
     }
-    if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirror)
-    {
+    if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirror){
         result.emplace_back("Horizontal mirror");
     }
-    if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate90)
-    {
+    if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate90){
         result.emplace_back("Horizontal mirror, then 90 degree rotation");
     }
-    if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate180)
-    {
+    if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate180){
         result.emplace_back("Horizontal mirror, then 180 degree rotation");
     }
-    if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate270)
-    {
+    if(bits & vk::SurfaceTransformFlagBitsKHR::eHorizontalMirrorRotate270){
         result.emplace_back("Horizontal mirror, then 270 degree rotation");
     }
-    if(bits & vk::SurfaceTransformFlagBitsKHR::eInherit)
-    {
+    if(bits & vk::SurfaceTransformFlagBitsKHR::eInherit){
         result.emplace_back("Inherited");
     }
     return result;
@@ -216,5 +206,6 @@ void vkinit::log_device_properties(const vk::PhysicalDevice& device) {
             break;
         default:
             std::cout << "Unknown\n";
+            break;
     }
 }

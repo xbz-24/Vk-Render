@@ -27,12 +27,10 @@ namespace vkinit{
         pushConstantInfo.size = sizeof(vkutil::ObjectData);
         pushConstantInfo.stageFlags = vk::ShaderStageFlagBits::eVertex;
         layoutInfo.pPushConstantRanges = &pushConstantInfo;
-
-        try{
+        try {
             return device.createPipelineLayout(layoutInfo);
-        }
-        catch(vk::SystemError &err){
-            if(debug){
+        } catch (vk::SystemError &err) {
+            if (debug) {
                 std::cout << std::format("Failed to create pipeline_ pipeline_layout_!\n");
             }
             return vk::PipelineLayout{};
@@ -82,14 +80,13 @@ namespace vkinit{
         renderpassInfo.pAttachments = &colorAttachment;
         renderpassInfo.subpassCount = 1;
         renderpassInfo.pSubpasses = &subpass;
-        try{
+        try {
             return device.createRenderPass(renderpassInfo);
-        }
-        catch(vk::SystemError &err){
-            if(debug){
+        } catch(vk::SystemError &err) {
+            if(debug) {
                 std::cout << std::format("Failed to create render_pass_!");
             }
-            return vk::RenderPass{};
+            return vk::RenderPass{ };
         }
     }
     /**
@@ -132,7 +129,7 @@ namespace vkinit{
         pipelineInfo.pInputAssemblyState = &inputAssemblyInfo;
 
         //vertex shader
-        if(debug) {
+        if (debug) {
             std::cout << std::format("Create vertex shader module");
         }
         vk::ShaderModule vertexShader = vkutil::createModule(specification.vertexFilepath,                                                            specification.device,
@@ -146,7 +143,8 @@ namespace vkinit{
         shaderStages.push_back(vertexShaderInfo);
 
         //viewport and scissor
-        vk::Viewport viewport = {};
+        vk::Viewport viewport = {
+        };
         viewport.x = 0.0f;
         viewport.y = 0.0f;
         viewport.width = static_cast<float>(specification.swapchainExtent.width);
@@ -157,7 +155,8 @@ namespace vkinit{
         scissor.offset.x = 0.0f;
         scissor.offset.y = 0.0f;
         scissor.extent = specification.swapchainExtent;
-        vk::PipelineViewportStateCreateInfo viewportState = { };
+        vk::PipelineViewportStateCreateInfo viewportState = {
+        };
         viewportState.flags = vk::PipelineViewportStateCreateFlags();
         viewportState.viewportCount = 1;
         viewportState.pViewports = &viewport;
@@ -166,7 +165,8 @@ namespace vkinit{
         pipelineInfo.pViewportState = &viewportState;
 
         //rasterizer
-        vk::PipelineRasterizationStateCreateInfo rasterizer = {};
+        vk::PipelineRasterizationStateCreateInfo rasterizer = {
+        };
         rasterizer.flags = vk::PipelineRasterizationStateCreateFlags();
         rasterizer.depthClampEnable = VK_FALSE;
         rasterizer.rasterizerDiscardEnable = VK_FALSE;
@@ -178,14 +178,13 @@ namespace vkinit{
         pipelineInfo.pRasterizationState = &rasterizer;
 
         //vertex shader
-        if(debug) {
+        if (debug) {
             std::cout << std::format("Create fragment shader module");
         }
         vk::ShaderModule fragmentShader = vkutil::createModule(specification.fragmentFilepath, 
                                                                specification.device,
                                                                debug);
         vk::PipelineShaderStageCreateInfo fragmentShaderInfo = {
-            
         };
         fragmentShaderInfo.flags = vk::PipelineShaderStageCreateFlags();
         fragmentShaderInfo.stage = vk::ShaderStageFlagBits::eFragment;
@@ -197,7 +196,6 @@ namespace vkinit{
 
         //multisampling
         vk::PipelineMultisampleStateCreateInfo multisampling = {
-            
         };
         multisampling.flags = vk::PipelineMultisampleStateCreateFlags();
         multisampling.sampleShadingEnable = VK_FALSE;
@@ -206,7 +204,6 @@ namespace vkinit{
 
         //color blend
         vk::PipelineColorBlendAttachmentState colorBlendAttachment = {
-            
         };
         colorBlendAttachment.colorWriteMask =   vk::ColorComponentFlagBits::eR |
                                                 vk::ColorComponentFlagBits::eG |
@@ -228,7 +225,7 @@ namespace vkinit{
         pipelineInfo.pColorBlendState = &colorBlending;
 
         //pipeline_ pipeline_layout_
-        if(debug){
+        if (debug) {
             std::cout << std::format("Create Pipeline Layout\n");
         }
         vk::PipelineLayout layout = make_pipeline_layout(specification.device, 
@@ -236,7 +233,7 @@ namespace vkinit{
         pipelineInfo.layout = layout;
 
         //Renderpass
-        if(debug){
+        if (debug) {
             std::cout << std::format("Create RenderPass\n");
         }
         vk::RenderPass renderpass = make_renderpass(specification.device, 
@@ -248,16 +245,16 @@ namespace vkinit{
         pipelineInfo.basePipelineHandle = nullptr;
 
         //make the pipeline_
-        if(debug){
+        if (debug) {
             std::cout << "Create Graphics Pipeline" << std::endl;
         }
         vk::Pipeline graphicsPipeline;
-        try{
-            graphicsPipeline = (specification.device.createGraphicsPipeline(nullptr, 
+        try {
+            graphicsPipeline = (specification.device.createGraphicsPipeline(nullptr,
                                                                             pipelineInfo)).value;
         }
-        catch(vk::SystemError &err){
-            if(debug) {
+        catch (vk::SystemError &err) {
+            if (debug) {
                 std::cout << "Failed to create Graphics Pipeline!"<<std::endl;
             }
         }

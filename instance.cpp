@@ -198,7 +198,7 @@ vk::Instance vkinit::make_instance(bool debug,
                                          const char * const * ppEnabledExtensionNames_ = {} )
     */
     vk::InstanceCreateInfo createInfo = vk::InstanceCreateInfo(vk::InstanceCreateFlagBits::eEnumeratePortabilityKHR,
-                               &appInfo,
+                                                               &appInfo,
                                                                // enabled layers
                                                                static_cast<uint32_t>(layers.size()), layers.data(),
                                                                // enabled extensions

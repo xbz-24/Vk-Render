@@ -35,7 +35,7 @@ Engine::Engine(int width,
     this->height_ = height;
     this->window_ = window;
     this->debug_mode_ = debugMode;
-    if(debugMode){
+    if (debugMode) {
         std::cout << std::format("Making a graphics engine\n");
     }
     MakeInstance();
@@ -86,7 +86,7 @@ void Engine::MakeDevice() {
         throw std::runtime_error("Failed to find a suitable GPU! (choose physical device)");
     }
     
-    physical_device_ = physical_device_result.value();
+    physical_device_ = *physical_device_result; //physical_device_result.value()
 //    physical_device_ = vkinit::ChoosePhysicalDevice(instance_,
 //                                                    debug_mode_);
     
@@ -95,21 +95,18 @@ void Engine::MakeDevice() {
     std::optional<vk::Device> device_result = vkinit::CreateLogicalDevice(physical_device_,
                                                                          surface_,
                                                                          debug_mode_);
-    if(!physical_device_result.has_value()){
+    if(!device_result.has_value()){
         throw std::runtime_error("Failed to create logical device)");
     }
     
-    device_ = device_result.value();
+    device_ = *device_result;
     
 //    device_ = vkinit::CreateLogicalDevice(physical_device_,
 //                                          surface_,
 //                                          debug_mode_);
-    std::array<vk::Queue, 2> queues = vkinit::GetQueues(physical_device_, 
-                                                        device_,
-                                                        surface_,
-                                                        debug_mode_);
-    graphics_queue_ = queues[0];
-    present_queue_ = queues[1];
+    auto [graphics_queue, present_queue] = vkinit::GetQueues(physical_device_, device_, surface_, debug_mode_);
+    graphics_queue_ = graphics_queue;
+    present_queue_ = present_queue;
     MakeSwapchain();
     frame_number_ = 0;
     //vkinit::query_swapchain_support(physical_device_, surface_, true);
@@ -157,7 +154,6 @@ void Engine::RecreateSwapchain(){
  */
 void Engine::MakePipeline(){
     vkinit::GraphicsPipelineInBundle specification = { 
-        
     };
     specification.device = device_;
 //    std::string vertexShaderPath, fragmentShaderPath;
@@ -243,15 +239,35 @@ void Engine::FinalizeSetup(){
 }
 
 void Engine::MakeAssets(){
-//    triangle_mesh_ = new TriangleMesh(device_, physical_device_);
-    quad_mesh_ = new QuadMesh(device_, 
-                              physical_device_);
+//    triangle_mesh_ = std::make_unique<TriangleMesh>(device_, physical_device_);
+    
+    auto initializeAllocator = [this]() {
+        VmaAllocator allocator;
+
+        VmaAllocatorCreateInfo allocatorInfo = {};
+        allocatorInfo.instance = instance_;
+        allocatorInfo.physicalDevice = physical_device_;
+        allocatorInfo.device = device_;
+
+        if (vmaCreateAllocator(&allocatorInfo, &allocator) != VK_SUCCESS) {
+            throw std::runtime_error("Failed to create Vulkan Memory Allocator.");
+        }
+
+        return allocator;
+    };
+
+    // Call lambda function to initialize allocator
+    allocator_ = initializeAllocator();
+    
+    // Now, you can proceed with creating assets using the allocator
+    quad_mesh_ = std::make_unique<QuadMesh>(device_, physical_device_, allocator_);
+
 }
 
 void Engine::PrepareScene(vk::CommandBuffer commandBuffer){
     vk::Buffer vertexBuffers[] = {
-//            triangle_mesh_ -> vertex_buffer.buffer,
-            quad_mesh_ -> vertex_buffer.buffer
+        //            triangle_mesh_ -> vertex_buffer.buffer,
+        quad_mesh_ -> vertex_buffer.buffer
     };
     vk::DeviceSize offsets[] = { 0 };
     commandBuffer.bindVertexBuffers(0, 1, vertexBuffers, offsets);
@@ -268,7 +284,9 @@ void Engine::PrepareScene(vk::CommandBuffer commandBuffer){
  * @param imageIndex The index of the swap chain image that will be rendered.
  * @param scene Pointer to the scene_ to be rendered.
  */
-void Engine::RecordDrawCommands(vk::CommandBuffer commandBuffer, uint32_t imageIndex, Scene* scene){
+void Engine::RecordDrawCommands(vk::CommandBuffer commandBuffer, 
+                                uint32_t imageIndex,
+                                Scene* scene) {
     vk::CommandBufferBeginInfo beginInfo = { };
     try{
         commandBuffer.begin(beginInfo);
@@ -428,7 +446,6 @@ void Engine::CleanupSwapchain(){
         device_.destroySemaphore(frame.imageAvailable);
         device_.destroySemaphore(frame.renderFinished);
     }
-
     device_.destroySwapchainKHR(swapchain_);
 }
 
@@ -453,7 +470,7 @@ Engine::~Engine(){
     device_.destroyRenderPass(render_pass_);
     CleanupSwapchain();
 //    delete triangle_mesh_;
-    delete quad_mesh_;
+//    delete quad_mesh_;
     device_.destroy();
     instance_.destroySurfaceKHR(surface_);
     if(debug_mode_){

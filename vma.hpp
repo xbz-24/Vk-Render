@@ -5,8 +5,10 @@
 //  Created by xbz on 16/03/2024.
 //
 
-#ifndef vma_h
-#define vma_h
+#ifndef vma_hpp
+#define vma_hpp
+
+#include "VulkanMemoryAllocator/include/vk_mem_alloc.h"
 
 
-#endif /* vma_h */
+#endif /* vma_hpp */

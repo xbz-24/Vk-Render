@@ -26,6 +26,9 @@
 #include "quad_mesh.hpp"
 
 #include <format>
+#include <memory>
+
+
 /**
  * @class Engine
  * @brief The Engine class initializes and manages the core components of a Vulkan-based graphics application.
@@ -95,8 +98,10 @@ private:
     int frame_number_;
 
     //asset pointers
-    TriangleMesh* triangle_mesh_;
-    QuadMesh* quad_mesh_;
+    std::unique_ptr<TriangleMesh> triangle_mesh_;
+    std::unique_ptr<QuadMesh> quad_mesh_;
+    
+    VmaAllocator allocator_;
 
     //instance_ setup
     void MakeInstance();

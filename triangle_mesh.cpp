@@ -7,8 +7,10 @@
 #include "triangle_mesh.hpp"
 
 TriangleMesh::TriangleMesh(vk::Device logical_device, 
-                           vk::PhysicalDevice physical_device) {
+                           vk::PhysicalDevice physical_device,
+                           VmaAllocator allocator) {
     this->logical_device_ = logical_device;
+    this->allocator_ = allocator;
     std::vector<float> vertices = { {
           0.0f  , -0.05f, 0.0f  , 1.0f  , 0.0f,
          0.05f  , 0.05f , 0.0f  , 1.0f  , 0.0f,
@@ -19,16 +21,17 @@ TriangleMesh::TriangleMesh(vk::Device logical_device,
     inputChunk.physical_device = physical_device;
     inputChunk.size = sizeof(float) * vertices.size();
     inputChunk.usage = vk::BufferUsageFlagBits::eVertexBuffer;
-    vertex_buffer = vkutil::createBuffer(inputChunk);
-    void* memoryLocation = logical_device.mapMemory(vertex_buffer.buffer_memory, 
-                                                    0,
-                                                    inputChunk.size);
+    
+    vertex_buffer = vkutil::createBuffer(allocator, inputChunk);
+    void* memoryLocation;
+    vmaMapMemory(allocator, vertex_buffer.allocation, &memoryLocation);
     memcpy(memoryLocation, 
            vertices.data(),
            inputChunk.size);
-    logical_device.unmapMemory(vertex_buffer.buffer_memory);
+    vmaUnmapMemory(allocator, vertex_buffer.allocation);
 }
 TriangleMesh::~TriangleMesh(){
-    logical_device_.destroyBuffer(vertex_buffer.buffer);
-    logical_device_.freeMemory(vertex_buffer.buffer_memory);
+    vmaDestroyBuffer(allocator_, vertex_buffer.buffer, vertex_buffer.allocation);
+//    logical_device_.destroyBuffer(vertex_buffer.buffer);
+//    logical_device_.freeMemory(vertex_buffer.buffer_memory);
 }

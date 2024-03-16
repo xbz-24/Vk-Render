@@ -5,7 +5,7 @@
  * @date Created on 27-12-23.
  */
 #include "commands.hpp"
-namespace vkinit{
+namespace vkinit {
     /**
      * @brief Creates a Vulkan command pool.
      *
@@ -27,14 +27,14 @@ namespace vkinit{
                                                                                   debug);
         vk::CommandPoolCreateInfo poolInfo = {
         };
-        poolInfo.flags = vk::CommandPoolCreateFlags() |
-                         vk::CommandPoolCreateFlagBits::eResetCommandBuffer;
+//        poolInfo.flags = vk::CommandPoolCreateFlags() |
+//                         vk::CommandPoolCreateFlagBits::eResetCommandBuffer;
+        poolInfo.flags = vk::CommandPoolCreateFlags();
         poolInfo.queueFamilyIndex = queueFamilyIndices.graphicsFamily.value();
         try {
             return VulkanResult<vk::CommandPool>(device.createCommandPool(poolInfo));
         }
         catch(const vk::SystemError &err) {
-            
             std::string errorMessage = std::format("Failed to create Command Pool: {}",err.what());
             if (debug) {
                 std::cout << std::format("{}\n", errorMessage);

@@ -6,7 +6,7 @@
  */
 #include "scene.hpp"
 
-Scene::Scene(){
+Scene::Scene() {
     //eTriangleList
 
     //    for(float x = -1.0f; x < 1.0f; x += 0.2f)

@@ -215,17 +215,18 @@ namespace vkinit {
         createInfo.oldSwapchain = vk::SwapchainKHR(nullptr);
 
         SwapChainBundle bundle{ };
-        try{
+        try {
             bundle.swapchain = logicalDevice.createSwapchainKHR(createInfo);
         }
-        catch(vk::SystemError &err){
+        catch (vk::SystemError &err) {
             throw std::runtime_error("failed to create swapchain_!");
         }
         std::vector<vk::Image> images = logicalDevice.getSwapchainImagesKHR(bundle.swapchain);
         bundle.frames.resize(images.size());
 
-        for(size_t i = 0; i < images.size(); i++){
-            vk::ImageViewCreateInfo imageViewCreateInfo = { };
+        for (size_t i = 0; i < images.size(); i++) {
+            vk::ImageViewCreateInfo imageViewCreateInfo = {
+            };
             imageViewCreateInfo.image = images[i];
             imageViewCreateInfo.viewType = vk::ImageViewType::e2D;
             imageViewCreateInfo.format = format.format;

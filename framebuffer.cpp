@@ -9,7 +9,6 @@ namespace vkinit {
                 frames[i].imageView
             };
             vk::FramebufferCreateInfo framebufferInfo = {
-                
             };
             framebufferInfo.flags = vk::FramebufferCreateFlags();
             framebufferInfo.renderPass = inputChunk.renderpass;

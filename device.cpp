@@ -90,8 +90,8 @@ bool vkinit::IsSuitable(const vk::PhysicalDevice& device,
             std::cout << std::format("Device can support the requested extensions!\n");
         }
     }
-    else{
-        if(debug){
+    else {
+        if(debug) {
             std::cout << std::format("Device can't support the requested extensions!\n");
         }
         return false;
@@ -106,7 +106,7 @@ bool vkinit::IsSuitable(const vk::PhysicalDevice& device,
  * @return The chosen Vulkan physical device_.
  */
 std::optional<vk::PhysicalDevice> vkinit::ChoosePhysicalDevice(vk::Instance& instance,
-                                                bool debug){
+                                                               bool debug){
     /**
      * Choose a suitable physical device_ from a list of candidates.
      * Note: Physical device_ are neither created nor destroyed, they exist
@@ -125,10 +125,10 @@ std::optional<vk::PhysicalDevice> vkinit::ChoosePhysicalDevice(vk::Instance& ins
         std::cout << std::format("There are {} physical devices available on this system\n", availableDevices.size());
     }
     for(vk::PhysicalDevice device : availableDevices){
-        if(debug){
+        if (debug) {
             log_device_properties(device);
         }
-        if(IsSuitable(device, debug)){
+        if (IsSuitable(device, debug)) {
             return device;
         }
     }
@@ -143,8 +143,8 @@ std::optional<vk::PhysicalDevice> vkinit::ChoosePhysicalDevice(vk::Instance& ins
  * @return The created Vulkan logical device_.
  */
 std::optional<vk::Device> vkinit::CreateLogicalDevice(vk::PhysicalDevice physical_device,
-                                       vk::SurfaceKHR surface,
-                                       bool debug){
+                                                      vk::SurfaceKHR surface,
+                                                      bool debug){
     vkutil::QueueFamilyIndices indices = vkutil::findQueueFamilies(physical_device, 
                                                                    surface,
                                                                    debug);
