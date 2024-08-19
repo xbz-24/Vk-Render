@@ -16,9 +16,7 @@ namespace vkinit
     };
 
     vk::CommandPool make_command_pool(vk::Device device, vk::PhysicalDevice physical_device, vk::SurfaceKHR surface, bool debug);
-
     vk::CommandBuffer make_command_buffer(CommandBufferInputChunk input_chunk, bool debug);
-
     void make_frame_command_buffer(CommandBufferInputChunk input_chunk, bool debug);
 }
 

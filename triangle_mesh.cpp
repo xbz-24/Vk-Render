@@ -4,9 +4,9 @@ TriangleMesh::TriangleMesh(vk::Device logical_device, vk::PhysicalDevice physica
 {
     std::vector<float> vertices = {
         {
-            0.0f, -0.05f, 0.0f, 1.0f, 0.0f,
-            0.05f, 0.05f, 0.0f, 1.0f, 0.0f,
-            -0.05f, 0.05f, 0.0f, 1.0f, 0.0f
+            0.0F   , -0.05F , 0.0F , 1.0F , 0.0F ,
+            0.05F  , 0.05F  , 0.0F , 1.0F , 0.0F ,
+            -0.05F , 0.05F  , 0.0F , 1.0F , 0.0F
         }
     };
 
@@ -14,6 +14,7 @@ TriangleMesh::TriangleMesh(vk::Device logical_device, vk::PhysicalDevice physica
 
     inputChunk.logical_device = logical_device;
     inputChunk.physical_device = physical_device;
+
     inputChunk.size = sizeof(float) * vertices.size();
     inputChunk.usage = vk::BufferUsageFlagBits::eVertexBuffer;
 

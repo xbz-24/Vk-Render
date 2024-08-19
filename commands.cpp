@@ -28,7 +28,6 @@ namespace vkinit
         allocInfo.commandPool = input_chunk.command_pool;
         allocInfo.level = vk::CommandBufferLevel::ePrimary;
         allocInfo.commandBufferCount = 1;
-
         try
         {
             vk::CommandBuffer commandbuffer = input_chunk.device.allocateCommandBuffers(allocInfo)[0];
@@ -45,7 +44,6 @@ namespace vkinit
             {
                 std::cout << "Failed to allocate main command buffer" << std::endl;
             }
-
             return nullptr;
         }
     }

@@ -3,14 +3,14 @@
 [[maybe_unused]] CubeMesh::CubeMesh(vk::Device logical_device, vk::PhysicalDevice physical_device) : logical_device_(logical_device) {
     std::vector<float> vertices =
     {
-       -0.5f, -0.5f, -0.5f,  1.0f, 0.0f, 0.0f,
-       0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
-       0.5f,  0.5f, -0.5f,  0.0f, 0.0f, 1.0f,
-       -0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 1.0f,
-       -0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
-       0.5f, -0.5f,  0.5f,  0.0f, 1.0f, 0.0f,
-       0.5f,  0.5f,  0.5f,  0.0f, 0.0f, 1.0f,
-       -0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+       -0.5F, -0.5F, -0.5F,  1.0F, 0.0F, 0.0f,
+       0.5F, -0.5F, -0.5F,  0.0F, 1.0F, 0.0F,
+       0.5F,  0.5F, -0.5F,  0.0F, 0.0F, 1.0F,
+       -0.5F,  0.5F, -0.5F,  1.0F, 1.0F, 1.0F,
+       -0.5F, -0.5F,  0.5F,  1.0F, 0.0F, 0.0F,
+       0.5F, -0.5F,  0.5F,  0.0F, 1.0F, 0.0F,
+       0.5F,  0.5F,  0.5F,  0.0F, 0.0F, 1.0F,
+       -0.5F,  0.5F,  0.5F,  1.0F, 1.0F, 1.0F,
     };
     std::vector<uint32_t> indices =
     {
