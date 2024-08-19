@@ -1,13 +1,6 @@
-//
-// Created by daily on 27-12-23.
-//
-/**
- * @file sync.hpp
- * @brief Defines functions for creating Vulkan synchronization primitives.
- * @date Created by Renato on 27-12-23.
- */
 #ifndef INC_3DLOADERVK_SYNC_HPP
 #define INC_3DLOADERVK_SYNC_HPP
+
 #include <vulkan/vulkan.hpp>
 #include <iostream>
 

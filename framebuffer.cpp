@@ -2,12 +2,17 @@
 
 namespace vkinit
 {
-    void make_framebuffers(framebufferInput inputChunk, std::vector<vkutil::SwapChainFrame>& frames, bool debug)
+    void make_frame_buffers(FramebufferInput inputChunk, std::vector<vkutil::SwapChainFrame>& frames, bool debug)
     {
         for(size_t i = 0; i < frames.size(); i++)
         {
-            std::vector<vk::ImageView> attachments = { frames[i].imageView };
-            vk::FramebufferCreateInfo framebufferInfo = {};
+            std::vector<vk::ImageView> attachments =
+            {
+               frames[i].imageView
+            };
+
+            vk::FramebufferCreateInfo framebufferInfo = { };
+
             framebufferInfo.flags = vk::FramebufferCreateFlags();
             framebufferInfo.renderPass = inputChunk.renderpass;
             framebufferInfo.attachmentCount = static_cast<uint32_t>(attachments.size());

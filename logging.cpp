@@ -1,9 +1,6 @@
-//
-// Created by daily on 15-01-24.
-//
 #include "logging.hpp"
 
-VKAPI_ATTR VkBool32 VKAPI_CALL vkinit::debugCallback
+VKAPI_ATTR VkBool32 VKAPI_CALL vkinit::debug_call_back
 (
     [[maybe_unused]] VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
     [[maybe_unused]] VkDebugUtilsMessageTypeFlagsEXT messageType,
@@ -17,16 +14,17 @@ VKAPI_ATTR VkBool32 VKAPI_CALL vkinit::debugCallback
 vk::DebugUtilsMessengerEXT vkinit::make_debug_messenger(vk::Instance& instance, vk::DispatchLoaderDynamic& dldi)
 {
     vk::DebugUtilsMessengerCreateInfoEXT createInfo = vk::DebugUtilsMessengerCreateInfoEXT
-    (
-        vk::DebugUtilsMessengerCreateFlagsEXT(),
-        vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning | vk::DebugUtilsMessageSeverityFlagBitsEXT::eError,
-        vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance,
-        debugCallback,
-        nullptr
-    );
+            (
+                    vk::DebugUtilsMessengerCreateFlagsEXT(),
+                    vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning |
+                    vk::DebugUtilsMessageSeverityFlagBitsEXT::eError,
+                    vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation |
+                    vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance,
+                    debug_call_back,
+                    nullptr
+            );
     return instance.createDebugUtilsMessengerEXT(createInfo, nullptr, dldi);
 }
-
 std::vector<std::string> vkinit::log_transform_bits(vk::SurfaceTransformFlagsKHR bits)
 {
     std::vector<std::string> result;
@@ -149,20 +147,6 @@ suitable for use as a fragment shading rate attachment or shading rate image");
 
 std::string vkinit::log_present_mode(vk::PresentModeKHR presentMode)
 {
-    /*
-    * // Provided by VK_KHR_surface
-    typedef enum VkPresentModeKHR {
-        VK_PRESENT_MODE_IMMEDIATE_KHR = 0,
-        VK_PRESENT_MODE_MAILBOX_KHR = 1,
-        VK_PRESENT_MODE_FIFO_KHR = 2,
-        VK_PRESENT_MODE_FIFO_RELAXED_KHR = 3,
-        // Provided by VK_KHR_shared_presentable_image
-        VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR = 1000111000,
-        // Provided by VK_KHR_shared_presentable_image
-        VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR = 1000111001,
-    } VkPresentModeKHR;
-    */
-
     if (presentMode == vk::PresentModeKHR::eImmediate)
     {
         return "immediate: the presentation engine does not wait for a vertical blanking period \

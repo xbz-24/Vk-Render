@@ -113,8 +113,8 @@ add_executable(
     logging.cpp
         quad_mesh.cpp
         quad_mesh.hpp
-        CubeMesh.cpp
-        CubeMesh.hpp
+        cube_mesh.cpp
+        cube_mesh.hpp
 )
 target_link_libraries(
     main

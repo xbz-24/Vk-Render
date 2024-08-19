@@ -1,8 +1,6 @@
-//
-// Created by daily on 02-01-24.
-//
 #ifndef INC_3DLOADERVK_TRIANGLE_MESH_HPP
 #define INC_3DLOADERVK_TRIANGLE_MESH_HPP
+
 #include "config.hpp"
 #include "memory.hpp"
 #include <vulkan/vulkan.hpp>

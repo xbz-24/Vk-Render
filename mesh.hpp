@@ -1,9 +1,3 @@
-/**
- * @file mesh.hpp
- * @brief Provides functions for mesh handling in Vulkan.
- * @date Created by daily on 02-01-24.
- */
-
 #ifndef INC_3DLOADERVK_MESH_HPP
 #define INC_3DLOADERVK_MESH_HPP
 

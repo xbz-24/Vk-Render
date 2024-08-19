@@ -1,30 +1,20 @@
-/**
- * @file device.cpp
- * @brief Defines functions for creating Vulkan devices.
- * @date Created by Renato on 27-12-23.
- */
 #include "device.hpp"
-/**
- * @brief Checks if a Vulkan physical device_ supports the required extensions.
- *
- * @param device The Vulkan physical device_ to check.
- * @param requested_extensions A vector of extension names to be checked.
- * @param debug Flag indicating whether to enable debug logging.
- * @return true if the device_ supports all requested extensions, false otherwise
- */
-bool vkinit::CheckDeviceExtensionSupport
-(
-    const vk::PhysicalDevice& device,
-    const std::vector<const char*>& requested_extensions,
-    const bool& debug
-)
+
+bool vkinit::check_device_extension_support(const vk::PhysicalDevice& device,
+                                            const std::vector<const char*>& requested_extensions,
+                                            const bool& debug)
 {
-    std::set<std::string> requiredExtensions(requested_extensions.begin(), requested_extensions.end());
+    auto start = requested_extensions.begin();
+    auto end = requested_extensions.end();
+
+    std::set<std::string> requiredExtensions(start ,end);
+
     if(debug)
     {
         std::cout << "Device can support extensions:\n";
     }
-    for(vk::ExtensionProperties& extension : device.enumerateDeviceExtensionProperties())
+
+    for(const vk::ExtensionProperties& extension : device.enumerateDeviceExtensionProperties())
     {
         if(debug)
         {
@@ -34,22 +24,18 @@ bool vkinit::CheckDeviceExtensionSupport
     }
     return requiredExtensions.empty();
 }
-/**
- * @brief Determines if a Vulkan physical device_ is suitable for the application's needs.
- *
- * @param device The vulkan physical device_ to evaluate.
- * @param debug Flag indicating whether to enable debug logging.
- * @return true if the device_ is suitable, false otherwise.
- */
-bool vkinit::IsSuitable(const vk::PhysicalDevice& device, const bool debug)
+bool vkinit::is_suitable(const vk::PhysicalDevice& device, const bool debug)
 {
     if(debug)
     {
         std::cout << "Checking if device_ is suitable\n";
     }
-    const std::vector<const char*> requestedExtensions = {
-            VK_KHR_SWAPCHAIN_EXTENSION_NAME
+
+    const std::vector<const char*> requestedExtensions =
+    {
+       VK_KHR_SWAPCHAIN_EXTENSION_NAME
     };
+
     if(debug)
     {
         std::cout << "We are requesting device_ extensions:\n";
@@ -58,9 +44,13 @@ bool vkinit::IsSuitable(const vk::PhysicalDevice& device, const bool debug)
             std::cout << "\t\"" << extension << "\"\n";
         }
     }
-    if(bool extensionSupported = CheckDeviceExtensionSupport(device, requestedExtensions, debug))
+
+    bool extensionSupported = check_device_extension_support(device,
+                                                             requestedExtensions, debug);
+
+    if(extensionSupported)
     {
-        if(debug && extensionSupported)
+        if(debug)
         {
             std::cout << "Device can support the requested extensions!\n";
         }
@@ -75,67 +65,52 @@ bool vkinit::IsSuitable(const vk::PhysicalDevice& device, const bool debug)
     }
     return true;
 }
-/**
- * @brief Chooses a suitable Vulkan physical device_ from available devices.
- *
- * @param instance The Vulkan instance_.
- * @param debug Flag indicating whether to enable debug logging.
- * @return The chosen Vulkan physical device_.
- */
-vk::PhysicalDevice vkinit::ChoosePhysicalDevice(vk::Instance& instance, bool debug)
+vk::PhysicalDevice vkinit::choose_physical_device(vk::Instance& instance, bool debug)
 {
-    /**
-     * Choose a suitable physical device_ from a list of candidates.
-     * Note: Physical device_ are neither created nor destroyed, they exist
-     * independently to the program.
-     */
     if(debug)
     {
         std::cout << "Choosing physical device_...\n";
     }
-    /**
-     * ResultValueType<std::vector<PhysicalDevice, PhysicalDeviceAllocator>>::type
-     * Instance::enumeratePhysicalDevices( Dispatch const & d )
-     * std::vector<vk::PhysicalDevice> instance_.enumeratePhysicalDevices( Dispatch const & d = static/default )
-     */
-    std::vector<vk::PhysicalDevice>availableDevices = instance.enumeratePhysicalDevices();
+
+    std::vector<vk::PhysicalDevice> availableDevices = instance.enumeratePhysicalDevices();
+
     if(debug)
     {
-        std::cout << "There are " << availableDevices.size() << " physical devices available on this system\n";
+        std::cout << "There are "
+                  << availableDevices.size()
+                  << " physical devices available on this system\n";
     }
+
     for(vk::PhysicalDevice device : availableDevices)
     {
         if(debug)
         {
             log_device_properties(device);
         }
-        if(IsSuitable(device, debug))
+        if(is_suitable(device, debug))
         {
             return device;
         }
     }
+    // TODO: add more logging and validation (just giving random nullptr is not safe)
+    // ideally create a function that returns true false do not use exceptions
     return nullptr;
 }
-/**
- * @brief Creates a Vulkan logical device_ from a physical device_.
- *
- * @param physical_device The Vulkan physical device_.
- * @param surface The Vulkan surface_.
- * @param debug The Vulkan surface_.
- * @return The created Vulkan logical device_.
- */
-vk::Device vkinit::CreateLogicalDevice(vk::PhysicalDevice physical_device, vk::SurfaceKHR surface, bool debug)
+vk::Device vkinit::create_logical_device(vk::PhysicalDevice physical_device,
+                                         vk::SurfaceKHR surface, bool debug)
 {
-    vkutil::QueueFamilyIndices indices = vkutil::findQueueFamilies(physical_device, surface, debug);
+    vkutil::QueueFamilyIndices indices = vkutil::find_queue_families(physical_device,
+                                                                     surface, debug);
 
-    std::vector<uint32_t>uniqueIndices;
+    std::vector<uint32_t> uniqueIndices;
     uniqueIndices.push_back(indices.graphicsFamily.value());
+
     if(indices.graphicsFamily.value() != indices.presentFamily.value())
     {
         uniqueIndices.push_back(indices.presentFamily.value());
     }
 
-    float queuePriority = 1.0f;
+    float queuePriority = 1.0F;
     std::vector<vk::DeviceQueueCreateInfo> queueCreateInfo;
     for([[maybe_unused]] uint32_t queueFamilyIndex : uniqueIndices)
     {
@@ -148,19 +123,22 @@ vk::Device vkinit::CreateLogicalDevice(vk::PhysicalDevice physical_device, vk::S
         );
     }
 
-    std::vector<const char*> deviceExtensions = {
-            VK_KHR_SWAPCHAIN_EXTENSION_NAME
+    std::vector<const char*> deviceExtensions =
+    {
+       VK_KHR_SWAPCHAIN_EXTENSION_NAME
     };
 
 
     vk::PhysicalDeviceFeatures deviceFeatures = vk::PhysicalDeviceFeatures();
+
     std::vector<const char*> enabledLayers;
+
     if(debug)
     {
         enabledLayers.push_back("VK_LAYER_KHRONOS_validation");
     }
-    vk::DeviceCreateInfo deviceInfo = vk::DeviceCreateInfo
-    (
+
+    vk::DeviceCreateInfo deviceInfo = vk::DeviceCreateInfo(
         vk::DeviceCreateFlags(),
         static_cast<uint32_t>(queueCreateInfo.size()),
         queueCreateInfo.data(),
@@ -170,6 +148,7 @@ vk::Device vkinit::CreateLogicalDevice(vk::PhysicalDevice physical_device, vk::S
         deviceExtensions.data(),
         &deviceFeatures
     );
+
     try
     {
         vk::Device device = physical_device.createDevice(deviceInfo);
@@ -179,29 +158,21 @@ vk::Device vkinit::CreateLogicalDevice(vk::PhysicalDevice physical_device, vk::S
         }
         return device;
     }
-    catch(vk::SystemError &err)
+    catch(const vk::SystemError &err)
     {
         if(debug)
         {
             std::cout << "Device creation failed!\n";
+            // TODO: add more messaging and error handling without using exceptions
             return nullptr;
         }
     }
+
     return nullptr;
 }
-/**
- * @brief Retrieves graphics and presentation queues from a Vulkan device_.
- *
- * @param physical_device The Vulkan physical device_.
- * @param device The Vulkan logical device_.
- * @param surface The Vulkan surface_.
- * @param debug Flag indicating whether to enable debug logging.
- * @return An array containing the graphics and presentation queues.
- */
-std::array<vk::Queue, 2> vkinit::GetQueues(vk::PhysicalDevice physical_device, vk::Device device, vk::SurfaceKHR surface, bool debug)
+std::array<vk::Queue, 2> vkinit::get_queues(vk::PhysicalDevice physical_device, vk::Device device, vk::SurfaceKHR surface, bool debug)
 {
-    vkutil::QueueFamilyIndices indices = vkutil::findQueueFamilies(physical_device, surface, debug);
-
+    vkutil::QueueFamilyIndices indices = vkutil::find_queue_families(physical_device, surface, debug);
     return
     {
         {

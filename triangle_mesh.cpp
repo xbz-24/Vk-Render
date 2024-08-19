@@ -1,12 +1,7 @@
-//
-// Created by daily on 02-01-24.
-//
-
 #include "triangle_mesh.hpp"
 
-TriangleMesh::TriangleMesh(vk::Device logical_device, vk::PhysicalDevice physical_device)
+TriangleMesh::TriangleMesh(vk::Device logical_device, vk::PhysicalDevice physical_device) : logical_device_(logical_device)
 {
-    this->logical_device_ = logical_device;
     std::vector<float> vertices = {
         {
             0.0f, -0.05f, 0.0f, 1.0f, 0.0f,
@@ -14,14 +9,19 @@ TriangleMesh::TriangleMesh(vk::Device logical_device, vk::PhysicalDevice physica
             -0.05f, 0.05f, 0.0f, 1.0f, 0.0f
         }
     };
+
     BufferInput inputChunk;
+
     inputChunk.logical_device = logical_device;
     inputChunk.physical_device = physical_device;
     inputChunk.size = sizeof(float) * vertices.size();
     inputChunk.usage = vk::BufferUsageFlagBits::eVertexBuffer;
-    vertex_buffer = vkutil::createBuffer(inputChunk);
+
+    vertex_buffer = vkutil::create_buffer(inputChunk);
+
     void* memoryLocation = logical_device.mapMemory(vertex_buffer.buffer_memory, 0, inputChunk.size);
     memcpy(memoryLocation, vertices.data(), inputChunk.size);
+
     logical_device.unmapMemory(vertex_buffer.buffer_memory);
 }
 TriangleMesh::~TriangleMesh()

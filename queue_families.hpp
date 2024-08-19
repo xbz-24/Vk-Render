@@ -12,10 +12,10 @@ namespace vkutil
         std::optional<uint32_t> graphicsFamily;
         std::optional<uint32_t> presentFamily;
 
-        [[nodiscard]] bool isComplete() const;
+        [[nodiscard]] bool is_complete() const;
     };
 
-    QueueFamilyIndices findQueueFamilies(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug);
+    QueueFamilyIndices find_queue_families(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug);
 }
 
 #endif //INC_3DLOADERVK_QUEUE_FAMILIES_HPP

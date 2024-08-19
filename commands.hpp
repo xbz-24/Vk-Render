@@ -8,7 +8,7 @@
 
 namespace vkinit
 {
-    struct commandBufferInputChunk
+    struct CommandBufferInputChunk
     {
         vk::Device device;
         vk::CommandPool command_pool;
@@ -17,9 +17,9 @@ namespace vkinit
 
     vk::CommandPool make_command_pool(vk::Device device, vk::PhysicalDevice physical_device, vk::SurfaceKHR surface, bool debug);
 
-    vk::CommandBuffer make_command_buffer(commandBufferInputChunk input_chunk, bool debug);
+    vk::CommandBuffer make_command_buffer(CommandBufferInputChunk input_chunk, bool debug);
 
-    void make_frame_command_buffer(commandBufferInputChunk input_chunk, bool debug);
+    void make_frame_command_buffer(CommandBufferInputChunk input_chunk, bool debug);
 }
 
 #endif //INC_3DLOADERVK_COMMANDS_HPP

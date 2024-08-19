@@ -1,23 +1,8 @@
-//
-// Created by daily on 27-12-23.
-//
-
 #include "swapchain.hpp"
+
 namespace vkinit
 {
-
-    /**
-     * @brief Queries the swap chain support details for a given physical device_ and surface_.
-     *
-     * Gathers and returns detailed information about the supported capabilities, formats, and
-     * present modes for swap chain creation on the specified physical device_ and surface_.
-     *
-     * @param device The Vulkan physical device_.
-     * @param surface The Vulkan surface_.
-     * @param debug Flag indicating whether to enable debug logging.
-     * @return SwapChainSupportDetails for the given device_ and surface_.
-     */
-    SwapChainSupportDetails query_swapchain_support(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug)
+    SwapChainSupportDetails query_swap_chain_support(vk::PhysicalDevice device, vk::SurfaceKHR surface, bool debug)
     {
         SwapChainSupportDetails support;
         support.capabilities = device.getSurfaceCapabilitiesKHR(surface);
@@ -28,7 +13,6 @@ namespace vkinit
             std::cout << "\tminimum image count: " << support.capabilities.minImageCount << '\n';
             std::cout << "\tmaximum image count: " << support.capabilities.maxImageCount << '\n';
             std::cout << "\tcurrent extent: \n";
-            //vk::Extent2D extent(230, 234);
             std::cout << "\t\twidth: " << support.capabilities.currentExtent.width << '\n';
             std::cout << "\t\theight: " << support.capabilities.currentExtent.height << '\n';
 
@@ -87,17 +71,7 @@ namespace vkinit
         }
         return support;
     }
-
-    /**
-     * @brief Chooses the most suitable surface_ format for the swap chain.
-     *
-     * Selects an appropriate surface_ format from a list of available formats, preferring
-     * B8G8R8A8 format with sRGB color space if available
-     *
-     * @param formats A vector of available surface_ formats.
-     * @return The chosen vk::SurfaceFormatKHR
-     */
-    vk::SurfaceFormatKHR choose_swapchain_surface_format(std::vector<vk::SurfaceFormatKHR> formats)
+    vk::SurfaceFormatKHR choose_swap_chain_surface_format(std::vector<vk::SurfaceFormatKHR> formats)
     {
         for (vk::SurfaceFormatKHR format: formats)
         {
@@ -108,17 +82,7 @@ namespace vkinit
         }
         return formats[0];
     }
-
-    /**
-     * @brief Chooses the best available present mode for the swap chain.
-     *
-     * Selects a presentation mode from the available modes, with a preference for
-     * 'mailbox' mode, which supports triple buffering.
-     *
-     * @param presentModes A vector of available presentation modes.
-     * @return The chosen vk::PresentModeKHR.
-     */
-    vk::PresentModeKHR choose_swapchain_present_mode(std::vector<vk::PresentModeKHR> presentModes)
+    vk::PresentModeKHR choose_swap_chain_present_mode(std::vector<vk::PresentModeKHR> presentModes)
     {
         for (vk::PresentModeKHR presentMode: presentModes)
         {
@@ -129,19 +93,7 @@ namespace vkinit
         }
         return vk::PresentModeKHR::eFifo;
     }
-
-    /**
-     * @brief Determines the extent of the swap chain images.
-     *
-     * Calculates and returns the extent (resolution) of the swap chain images,
-     * based on the window_ size and surface_ capabilities
-     *
-     * @param width The width_ of the window_.
-     * @param height The height_ of the window_.
-     * @param capabilities The surface_ capabilities.
-     * @return The vk::Extent2D representing the swap chain image extent.
-     */
-    vk::Extent2D choose_swapchain_extent(uint32_t width, uint32_t height, vk::SurfaceCapabilitiesKHR capabilities)
+    vk::Extent2D choose_swap_chain_extent(uint32_t width, uint32_t height, vk::SurfaceCapabilitiesKHR capabilities)
     {
         if (capabilities.currentExtent.width != UINT32_MAX)
         {
@@ -163,27 +115,13 @@ namespace vkinit
             return extent;
         }
     }
-
-    /**
-     * @brief Creates a Vulkan swap chain and associated resources.
-     *
-     * Initializes the Vulkan swap chain for image presentation, including setting up
-     * the image views for each frame in the swap chain.
-     *
-     * @param logicalDevice The Vulkan logical device_.
-     * @param physicalDevice The Vulkan physical device_.
-     * @param surface The Vulkan surface_.
-     * @param width The width_ of the window_.
-     * @param height The height_ of the window_.
-     * @param debug Flag indicating whether to enable debug logging.
-     * @return A SwapChainBlundle containing the swap chain and its related components.
-     */
-    SwapChainBundle create_swapchain(vk::Device logicalDevice, vk::PhysicalDevice physicalDevice, vk::SurfaceKHR surface, int width, int height, bool debug)
+    SwapChainBundle create_swap_chain(vk::Device logicalDevice, vk::PhysicalDevice physicalDevice, vk::SurfaceKHR surface, int width, int height, bool debug)
     {
-        SwapChainSupportDetails support = query_swapchain_support(physicalDevice, surface, debug);
-        vk::SurfaceFormatKHR format = choose_swapchain_surface_format(support.formats);
-        vk::PresentModeKHR presentMode = choose_swapchain_present_mode(support.presentModes);
-        vk::Extent2D extent = choose_swapchain_extent(static_cast<uint32_t>(width), static_cast<uint32_t>(height), support.capabilities);
+        SwapChainSupportDetails support = query_swap_chain_support(physicalDevice, surface, debug);
+        vk::SurfaceFormatKHR format = choose_swap_chain_surface_format(support.formats);
+        vk::PresentModeKHR presentMode = choose_swap_chain_present_mode(support.presentModes);
+        vk::Extent2D extent = choose_swap_chain_extent(static_cast<uint32_t>(width), static_cast<uint32_t>(height),
+                                                       support.capabilities);
         uint32_t imageCount = std::min
                 (
                         support.capabilities.maxImageCount,
@@ -201,12 +139,12 @@ namespace vkinit
             1,
             vk::ImageUsageFlagBits::eColorAttachment
         );
-        vkutil::QueueFamilyIndices indices = vkutil::findQueueFamilies
-        (
-            physicalDevice,
-            surface,
-            debug
-        );
+        vkutil::QueueFamilyIndices indices = vkutil::find_queue_families
+                (
+                        physicalDevice,
+                        surface,
+                        debug
+                );
         uint32_t queueFamilyIndices[] = { indices.graphicsFamily.value(), indices.presentFamily.value() };
 
         if(indices.graphicsFamily.value() != indices.presentFamily.value())

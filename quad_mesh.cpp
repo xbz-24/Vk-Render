@@ -1,36 +1,28 @@
-//
-// Created by daily on 19-01-24.
-//
-
 #include "quad_mesh.hpp"
 
 QuadMesh::QuadMesh(vk::Device logical_device, vk::PhysicalDevice physical_device)
 {
     this->logical_device_ = logical_device;
-    std::vector<float> vertices = {
-//eTriangleStrip
-            -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-            0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-            0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
-            -0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f
-
-//eTriangleList
-//            -0.5f,  0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-//            0.5f,  0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-//            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
-//
-//            0.5f,  0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-//            0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f,
-//            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+    std::vector<float> vertices =
+    {
+       -0.5F, 0.5F , 0.0F, 1.0F, 0.0F, 0.0F,
+       0.5F , 0.5F , 0.0F, 0.0F, 1.0F, 0.0F,
+       0.5F , -0.5F, 0.0F, 0.0F, 0.0F, 1.0F,
+       -0.5F, -0.5F, 0.0F, 1.0F, 1.0F, 1.0F
     };
+
     BufferInput inputChunk;
+
     inputChunk.logical_device = logical_device;
     inputChunk.physical_device = physical_device;
     inputChunk.size = sizeof(float) * vertices.size();
     inputChunk.usage = vk::BufferUsageFlagBits::eVertexBuffer;
-    vertex_buffer = vkutil::createBuffer(inputChunk);
+
+    vertex_buffer = vkutil::create_buffer(inputChunk);
+
     void* memoryLocation = logical_device.mapMemory(vertex_buffer.buffer_memory, 0, inputChunk.size);
     memcpy(memoryLocation, vertices.data(), inputChunk.size);
+
     logical_device.unmapMemory(vertex_buffer.buffer_memory);
 }
 
